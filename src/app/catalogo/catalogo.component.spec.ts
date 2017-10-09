@@ -5,10 +5,10 @@
  */
 import { async, TestBed, ComponentFixture } from "@angular/core/testing";
 import { ClarityModule } from 'clarity-angular';
-import { AboutComponent } from './about.component';
+import { CatalogoComponent } from './catalogo.component';
 
 
-describe('AboutComponent', () => {
+describe('CatalogoComponent', () => {
 
     let expectedMsg: string = 'This is a page to help demonstrate routing.';
 
@@ -18,14 +18,14 @@ describe('AboutComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [
-                AboutComponent
+                CatalogoComponent
             ],
             imports: [
                 ClarityModule.forRoot()
             ]
         });
 
-        fixture = TestBed.createComponent(AboutComponent);
+        fixture = TestBed.createComponent(CatalogoComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;
 

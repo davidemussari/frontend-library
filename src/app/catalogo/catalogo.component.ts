@@ -6,10 +6,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    styleUrls: ['./about.component.scss'],
-    templateUrl: './about.component.html'
+    styleUrls: ['./catalogo.component.scss'],
+    templateUrl: './catalogo.component.html'
 })
-export class AboutComponent {
+export class CatalogoComponent {
     open: Boolean = false;
 
 }

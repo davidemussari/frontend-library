@@ -6,14 +6,19 @@
 import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutComponent } from './about/about.component';
+import { CatalogoComponent } from './catalogo/catalogo.component';
 import { HomeComponent } from './home/home.component';
+import { CatalogoCompletoComponent} from './catalogo-completo/catalogo-completo.component';
+import { CatalogoArgomentoComponent} from './catalogo-argomento/catalogo-argomento.component';
+import { CatalogoLuogoComponent} from './catalogo-luogo/catalogo-luogo.component';
 
 
 export const ROUTES: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
-    {path: 'about', component: AboutComponent}
+    {path: 'catalogoCompleto', component: CatalogoCompletoComponent},
+	{path: 'catalogoArgomento', component: CatalogoArgomentoComponent},
+	{path: 'catalogoLuogo', component: CatalogoLuogoComponent}
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);

@@ -1,0 +1,297 @@
+{
+	"centinaia":[
+		{"numero": "000", "descrizione": "Informatica, scienze dell'informazione, opere generali"},
+		{"numero": "100", "descrizione": "Filosofia e discipline connesse"},
+		{"numero": "200", "descrizione": "Religione"},
+		{"numero": "300", "descrizione": "Scienze sociali"},
+		{"numero": "400", "descrizione": "Linguistica"},
+		{"numero": "500", "descrizione": "Scienze naturali e matematica"},
+		{"numero": "600", "descrizione": "Tecnologia (Scienze applicate)"},
+		{"numero": "700", "descrizione": "Arti, belle arti e arti decorative"},
+		{"numero": "800", "descrizione": "Letteratura"},
+		{"numero": "900", "descrizione": "Geografia, storia e discipline ausiliarie"}
+	],
+	"decine":[{
+		"000":[{
+			{"numero": "010", "descrizione": "Bibliografia"},
+			{"numero": "020", "descrizione": "biblioteconomia tecniche della documentazione"},
+			{"numero": "060", "descrizione": "Accademie, istituti culturali, fondazioni, congressi"},
+			{"numero": "070", "descrizione": "Giornalismo, giornali, editoria"},
+			{"numero": "090", "descrizione": "Manoscritti e libri rari"}
+		}],
+		"100": {
+			"190": "Filosofia occidentale moderna"
+		},
+		"200": {
+			"210": "Religione naturale",
+			"240": "Teologia morale e devozionale cristiana",
+			"250": "Chiesa cristiana e comunità. Ordini religiosi cristiani",
+			"260": "Culto cristiano",
+			"280": "Confessioni e sette della Chiesa cattolica romana",
+			"290": "Altre religioni e religioni comparate"
+		},
+		"300": {
+			"320": "Scienze politiche",
+			"330": "Economia",
+			"340": "Diritto",
+			"350": "Amministrazione pubblica e scienze militari",
+			"360": "Assistenza sociale, sicurezza sociale",
+			"370": "Educazione",
+			"390": "Usi, costumi, folclore"
+		},
+		"400": {
+			"450": "Lingue italiana, rumena e affini",
+			"490": "Altre lingue"
+		},
+		"500": {
+			"500": "Scienze naturali e matematica",
+			"520": "Astronomia e scienze connesse",
+			"550": "Scienze della Terra",
+			"580": "Scienze botaniche",
+			"590": "Scienze zoologiche"
+		},
+		"600": {
+			"600": "Tecnologia (Scienze applicate)",
+			"620": "Ingegneria e attività affini",
+			"650": "Affari, tecnica commerciale e industriale"
+		},
+		"700": {
+			"700": "Arti, belle arti e arti decorative",
+			"710": "Urbanistica e arte del paesaggio",
+			"720": "Architettura",
+			"730": "Arti plastiche, scultura",
+			"740": "Disegno, arti decorative e arti minori",
+			"750": "Pittura e pitture",
+			"760": "Arti grafiche, tecniche di impressione e stampe",
+			"770": "Fotografia",
+			"780": "Musica",
+			"790": "Arti ricreative e dello spettacolo"
+		},
+		"800": {
+			"820": "Letteratura in lingua inglese e anglosassone",
+			"850": "Letterature in lingua italiana, rumena e affini"
+		},
+		"900": {
+			"900": "Geografia, storia e discipline ausiliarie",
+			"910": "Geografia generale, viaggi",
+			"920": "Biografie generali, genealogia, araldica",
+			"930": "Storia generale del mondo antico",
+			"940": "Storia generale dell'Europa"
+		}
+	}],
+	"unità":{
+		"010": {
+			"017": "Cataloghi per materia"
+		},
+		"060": {
+			"069": "Museologia"
+		},
+		"070": {
+			"070.900": "Storia e persone relative al giornalismo e ai giornali",
+			"075.120": "Giornalismo e giornali. Torino (provincia)"
+		},
+		"090": {
+			"094.400": "Libri a stampa. Edizioni speciali"
+		},
+
+		"210": {
+			"210.100": "Teoria dela filosofia della religione",
+			"210.900": "Filosofia e teoria della religione. Storia, geografia, persone",
+			"210.920": "Filosofia e teoria della religione. Persone",
+			"213": "Creazione"
+		},
+		"240": {
+			"242": "Preghiere, meditazioni",
+			"247": "Arredi sacri",
+			"248": "Religione personale",
+			"248.463": "Vita cristiana. Pellegrinaggi"
+		},
+		"250": {
+			"254": "Amministrazione parrocchiale"
+		},
+		"260": {
+			"263": "Giorni, tempi, luoghi dell'osservanza religiosa",
+			"264": "Liturgia"
+		},
+		"280": {
+			"280.092 200": "Confessioni e sette. Gruppi di persone",
+			"282.451 200": "Storia della Chiesa cattolica. Piemonte. Torino (provincia)"
+		},
+		"290": {
+			"299": "Altre religioni"
+		},
+
+		"320": {
+			"320.509 040": "Teorie e ideologie politiche. Trattamento storico e geografico",
+			"325": "Emigrazione, immigrazione, colonizzazione"
+		},
+		"330": {
+			"330.945 120": "Situazioni e condizioni economiche. Torino (provincia)",
+			"334.683 094 500": "Cooperative di produzione. Agricoltura. Italia",
+			"338.094 512": "Produzione. Torino (provincia)",
+			"338.409 450": "Industrie secondarie e servizi. Italia"
+		},
+		"370": {
+			"378.100": "Educazione superiore. Organizzazione e attività"
+		},
+		"390": {
+			"390.094 510": "Usi e costumi del Piemonte",
+			"390.463": "Usi e costumi di persone di vari mestieri e occupazioni",
+			"391": "Abbigliamento e aspetto personale",
+			"394.200": "Usi e costumi generali. Occasioni speciali",
+			"398.050":	"Folclore. Pubblicazioni in serie",
+			"398.094 510": "Folclore. Piemonte",
+			"398.410 945": "Fenomeni paranaturali e leggendari come soggetti di folclore. Credenze popolari. Italia",
+			"398.900": "Proverbi"
+		},
+
+		"450": {
+			"457.100": "Dialetto piemontese"
+		},
+		"490": {
+			"492.400": "Lingue afroasiatiche (lingue camitosemitiche) lingue semitiche. Ebraico",
+			"496": "Lingue africane",
+			"499.940": "Lingua etrusca"
+		},
+
+		"500": {
+			"500.100": "Scienze naturali"
+		},
+		"520": {
+			"529.780": "Cronometria. Strumenti di misurazione del tempo"
+		},
+		"550": {
+			"551": "Geologia, meteorologia, idrologia"
+		},
+
+		"650": {
+			"652.300": "Processi della comunicazione scritta. digitazione",
+			"653": "Stenografia"
+		},
+
+		"700": {
+			"706": "Belle arti e arti decorative. Organizzazioni e gestione"
+		},
+		"710": {
+			"719": "Tutela del paesaggio"
+		},
+		"720": {
+			"720.944": "Francia e Monaco",
+			"720.945 121": "Piemonte. Torino",
+			"720.945 122": "Piemonte. Torino (provincia)",
+			"720.945 130": "Piemonte. Cuneo (provincia)",
+			"720.945 160": "Piemonte. Novara (provincia)",
+			"720.945 200": "Lombardia",
+			"726.409 451": "Architettura di strutture di culto accessorie",
+			"726.509 451 200": "Architettura delle chiese cristiane. Torino (provincia)",
+			"726.509 451 300": "Architettura delle chiese cristiane. Cuneo (provincia)",
+			"726.509 451 500": "Architettura delle chiese cristiane. Asti (provincia)",
+			"728.609 451 600": "Architettura di case di campagna. Italia nord-occidentale. Piemonte",
+			"728.809 451 200": "Architettura di residenze private grandi e lussuose. Torino (provincia)",
+			"728.809 451 210": "Architettura di residenze private grandi e lussuose. Torino",
+			"728.810 945 120": "Architettura di castelli. Torino (provincia)",
+			"728.820 945 121": "Architettura di palazzi. Torino"
+		},
+		"730": {
+			"735": "Scultura del rinascimento e moderna"
+		},
+		"740": {
+			"741": "Disegni",
+			"741.670": "Illustrazione pubblicitaria",
+			"741.682": "Progettazione grafica, illustrazione, arte commerciale. Calendari",
+			"746.720 955": "Coperte e tappeti intessuti. Iran",
+			"747.888 094 500": "Decorazione di specifici tipi di edifici di abitazione. Dimore private grandi e signorili."
+		},
+		"750": {
+			"750.740": "PITTURA. Musei, collezioni, esposizioni",
+			"755.200": "Pittura di soggetti religiosi e simbolismo religioso. Cristianità",
+			"755.209 450": "Pittura di soggetti religiosi e simbolismo religioso. Cristianità. Italia",
+			"755.209 451 201 500": "Pittura di soggetti religiosi e simbolismo religioso. Cristianità. Torino (provincia)",
+			"758.800": "Pittura. Altri soggetti",
+			"758.900": "Collezioni di pittura",
+			"759.500": "Pittura italiana",
+			"759.507 400": "Pittura. Italia. Musei, collezioni, esposizioni",
+			"759.510": "Pittura. Piemonte",
+			"759.512": "Pittura. Torino (provincia)"
+		},
+		"770": {
+			"770.900": "Fotografia. Trattamento storico e geografico",
+			"770.945": "Fotografia. Italia",
+			"770.945 100": "Fotografia. Piemonte"
+		},
+		"780": {
+			"784.094 512": "Strumenti, complessi strumentali e loro musica. Torino",
+			"784.494 512": "Canti folcloristici. Torino (provincia)",
+			"785.067": "Complessi strumentali. Bande",
+			"786.500": "Strumenti a tastiera aerofoni. Organi"
+		},
+		"790": {
+			"791.094 512": "Spettacoli pubblici. Torino (provincia)",
+			"791.430 233 090": "Cinema. Direzione. Trattamento storico e geografico",
+			"792.022 209 450": "Teatro di dilettanti. Italia",
+			"793.730": "Giochi sedentari. Rompicapo e giochi di pazienza",
+			"796.030": "Sport e giochi atletici e all'aperto",
+			"796.042": "Sport dilettantistici",
+			"796.060 450": "Sport e giochi atletici e all'aperto. Organizzazioni. Italia",
+			"796.522": "Passeggiate ed esplorazioni in montagne, colline, rocce",
+			"796.522 090": "Passeggiate ed esplorazioni in montagne, colline, rocce. Trattamento storico e geografico",
+			"796.522 092": "Passeggiate ed esplorazioni in montagne, colline, rocce. Persone",
+			"796.609 200": "Ciclismo. Persone"
+		},
+
+		"850": {
+			"851.910 809 451": "Poesia italiana. XX secolo. Raccolte. Scrittori piemontesi",
+			"851.914 080 945 100": "Poesia italiana. Dal 1945. Raccolte. Scrittori piemontesi",
+			"852": "Letteratura drammatica italiana",
+			"853.910": "Narrativa italiana. XX secolo",
+			"853.920": "Narrativa italiana. XXI secolo"
+		},
+
+		"900": {
+			"909.070": "Storia universale. Dal 500 al 1500"
+		},
+		"910": {
+			"910.200": "Guide turistiche",
+			"910.800": "Geografia e viaggi. Il soggetto riferito a gruppi di persone",
+			"912": "Rappresentazioni grafiche della superficie terrestre e dei mondi extraterrestri",
+			"912.094 500": "Carte geografiche e cartografia. Italia",
+			"913": "Archeologia, preistoria",
+			"914": "Geografia. Europa.",
+			"914.500 140": "Geografia. Italia. Linguaggio e comunicazione",
+			"914.510 050": "Geografia. Piemonte. Pubblicazioni in serie",
+			"914.511": "Geografia. Val D'Aosta",
+			"914.512": "Geografia. Torino (provincia)",
+			"914.513": "Geografia. Cuneo (provincia)",
+			"915": "geografia e viaggi. Asia, Oriente, estremo Oriente",
+			"916": "Geografia. Africa",
+			"919": "Geografia. Altre parti del mondo"
+		},
+		"920": {
+			"929.400": "Nomi di persona",
+			"929.900": "Bandiere"
+		},
+		"930": {
+			"930.100": "Archeologia",
+			"930.105": "Archeologia. Pubblicazioni in serie"
+		},
+		"940": {
+			"940.200": "Storia. Europa. Dal 1453",
+			"940.530 920": "Storia generale dell'europa. Seconda guerra mondiale. Dal 1939 al 1945. Persone",
+			"945.050": "Storia d'Italia. Rinascimento. Dal 1330 al 1494",
+			"945.060": "Storia d'Italia. Dal 1494 al 1796",
+			"945.073": "Storia d'Italia. Dal 1600 al 1700",
+			"945.080": "Storia d'Italia. Dal 1796 al 1870",
+			"945.083 400": "Storia d'Italia. Periodo Cavouriano. Dal 1849 al 1861",
+			"945.090 920": "Storia d'Italia. Dal 1900. Persone",
+			"945.091": "Storia d'Italia. Periodo della prima guerra mondiale. Dal 1914 al 1918",
+			"945.091 509 200": "Storia d'Italia. Periodo fascista. Dal 1922 al 1943. Persone",
+			"945.093": "Storia d'Italia. Dal 2000",
+			"945.100": "Storia dell'Italia nord-occidentale. Piemonte",
+			"945.100 500": "Storia dell'Italia nord-occidentale. Piemonte. Pubblicazioni in serie",
+			"945.100 992": "Storia dell'Italia nord-occidentale. Piemonte. Gruppi di persone",
+			"945.107 400": "Storia del Piemonte. Dal 1730 al 1796",
+			"945.108 309 200": "Storia del Piemonte. Periodo risorgimentale. Dal 1815 al 1861. Persone",
+			"945.120 150": "Storia. Torino (provincia)"
+		}
+	}
+}

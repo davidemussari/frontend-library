@@ -1,22 +1,52 @@
-.clr-icon {
-  &.clr-clarity-logo {
-    background-image: url(../images/logoNostPais.png);
-	height: 45px;
-	width: 45px;
-  }
-}
+//Header
+	.clr-icon {
+	  &.clr-clarity-logo {
+		background-image: url(../images/logoNostPais.png);
+		height: 45px;
+		width: 45px;
+	  }
+	}
 
-.clr-icon {
-  &.clr-clarity-logoFacebook {
-    background-image: url(../images/FB-f-Logo__blue_29.png);
-	height: 15px;
-	width: 15px;
-  }
-}
+	.header{
+		background-color: #46778f !important;
+	}
 
-#footer {
-	height: 42px;
-	botton: 0px;
-	position: absolute;
-	width: 100%;
-}
+
+//Logo Facebook
+	.clr-icon {
+	  &.clr-clarity-logoFacebook {
+		background-image: url(../images/FB-f-Logo__blue_29.png);
+		height: 15px;
+		width: 15px;
+	  }
+	}
+
+//Footer
+	#footer {
+		height: 42px;
+		botton: 0px;
+		position: absolute;
+		width: 100%;
+	}
+
+//Vertical nav
+	.verticalNav{
+		background: #80a7ba;
+		color: white;
+		text-shadow: 2px 2px #728e9c;
+	}
+
+	.WhiteTextOnly{
+		color: white;
+		text-shadow: 2px 2px #728e9c;
+	}
+
+
+
+	.verticalNav.active,
+	a.verticalNav:hover,
+	.nav-group.active:not(.is-expanded)
+{
+		background-color: #46778f !important;
+		color: white !important;
+	}

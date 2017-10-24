@@ -1,3 +1,15 @@
-<p>
-  catalogo-argomento works!
-</p>
+<div class="row" *ngIf='paramCentinaia == null'>
+	<div class="col-xs-12 col-md-3" *ngFor="let box of this.dewey['centinaia']">
+        <div class="card clickable">
+            <div class="card-text">
+            	{{box.numero}}
+            </div>
+            <div class="card-block">
+                <div class="card-title">
+                    {{box.descrizione}}
+                </div>
+            </div>
+		</div>
+    </div>
+</div>
+{{paramCentinaia}}

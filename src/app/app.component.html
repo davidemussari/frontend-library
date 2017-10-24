@@ -13,40 +13,40 @@
 		<div class="content-area">
 			<router-outlet></router-outlet>
 		</div>
-		<clr-vertical-nav>
-			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active">Home</a>
-			<clr-vertical-nav-group routerLinkActive="active">
-				<clr-icon class="is-solid" shape="book" clrVerticalNavIcon></clr-icon>
-				Catalogo
-				<clr-vertical-nav-group-children>
+		<clr-vertical-nav [clrVerticalNavCollapsible]="collapsible" [(clrVerticalNavCollapsed)]="collapsed" class="verticalNav">
+			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active"  class="verticalNav">Home</a>
+			<clr-vertical-nav-group routerLinkActive="active" class="verticalNav">
+				<clr-icon class="is-solid WhiteTextOnly" shape="book" clrVerticalNavIcon></clr-icon>
+				<div class="WhiteTextOnly">Catalogo</div>
+				<clr-vertical-nav-group-children >
 				    <a clrVerticalNavLink
 						[routerLink]="['/catalogoCompleto']"
-						routerLinkActive="active">
+						routerLinkActive="active"  class="verticalNav">
 				        completo
 				    </a>
 				    <a clrVerticalNavLink
 				       [routerLink]="['/catalogoArgomento']"
-				       routerLinkActive="active">
+				       routerLinkActive="active"  class="verticalNav">
 				        per argomento
 				    </a>
 					<a clrVerticalNavLink
 				       [routerLink]="['/catalogoLuogo']"
-				       routerLinkActive="active">
+				       routerLinkActive="active"  class="verticalNav">
 				        per luogo
 				    </a>
 				</clr-vertical-nav-group-children>
 			</clr-vertical-nav-group>
-			<clr-vertical-nav-group routerLinkActive="active">
-				<clr-icon class="is-solid" shape="help-info" clrVerticalNavIcon></clr-icon>
-				L'Associazione
+			<clr-vertical-nav-group routerLinkActive="active" class="verticalNav">
+				<clr-icon class="is-solid WhiteTextOnly" shape="help-info" clrVerticalNavIcon></clr-icon>
+				<div class="WhiteTextOnly">L'Associazione</div>
 				<clr-vertical-nav-group-children>
-				    <a clrVerticalNavLink>
+				    <a clrVerticalNavLink  class="verticalNav">
 				        <span class="clr-icon clr-clarity-logoFacebook"></span> FB
 				    </a>
-				    <a clrVerticalNavLink>
+				    <a clrVerticalNavLink  class="verticalNav">
 				       <clr-icon class="is-solid" shape="world" clrVerticalNavIcon></clr-icon> Sito internet
 				    </a>
-					<a clrVerticalNavLink>
+					<a clrVerticalNavLink  class="verticalNav">
 				      <clr-icon class="is-solid" shape="envelope" clrVerticalNavIcon></clr-icon> Contatti
 				    </a>
 				</clr-vertical-nav-group-children>
@@ -58,6 +58,6 @@
 
 
 </clr-main-container>
-<header class="header footer" id="footer">
+<header class="header footer">
 test
 </header>

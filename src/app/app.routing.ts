@@ -17,7 +17,7 @@ export const ROUTES: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'catalogoCompleto', component: CatalogoCompletoComponent},
-	{path: 'catalogoArgomento/:centinaia', component: CatalogoArgomentoComponent},
+	{path: 'catalogoArgomento/:id', component: CatalogoArgomentoComponent},
 	{path: 'catalogoArgomento', component: CatalogoArgomentoComponent},
 	{path: 'catalogoLuogo', component: CatalogoLuogoComponent}
 ];

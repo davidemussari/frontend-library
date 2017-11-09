@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { GetJsonService } from '../get-json.service';
 
@@ -12,21 +12,26 @@ import { GetJsonService } from '../get-json.service';
 export class CatalogoArgomentoComponent implements OnInit {
 
 	dewey: any;
-	paramCentinaia: any;
+	id: any;
+	router: any;
 
-	constructor(private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute) {
+	constructor(private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute, _router: Router) {
+        this.router = _router;
 	}
 
 	ngOnInit() {
 		this.downloadJson.getData("../json/dewej.json").subscribe((data) => {
 			this.dewey = data;
-			console.log(this.dewey);
 		});
-		
+
 		this.paramsRoute.params.subscribe(params => {
-       		this.paramCentinaia = params['centinaia'];
+            this.id = params['id'];
 		});
-		
+
+	}
+
+	routing = (id_clicked) => {
+         this.router.navigate(['/catalogoArgomento/'+id_clicked]);
 	}
 
 }

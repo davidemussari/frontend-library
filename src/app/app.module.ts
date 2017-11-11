@@ -12,6 +12,7 @@ import { CatalogoComponent } from "./catalogo/catalogo.component";
 import { CatalogoCompletoComponent } from './catalogo-completo/catalogo-completo.component';
 import { CatalogoArgomentoComponent } from './catalogo-argomento/catalogo-argomento.component';
 import { CatalogoLuogoComponent } from './catalogo-luogo/catalogo-luogo.component';
+import { NomiCognomiPipe } from './nomi-cognomi.pipe';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { CatalogoLuogoComponent } from './catalogo-luogo/catalogo-luogo.componen
         HomeComponent,
         CatalogoCompletoComponent,
         CatalogoArgomentoComponent,
-        CatalogoLuogoComponent
+        CatalogoLuogoComponent,
+        NomiCognomiPipe
     ],
     imports: [
         BrowserAnimationsModule,

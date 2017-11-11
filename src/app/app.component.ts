@@ -16,13 +16,13 @@ export class AppComponent {
 	catalogo: any;
 
     constructor(private router: Router, private downloadJson: GetJsonService) {
-		
+
 		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
   			this.catalogo = data;
 		});
     }
 
-	
+
 
 
 }

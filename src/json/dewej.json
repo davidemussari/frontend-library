@@ -147,9 +147,6 @@
 		{"numero": "496", "descrizione": "Lingue africane"},
 		{"numero": "499.940", "descrizione": "Lingua etrusca"}
     ],
-	"500":[
-		{"numero": "500.100", "descrizione": "Scienze naturali"}
-    ],
 	"520":[
 		{"numero": "529.780", "descrizione": "Cronometria. Strumenti di misurazione del tempo"}
     ],
@@ -159,9 +156,6 @@
 	"650":[
 		{"numero": "652.300", "descrizione": "Processi della comunicazione scritta. digitazione"},
 		{"numero": "653", "descrizione": "Stenografia"}
-    ],
-	"700":[
-		{"numero": "706", "descrizione": "Belle arti e arti decorative. Organizzazioni e gestione"}
     ],
 	"710":[
 		{"numero": "719", "descrizione": "Tutela del paesaggio"}
@@ -235,9 +229,6 @@
 		{"numero": "852", "descrizione": "Letteratura drammatica italiana"},
 		{"numero": "853.910", "descrizione": "Narrativa italiana. XX secolo"},
 		{"numero": "853.920", "descrizione": "Narrativa italiana. XXI secolo"}
-    ],
-	"900":[
-		{"numero": "909.070", "descrizione": "Storia universale. Dal 500 al 1500"}
     ],
 	"910":[
 		{"numero": "910.200", "descrizione": "Guide turistiche"},

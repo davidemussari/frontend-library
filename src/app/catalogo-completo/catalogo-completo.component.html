@@ -3,12 +3,17 @@
     <clr-dg-column>Titolo</clr-dg-column>
     <clr-dg-column>Sottotitolo</clr-dg-column>
     <clr-dg-column>Copertina</clr-dg-column>
+    <clr-dg-column [clrDgField]="'element.codiceArgomento'" [clrDgSortBy]="codiceArgomentoSort" >
+            Argomento
+            <clr-dg-string-filter [clrDgStringFilter]="codiceArgomentoFiltro"></clr-dg-string-filter>
+    </clr-dg-column>
 
     <clr-dg-row *clrDgItems="let element of catalogo">
         <clr-dg-cell [innerHTML] = "element.autore | nomiCognomi"></clr-dg-cell>
         <clr-dg-cell>{{element.titolo}}</clr-dg-cell>
         <clr-dg-cell>{{element.sottotitolo}}</clr-dg-cell>
         <clr-dg-cell><div style="background-image: url('http://seb27.it/sites/seb27.it/files/copertine/1193047185.jpg?1239567594');height: 100px;background-size: 60px;background-repeat: no-repeat;"></div></clr-dg-cell>
+        <clr-dg-cell>{{element.codiceArgomento}}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>

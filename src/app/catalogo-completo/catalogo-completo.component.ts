@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GetJsonService } from '../get-json.service';
 
 import {Comparator} from "clarity-angular";
@@ -9,17 +9,11 @@ class Element{
     codiceArgomento: string;
 }
 
-
 class CodiceArgomentoSort implements Comparator<Element> {
-    aNumber : number = 0;
-    bNumber : number = 0;
     compare(a: Element, b: Element) {
-        this.aNumber = +a.codiceArgomento;
-        this.bNumber = +b.codiceArgomento;
-        return this.aNumber - this.bNumber;
+        return +a.codiceArgomento - +b.codiceArgomento;
     }
 }
-
 
 class CodiceArgomentoFiltro implements StringFilter<Element> {
     accepts(element: Element, search: string):boolean {
@@ -36,20 +30,34 @@ class CodiceArgomentoFiltro implements StringFilter<Element> {
   styleUrls: ['./catalogo-completo.component.scss']
 })
 export class CatalogoCompletoComponent implements OnInit {
-
     catalogo: any;
+    codArgomento :string;
+    descArgomento :string;
     private codiceArgomentoSort = new CodiceArgomentoSort();
     private codiceArgomentoFiltro = new CodiceArgomentoFiltro();
+    router: any;
 
-  constructor(private router: Router, private downloadJson: GetJsonService) {
+  constructor(private _router: Router, private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute,) {
+        this.router = _router;
 
 		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
   			this.catalogo = data;
 		});
     }
 
-  ngOnInit() {
-  }
+ ngOnInit() {
+		this.paramsRoute.params.subscribe(params => {
+            this.codArgomento = params['codArgomento'];
+            this.descArgomento = params['descrizioneArgomento'];
+		});
+    console.log(this.codArgomento);
+	}
+
+	clearFilter= () => {
+        this.codArgomento = "";
+        this.descArgomento = "";
+        this.router.navigate(['/catalogoCompleto///']);
+	}
 
 
 

@@ -12,9 +12,12 @@ export class NomiCognomiPipe implements PipeTransform {
     this.str = "";
     this.autoriArray = autori.split(';');
     for (let persona of this.autoriArray){
-    persona = persona.split(',');
-    this.str += persona[0] + persona[1] + ' <br/><br/>';
+        persona = persona.split(',');
+        for (let p of persona){
+            this.str += p.trim() + " ";
+        }
     }
+    this.str += ' <br/><br/>';
     return this.str;
   }
 

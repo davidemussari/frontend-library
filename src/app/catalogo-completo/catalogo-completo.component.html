@@ -1,11 +1,17 @@
+<!--<div *ngIf='descArgomento != null'>-->
+<div *ngIf='descArgomento != null'>
+    Filtro su argomento: {{descArgomento}} <button class="btn btn-info" (click)="clearFilter()">Elimina</button>
+</div>
 <clr-datagrid>
     <clr-dg-column>Autore</clr-dg-column>
     <clr-dg-column>Titolo</clr-dg-column>
     <clr-dg-column>Sottotitolo</clr-dg-column>
     <clr-dg-column>Copertina</clr-dg-column>
-    <clr-dg-column [clrDgField]="'element.codiceArgomento'" [clrDgSortBy]="codiceArgomentoSort" >
-            Argomento
-            <clr-dg-string-filter [clrDgStringFilter]="codiceArgomentoFiltro"></clr-dg-string-filter>
+    <clr-dg-column [clrDgField]="'element.codiceArgomento'">
+            <ng-container *clrDgHideableColumn="{hidden: true}">
+                Argomento
+                <clr-dg-string-filter [clrDgStringFilter]="codiceArgomentoFiltro" [(clrFilterValue)]="codArgomento"></clr-dg-string-filter>
+            </ng-container>
     </clr-dg-column>
 
     <clr-dg-row *clrDgItems="let element of catalogo">

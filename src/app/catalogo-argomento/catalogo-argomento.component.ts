@@ -299,9 +299,11 @@ export class CatalogoArgomentoComponent implements OnInit {
 
 	}
 
-	routing = (id_clicked) => {
-        if(this.dewey[id_clicked] != null)
-            this.router.navigate(['/catalogoArgomento/'+id_clicked]);
+	routing = (clicked) => {
+        if(this.dewey[clicked.numero] != null)
+            this.router.navigate(['/catalogoArgomento/'+clicked.numero]);
+        else
+            this.router.navigate(['/catalogoCompleto/'+clicked.numero+'/'+clicked.descrizione]);
 	}
 
 }

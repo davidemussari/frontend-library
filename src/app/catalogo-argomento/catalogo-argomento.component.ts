@@ -262,8 +262,7 @@ export class CatalogoArgomentoComponent implements OnInit {
 		{"numero": "929.900", "descrizione": "Bandiere"}
     ],
 	"930":[
-		{"numero": "930.100", "descrizione": "Archeologia"},
-		{"numero": "930.105", "descrizione": "Archeologia. Pubblicazioni in serie"}
+		{"numero": "930.100", "descrizione": "Archeologia"}
     ],
 	"940":[
 		{"numero": "940.200", "descrizione": "Storia. Europa. Dal 1453"},
@@ -300,10 +299,9 @@ export class CatalogoArgomentoComponent implements OnInit {
 	}
 
 	routing = (cliccato) => {
-        cliccato.numero = (+cliccato.numero).toString();
         cliccato.numero = (+cliccato.numero.replace(/\s/g, "")).toString().split(".");
         if (cliccato.numero.length > 1)
-            cliccato.numero = cliccato.numero[0] + "." + cliccato.numero[1].replace(/(.{3})/g,"$1 ");
+            cliccato.numero = cliccato.numero[0] + "." + cliccato.numero[1].replace(/(.{3})/g,"$1 ");//crea la separazione ogni tre cifre dopo il punto
         if(cliccato.numero != this.id && this.dewey[cliccato.numero] != null)
             this.router.navigate(['/catalogoArgomento/'+cliccato.numero]);
         else {

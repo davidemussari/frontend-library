@@ -18,7 +18,8 @@ class CodiceArgomentoSort implements Comparator<Element> {
 class CodiceArgomentoFiltro implements StringFilter<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.codiceArgomento == search
-            || element.codiceArgomento.toString().toLowerCase().indexOf(search) == 0;
+            || element.codiceArgomento.toString().indexOf(search) == 0
+            || element.codiceArgomento.toString().length < 3 && element.codiceArgomento.toString().indexOf(search) == 1; //per ovviare al problema di quei codici che iniziano per 0
     }
 }
 

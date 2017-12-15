@@ -299,11 +299,18 @@ export class CatalogoArgomentoComponent implements OnInit {
 
 	}
 
-	routing = (clicked) => {
-        if(this.dewey[clicked.numero] != null)
-            this.router.navigate(['/catalogoArgomento/'+clicked.numero]);
-        else
-            this.router.navigate(['/catalogoCompleto/'+clicked.numero+'/'+clicked.descrizione]);
+	routing = (cliccato) => {
+        cliccato.numero = (+cliccato.numero).toString();
+        cliccato.numero = (+cliccato.numero.replace(/\s/g, "")).toString().split(".");
+        if (cliccato.numero.length > 1)
+            cliccato.numero = cliccato.numero[0] + "." + cliccato.numero[1].replace(/(.{3})/g,"$1 ");
+        if(cliccato.numero != this.id && this.dewey[cliccato.numero] != null)
+            this.router.navigate(['/catalogoArgomento/'+cliccato.numero]);
+        else {
+            if(cliccato.numero[0].slice(-1) == "0")
+                cliccato.numero = (+cliccato.numero/10).toString();
+            this.router.navigate(['/catalogoCompleto/'+cliccato.numero+'/'+cliccato.descrizione]);
+        }
 	}
 
 }

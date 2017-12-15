@@ -18,7 +18,7 @@ class CodiceArgomentoSort implements Comparator<Element> {
 class CodiceArgomentoFiltro implements StringFilter<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.codiceArgomento == search
-            || element.codiceArgomento.toString().toLowerCase().indexOf(search) >= 0;
+            || element.codiceArgomento.toString().toLowerCase().indexOf(search) == 0;
     }
 }
 
@@ -31,8 +31,8 @@ class CodiceArgomentoFiltro implements StringFilter<Element> {
 })
 export class CatalogoCompletoComponent implements OnInit {
     catalogo: any;
-    codArgomento :string;
-    descArgomento :string;
+    codArgomento: string;
+    descArgomento: string;
     private codiceArgomentoSort = new CodiceArgomentoSort();
     private codiceArgomentoFiltro = new CodiceArgomentoFiltro();
     router: any;
@@ -50,13 +50,12 @@ export class CatalogoCompletoComponent implements OnInit {
             this.codArgomento = params['codArgomento'];
             this.descArgomento = params['descrizioneArgomento'];
 		});
-    console.log(this.codArgomento);
 	}
 
 	clearFilter= () => {
         this.codArgomento = "";
         this.descArgomento = "";
-        this.router.navigate(['/catalogoCompleto///']);
+        this.router.navigate(['/catalogoCompleto/']);
 	}
 
 

@@ -14,9 +14,12 @@
 			<router-outlet></router-outlet>
 		</div>
 		<clr-vertical-nav [clrVerticalNavCollapsible]="collapsible" [(clrVerticalNavCollapsed)]="collapsed" class="verticalNav">
-			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active"  class="verticalNav">Home</a>
+			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active"  class="verticalNav">
+                <clr-icon class="is-solid WhiteTextOnly" shape="home" clrVerticalNavIcon></clr-icon>
+                Panoramica
+            </a>
 			<clr-vertical-nav-group routerLinkActive="active" class="verticalNav">
-				<clr-icon class="is-solid WhiteTextOnly" shape="book" clrVerticalNavIcon></clr-icon>
+				<clr-icon class="is-solid WhiteTextOnly" shape="library" clrVerticalNavIcon></clr-icon>
 				<div class="WhiteTextOnly">Catalogo</div>
 				<clr-vertical-nav-group-children >
 				    <a clrVerticalNavLink
@@ -36,21 +39,9 @@
 				    </a>
 				</clr-vertical-nav-group-children>
 			</clr-vertical-nav-group>
-			<clr-vertical-nav-group routerLinkActive="active" class="verticalNav">
-				<clr-icon class="is-solid WhiteTextOnly" shape="help-info" clrVerticalNavIcon></clr-icon>
-				<div class="WhiteTextOnly">L'Associazione</div>
-				<clr-vertical-nav-group-children>
-				    <a clrVerticalNavLink  class="verticalNav">
-				        <span class="clr-icon clr-clarity-logoFacebook"></span> FB
-				    </a>
-				    <a clrVerticalNavLink  class="verticalNav">
-				       <clr-icon class="is-solid" shape="world" clrVerticalNavIcon></clr-icon> Sito internet
-				    </a>
-					<a clrVerticalNavLink  class="verticalNav">
-				      <clr-icon class="is-solid" shape="envelope" clrVerticalNavIcon></clr-icon> Contatti
-				    </a>
-				</clr-vertical-nav-group-children>
-			</clr-vertical-nav-group>
+			<a clrVerticalNavLink href="http://www.lnostpais.it/" routerLinkActive="active"  class="verticalNav">
+                <clr-icon class="is-solid" shape="world" clrVerticalNavIcon></clr-icon>L'Associazione
+            </a>
 		</clr-vertical-nav>
 	</div>
 

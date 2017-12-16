@@ -16,8 +16,8 @@ export class NomiCognomiPipe implements PipeTransform {
         for (let p of persona){
             this.str += p.trim() + " ";
         }
+        this.str += ' <br/><br/>';
     }
-    this.str += ' <br/><br/>';
     return this.str;
   }
 

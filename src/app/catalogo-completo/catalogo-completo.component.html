@@ -1,25 +1,25 @@
-<div class="alert alert-info" *ngIf='descArgomento != null'>
-        <div class="alert-items">
-            <div class="alert-item static">
-                <div class="alert-icon-wrapper">
-                    <clr-icon class="alert-icon" shape="info"></clr-icon>
-                </div>
-                <span class="alert-text" >
-                    Filtro su argomento: <span class="p4">{{descArgomento}}</span>
-                </span>
-                <div class="alert-actions">
-                <button class="btn btn-sm btn-link" (click)="clearFilter()">Elimina filtro</button>
+<div class="alert alert-info" *ngIf='descArgomento != null || luogo != null'>
+    <div class="alert-items">
+        <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+                <clr-icon class="alert-icon" shape="info"></clr-icon>
             </div>
-            </div>
+            <span class="alert-text" >
+                Filtro attivo: <span class="p4">{{descArgomento}}{{luogo}}</span>
+            </span>
+            <div class="alert-actions">
+            <button class="btn btn-sm btn-link" (click)="clearFilter()">Elimina filtro</button>
+        </div>
         </div>
     </div>
+</div>
 <!-- <div *ngIf='descArgomento != null'>
     Filtro su argomento: {{descArgomento}} <button class="btn btn-info" (click)="clearFilter()">Elimina</button>
 </div> -->
 
 <clr-datagrid>
-    <clr-dg-column>Autore</clr-dg-column>
-    <clr-dg-column>Titolo</clr-dg-column>
+    <clr-dg-column [clrDgField]="'autore'">Autore</clr-dg-column>
+    <clr-dg-column [clrDgField]="'titolo'">Titolo</clr-dg-column>
     <clr-dg-column>Sottotitolo</clr-dg-column>
     <clr-dg-column>Copertina</clr-dg-column>
     <clr-dg-column>
@@ -35,7 +35,9 @@
             </ng-container>
     </clr-dg-column>
 
-    <clr-dg-row *clrDgItems="let element of catalogo">
+    <clr-dg-placeholder>Nessun risultato con questi filtri <button class="btn btn-sm btn-link" (click)="clearFilter()">Elimina filtro</button></clr-dg-placeholder>
+
+    <clr-dg-row class="tableRowClickable" *clrDgItems="let element of catalogo" (click)="clickRigaTabella(element)">
         <clr-dg-cell [innerHTML] = "element.autore | nomiCognomi"></clr-dg-cell>
         <clr-dg-cell>{{element.titolo}}</clr-dg-cell>
         <clr-dg-cell>{{element.sottotitolo}}</clr-dg-cell>
@@ -45,8 +47,27 @@
     </clr-dg-row>
 
     <clr-dg-footer>
+        <button class="btn btn-success btn-sm" disabled><clr-icon shape="download"></clr-icon>Salva</button>
         {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
         di {{pagination.totalItems}} elementi totali
         <clr-dg-pagination #pagination [clrDgPageSize]="3"></clr-dg-pagination>
     </clr-dg-footer>
 </clr-datagrid>
+
+
+
+<!-- Modale -->
+<clr-modal [(clrModalOpen)]="modale.aperta" [clrModalClosable]="false" [clrModalSize]="'lg'">
+    <h3 class="modal-title">{{modale.elemento.titolo}}</h3>
+    <div class="modal-body">
+        <p>Clicking on the backdrop doesn't do anything.</p>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group btn-primary">
+            <button class="btn" (click)="modale.aperta = false"><clr-icon shape="times"></clr-icon>Chiudi</button>
+            <button class="btn btn-success" disabled><clr-icon shape="download"></clr-icon>Salva</button>
+        </div>
+    </div>
+</clr-modal>
+
+

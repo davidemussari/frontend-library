@@ -6,8 +6,33 @@ import {Comparator} from "clarity-angular";
 import {StringFilter} from "clarity-angular";
 
 class Element{
-    codiceArgomento: string;
+    titolo: string;
+    sottotitolo: string;
+    autore: string;
+    editore: string;
+    rilegatura: string;
+    prezzo: string;
+    edizione: string;
+    copyright: number;
+    annoPubblicazione: number;
+    isbn: string;
+    lccn: string;
+    pagine: number;
+    traduttore: string;
+    lingua: string;
+    collana: string;
+    numero: number;
+    condizioni: string;
+    autografato: boolean;
+    donante: string;
+    prestato: boolean;
+    copertina: string;
+    commenti: string;
+    inventario: number;
     luogo: string;
+    collocazione: string;
+    codiceArgomento: string;
+    perEtichette: string;
 }
 
 class CodiceArgomentoSort implements Comparator<Element> {
@@ -24,11 +49,16 @@ class CodiceArgomentoFiltro implements StringFilter<Element> {
     }
 }
 
-class LuogoFiltro implements StringFilter<Element> {
+class Filtro implements StringFilter<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.luogo.toLowerCase().trim() == search.toLowerCase().trim()
         || element.luogo.toLowerCase().trim().indexOf(search) >= 0;
     }
+}
+
+class Modale {
+    aperta: boolean = false;
+    public elemento = new Element();
 }
 
 
@@ -45,7 +75,8 @@ export class CatalogoCompletoComponent implements OnInit {
     luogo: string;
     private codiceArgomentoSort = new CodiceArgomentoSort();
     private codiceArgomentoFiltro = new CodiceArgomentoFiltro();
-    private luogoFiltro = new LuogoFiltro();
+    private luogoFiltro = new Filtro();
+    private modale = new Modale();
     router: any;
 
   constructor(private _router: Router, private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute,) {
@@ -70,6 +101,8 @@ export class CatalogoCompletoComponent implements OnInit {
         this.router.navigate(['/catalogoCompleto/']);
 	}
 
-
-
+    clickRigaTabella = (elemento) =>{
+        this.modale.aperta = true;
+        this.modale.elemento = elemento
+    }
 }

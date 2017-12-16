@@ -28,6 +28,12 @@
                 <clr-dg-string-filter [clrDgStringFilter]="codiceArgomentoFiltro" [(clrFilterValue)]="codArgomento"></clr-dg-string-filter>
             </ng-container>
     </clr-dg-column>
+    <clr-dg-column>
+            <ng-container *clrDgHideableColumn="{hidden: true}">
+                Luogo
+                <clr-dg-string-filter [clrDgStringFilter]="luogoFiltro" [(clrFilterValue)]="luogo"></clr-dg-string-filter>
+            </ng-container>
+    </clr-dg-column>
 
     <clr-dg-row *clrDgItems="let element of catalogo">
         <clr-dg-cell [innerHTML] = "element.autore | nomiCognomi"></clr-dg-cell>
@@ -35,6 +41,7 @@
         <clr-dg-cell>{{element.sottotitolo}}</clr-dg-cell>
         <clr-dg-cell><div style="background-image: url('http://seb27.it/sites/seb27.it/files/copertine/1193047185.jpg?1239567594');height: 100px;background-size: 60px;background-repeat: no-repeat;"></div></clr-dg-cell>
         <clr-dg-cell>{{element.codiceArgomento}}</clr-dg-cell>
+        <clr-dg-cell>{{element.luogo}}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>

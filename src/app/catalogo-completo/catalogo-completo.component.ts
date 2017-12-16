@@ -7,6 +7,7 @@ import {StringFilter} from "clarity-angular";
 
 class Element{
     codiceArgomento: string;
+    luogo: string;
 }
 
 class CodiceArgomentoSort implements Comparator<Element> {
@@ -23,6 +24,13 @@ class CodiceArgomentoFiltro implements StringFilter<Element> {
     }
 }
 
+class LuogoFiltro implements StringFilter<Element> {
+    accepts(element: Element, search: string):boolean {
+        return "" + element.luogo.toLowerCase().trim() == search.toLowerCase().trim()
+        || element.luogo.toLowerCase().trim().indexOf(search) >= 0;
+    }
+}
+
 
 
 @Component({
@@ -34,8 +42,10 @@ export class CatalogoCompletoComponent implements OnInit {
     catalogo: any;
     codArgomento: string;
     descArgomento: string;
+    luogo: string;
     private codiceArgomentoSort = new CodiceArgomentoSort();
     private codiceArgomentoFiltro = new CodiceArgomentoFiltro();
+    private luogoFiltro = new LuogoFiltro();
     router: any;
 
   constructor(private _router: Router, private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute,) {
@@ -50,6 +60,7 @@ export class CatalogoCompletoComponent implements OnInit {
 		this.paramsRoute.params.subscribe(params => {
             this.codArgomento = params['codArgomento'];
             this.descArgomento = params['descrizioneArgomento'];
+            this.luogo = params['luogo'];
 		});
 	}
 

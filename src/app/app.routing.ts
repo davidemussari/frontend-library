@@ -17,6 +17,7 @@ export const ROUTES: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'catalogoCompleto', component: CatalogoCompletoComponent},
+    {path: 'catalogoCompleto/:luogo', component: CatalogoCompletoComponent},
     {path: 'catalogoCompleto/:codArgomento/:descrizioneArgomento', component: CatalogoCompletoComponent},
     {path: 'catalogoArgomento/:id', component: CatalogoArgomentoComponent},
     {path: 'catalogoArgomento', component: CatalogoArgomentoComponent},

@@ -1,3 +1,10 @@
-<p>
-  catalogo-luogo works!
-</p>
+<div class="row" *ngIf='id == null'>
+    <!-- <div class="card-columns card-columns-3" *ngIf='id == null'> -->
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" *ngFor="let luogo of luoghi">
+        <div class="card clickable" (click)="routing(luogo)">
+            <div class="card-block">
+                <div class="card-title">{{luogo}}</div>
+            </div>
+        </div>
+    </div>
+</div>

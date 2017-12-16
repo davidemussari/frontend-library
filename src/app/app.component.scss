@@ -41,15 +41,15 @@
 		text-shadow: 2px 2px #728e9c;
 	}
 
-
-
 	.verticalNav.active,
-	a.verticalNav:hover,
-	.nav-group.active:not(.is-expanded)
-{
+	a.verticalNav:hover{
 		background-color: #46778f !important;
 		color: white !important;
 	}
+
+	.clr-vertical-nav .nav-link.active .nav-icon, .clr-vertical-nav .nav-link:hover .nav-icon{
+        fill: white;
+    }
 
 //content area
 .content-area{

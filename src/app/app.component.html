@@ -15,9 +15,24 @@
 		</div>
 		<clr-vertical-nav [clrVerticalNavCollapsible]="collapsible" [(clrVerticalNavCollapsed)]="collapsed" class="verticalNav">
 			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active"  class="verticalNav">
-                <clr-icon class="is-solid WhiteTextOnly" shape="home" clrVerticalNavIcon></clr-icon>
+                <clr-icon class="is-solid WhiteTextOnly" shape="line-chart" clrVerticalNavIcon></clr-icon>
                 Panoramica
             </a>
+			<a clrVerticalNavLink [routerLink]="['/catalogoCompleto']" routerLinkActive="active"  class="verticalNav">
+                <clr-icon class="is-solid WhiteTextOnly" shape="library" clrVerticalNavIcon></clr-icon>
+                Catalogo completo
+            </a>
+			<a clrVerticalNavLink [routerLink]="['/catalogoArgomento']" routerLinkActive="active"  class="verticalNav">
+                <clr-icon class="is-solid WhiteTextOnly" shape="bullseye" clrVerticalNavIcon></clr-icon>
+                Catalogo per argomento
+            </a>
+            <a clrVerticalNavLink [routerLink]="['/catalogoLuogo']" routerLinkActive="active"  class="verticalNav">
+                <clr-icon class="is-solid WhiteTextOnly" shape="compass" clrVerticalNavIcon></clr-icon>
+               Catalogo per luogo
+            </a>
+
+
+			<!--
 			<clr-vertical-nav-group routerLinkActive="active" class="verticalNav">
 				<clr-icon class="is-solid WhiteTextOnly" shape="library" clrVerticalNavIcon></clr-icon>
 				<div class="WhiteTextOnly">Catalogo</div>
@@ -39,16 +54,14 @@
 				    </a>
 				</clr-vertical-nav-group-children>
 			</clr-vertical-nav-group>
-			<a clrVerticalNavLink href="http://www.lnostpais.it/" routerLinkActive="active"  class="verticalNav">
+			-->
+            <a clrVerticalNavLink href="http://www.lnostpais.it/" routerLinkActive="active"  class="verticalNav">
                 <clr-icon class="is-solid" shape="world" clrVerticalNavIcon></clr-icon>L'Associazione
             </a>
 		</clr-vertical-nav>
 	</div>
-
-
-
-
+    <header class="header footer">
+        test
+    </header>
 </clr-main-container>
-<header class="header footer">
-test
-</header>
+

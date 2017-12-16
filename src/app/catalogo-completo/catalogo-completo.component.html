@@ -1,15 +1,29 @@
-<div class="alert alert-info" *ngIf='descArgomento != null || luogo != null'>
+<div class="alert alert-info" *ngIf='descArgomento != null || luogo != null || (titoloFiltrato != null && titoloFiltrato != "") || (autoreFiltrato != null && autoreFiltrato != "")'>
     <div class="alert-items">
         <div class="alert-item static">
             <div class="alert-icon-wrapper">
                 <clr-icon class="alert-icon" shape="info"></clr-icon>
             </div>
-            <span class="alert-text" >
-                Filtro attivo: <span class="p4">{{descArgomento}}{{luogo}}</span>
+            <span class="alert-text">
+                Filtri attivi:
+                <p class="p4 noMargin" *ngIf='luogo != null'>Luogo: {{luogo}}</p>
+                <p class="p4 noMargin" *ngIf='descArgomento != null'>Argomento: {{descArgomento}}</p>
+                <p class="p4 noMargin" *ngIf='titoloFiltrato != null && titoloFiltrato != ""'>
+                    Titolo: {{titoloFiltrato}}
+                    <button class="btn btn-sm btn-link" (click)="titoloFiltrato=''">
+                        <clr-icon shape="trash" class="is-solid"></clr-icon>
+                        </button>
+                </p>
+                 <p class="p4 noMargin" *ngIf='autoreFiltrato != null && autoreFiltrato != ""'>
+                    Titolo: {{autoreFiltrato}}
+                    <button class="btn btn-sm btn-link" (click)="autoreFiltrato=''">
+                        <clr-icon shape="trash" class="is-solid"></clr-icon>
+                        </button>
+                </p>
             </span>
-            <div class="alert-actions">
-            <button class="btn btn-sm btn-link" (click)="clearFilter()">Elimina filtro</button>
-        </div>
+            <div class="alert-actions" *ngIf='descArgomento != null || luogo != null'>
+                <button class="btn btn-sm btn-link" (click)="clearFilter()">Elimina tutti i filtri</button>
+            </div>
         </div>
     </div>
 </div>
@@ -17,9 +31,16 @@
     Filtro su argomento: {{descArgomento}} <button class="btn btn-info" (click)="clearFilter()">Elimina</button>
 </div> -->
 
+
 <clr-datagrid>
-    <clr-dg-column [clrDgField]="'autore'">Autore</clr-dg-column>
-    <clr-dg-column [clrDgField]="'titolo'">Titolo</clr-dg-column>
+    <clr-dg-column [clrDgField]="'autore'">
+        Autore
+        <clr-dg-string-filter [clrDgStringFilter]="autoreFiltro" [(clrFilterValue)]="autoreFiltrato"></clr-dg-string-filter>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'titolo'">
+        Titolo
+        <clr-dg-string-filter [clrDgStringFilter]="titoloFiltro" [(clrFilterValue)]="titoloFiltrato"></clr-dg-string-filter>
+    </clr-dg-column>
     <clr-dg-column>Sottotitolo</clr-dg-column>
     <clr-dg-column>Copertina</clr-dg-column>
     <clr-dg-column>
@@ -35,11 +56,14 @@
             </ng-container>
     </clr-dg-column>
 
-    <clr-dg-placeholder>Nessun risultato con questi filtri <button class="btn btn-sm btn-link" (click)="clearFilter()">Elimina filtro</button></clr-dg-placeholder>
+    <clr-dg-placeholder>
+        <div *ngIf='caricamentoCompletato == true'>Nessun risultato con questi filtri</div>
+        <span class="spinner" *ngIf='caricamentoCompletato != true'></span>
+    </clr-dg-placeholder>
 
     <clr-dg-row class="tableRowClickable" *clrDgItems="let element of catalogo" (click)="clickRigaTabella(element)">
         <clr-dg-cell [innerHTML] = "element.autore | nomiCognomi"></clr-dg-cell>
-        <clr-dg-cell>{{element.titolo}}</clr-dg-cell>
+        <clr-dg-cell >{{element.titolo}}</clr-dg-cell>
         <clr-dg-cell>{{element.sottotitolo}}</clr-dg-cell>
         <clr-dg-cell><div style="background-image: url('http://seb27.it/sites/seb27.it/files/copertine/1193047185.jpg?1239567594');height: 100px;background-size: 60px;background-repeat: no-repeat;"></div></clr-dg-cell>
         <clr-dg-cell>{{element.codiceArgomento}}</clr-dg-cell>

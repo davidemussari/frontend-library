@@ -49,10 +49,24 @@ class CodiceArgomentoFiltro implements StringFilter<Element> {
     }
 }
 
-class Filtro implements StringFilter<Element> {
+class FiltroLuogo implements StringFilter<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.luogo.toLowerCase().trim() == search.toLowerCase().trim()
         || element.luogo.toLowerCase().trim().indexOf(search) >= 0;
+    }
+}
+
+class FiltroTitolo implements StringFilter<Element> {
+    accepts(element: Element, search: string):boolean {
+        return "" + element.titolo.toLowerCase().trim() == search.toLowerCase().trim()
+        || element.titolo.toLowerCase().trim().indexOf(search) >= 0;
+    }
+}
+
+class FiltroAutore implements StringFilter<Element> {
+    accepts(element: Element, search: string):boolean {
+        return "" + element.autore.toLowerCase().trim() == search.toLowerCase().trim()
+        || element.autore.toLowerCase().trim().indexOf(search) >= 0;
     }
 }
 
@@ -73,17 +87,23 @@ export class CatalogoCompletoComponent implements OnInit {
     codArgomento: string;
     descArgomento: string;
     luogo: string;
+    titoloFiltrato: string;
+    autoreFiltrato: string;
     private codiceArgomentoSort = new CodiceArgomentoSort();
     private codiceArgomentoFiltro = new CodiceArgomentoFiltro();
-    private luogoFiltro = new Filtro();
+    private luogoFiltro = new FiltroLuogo();
+    private titoloFiltro = new FiltroTitolo();
+    private autoreFiltro = new FiltroAutore();
     private modale = new Modale();
     router: any;
+    caricamentoCompletato: boolean = false;
 
   constructor(private _router: Router, private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute,) {
         this.router = _router;
 
 		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
   			this.catalogo = data;
+  			this.caricamentoCompletato = true;
 		});
     }
 

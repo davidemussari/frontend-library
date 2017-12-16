@@ -24,6 +24,7 @@
     "@angular/platform-server": "^4.4.0-RC.0",
     "@angular/router": "^4.0.1",
     "@ngx-translate/core": "^7.2.0",
+    "@swimlane/ngx-charts": "^7.0.1",
     "@webcomponents/custom-elements": "^1.0.2",
     "clarity-angular": "^0.10.0",
     "clarity-icons": "^0.10.0",

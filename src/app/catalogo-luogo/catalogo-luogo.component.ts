@@ -16,7 +16,7 @@ export class CatalogoLuogoComponent implements OnInit {
   constructor(private _router: Router, private downloadJson: GetJsonService) {
         this.router = _router;
 
-		this.downloadJson.getData("/nostpais/json/biblioteca_lNostPais.json").subscribe((data) => {
+		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
   			this.catalogo = data;
   			for(let elemento of this.catalogo){
             if(elemento.luogo != "" && this.luoghi.indexOf(elemento.luogo) == -1) // if newDog isn't already in the array

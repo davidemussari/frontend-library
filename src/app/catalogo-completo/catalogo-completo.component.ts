@@ -101,7 +101,7 @@ export class CatalogoCompletoComponent implements OnInit {
   constructor(private _router: Router, private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute,) {
         this.router = _router;
 
-		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
+		this.downloadJson.getData("/nostpais/json/biblioteca_lNostPais.json").subscribe((data) => {
   			this.catalogo = data;
   			this.caricamentoCompletato = true;
 		});

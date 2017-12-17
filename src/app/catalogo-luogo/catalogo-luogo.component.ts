@@ -12,6 +12,7 @@ export class CatalogoLuogoComponent implements OnInit {
 	router: any;
     catalogo: any;
     luoghi: Array<string> = [];
+    caricamentoCompletato: boolean = false;
 
   constructor(private _router: Router, private downloadJson: GetJsonService) {
         this.router = _router;
@@ -23,6 +24,7 @@ export class CatalogoLuogoComponent implements OnInit {
                 this.luoghi.push(elemento.luogo);
             }
             this.luoghi.sort();
+            this.caricamentoCompletato = true;
 		});
     }
 

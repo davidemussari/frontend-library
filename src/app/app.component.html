@@ -6,8 +6,18 @@
 				<span class="title">Materiale raccolto da 'L Nòst Pais</span>
 			</a>
 		</div>
-		<div class="header-nav">
-		</div>
+		<div class="header-actions">
+            <clr-dropdown>
+                <button class="nav-icon" clrDropdownTrigger>
+                    <clr-icon shape="flag"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <button type="button" disabled clrDropdownItem>Italiano</button>
+                    <button type="button" disabled clrDropdownItem>Nolese</button>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
 	</clr-header>
 	<div class="content-container">
 		<div class="content-area">
@@ -15,7 +25,7 @@
 		</div>
 		<clr-vertical-nav [clrVerticalNavCollapsible]="collapsible" [(clrVerticalNavCollapsed)]="collapsed" class="verticalNav">
 			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active"  class="verticalNav">
-                <clr-icon class="is-solid WhiteTextOnly" shape="line-chart" clrVerticalNavIcon></clr-icon>
+                <clr-icon class="is-solid WhiteTextOnly" shape="folder-open" clrVerticalNavIcon></clr-icon>
                 Panoramica
             </a>
             <div class="nav-divider"></div>
@@ -24,7 +34,7 @@
                 Catalogo completo
             </a>
 			<a clrVerticalNavLink [routerLink]="['/catalogoArgomento']" routerLinkActive="active"  class="verticalNav">
-                <clr-icon class="is-solid WhiteTextOnly" shape="bullseye" clrVerticalNavIcon></clr-icon>
+                <clr-icon class="is-solid WhiteTextOnly" shape="pin" clrVerticalNavIcon></clr-icon>
                 Catalogo per argomento
             </a>
             <a clrVerticalNavLink [routerLink]="['/catalogoLuogo']" routerLinkActive="active"  class="verticalNav">
@@ -32,38 +42,25 @@
                Catalogo per luogo
             </a>
             <div class="nav-divider"></div>
-
-
-			<!--
-			<clr-vertical-nav-group routerLinkActive="active" class="verticalNav">
-				<clr-icon class="is-solid WhiteTextOnly" shape="library" clrVerticalNavIcon></clr-icon>
-				<div class="WhiteTextOnly">Catalogo</div>
-				<clr-vertical-nav-group-children >
-				    <a clrVerticalNavLink
-						[routerLink]="['/catalogoCompleto']"
-						routerLinkActive="active"  class="verticalNav">
-				        completo
-				    </a>
-				    <a clrVerticalNavLink
-				       [routerLink]="['/catalogoArgomento']"
-				       routerLinkActive="active"  class="verticalNav">
-				        per argomento
-				    </a>
-					<a clrVerticalNavLink
-				       [routerLink]="['/catalogoLuogo']"
-				       routerLinkActive="active"  class="verticalNav">
-				        per luogo
-				    </a>
-				</clr-vertical-nav-group-children>
-			</clr-vertical-nav-group>
-			-->
             <a clrVerticalNavLink href="http://www.lnostpais.it/" routerLinkActive="active"  class="verticalNav">
                 <clr-icon class="is-solid" shape="world" clrVerticalNavIcon></clr-icon>L'Associazione
             </a>
 		</clr-vertical-nav>
 	</div>
     <header class="header footer">
-        <p class="p7">Credit</p>
+        <div class="header-actions">
+          <span class="p7" (click)="creditModaleOpen = true">Riconoscimenti</span>
+        </div>
     </header>
 </clr-main-container>
+
+
+<clr-modal [(clrModalOpen)]="creditModaleOpen" [clrModalSize]="'sm'">
+    <div class="modal-body">
+        <span class="p6">Grafica:</span> <span class="p7">Samuele Cargnino</span> <br>
+        <span class="p6">Sviluppo:</span> <span class="p7">Davide Mussari</span>
+    </div>
+</clr-modal>
+
+
 

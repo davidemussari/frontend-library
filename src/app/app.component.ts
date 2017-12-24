@@ -14,6 +14,7 @@ export class AppComponent {
 	showSubNavCatalogo: Boolean = false;
 	collapsible: Boolean = true;
 	catalogo: any;
+	creditModaleOpen: Boolean = false;
 
     constructor(private router: Router, private downloadJson: GetJsonService) {
 

@@ -11,6 +11,10 @@
 		background-color: #46778f !important;
 	}
 
+	.header .header-actions > .dropdown > .dropdown-toggle, .header .settings > .dropdown > .dropdown-toggle, header .header-actions > .dropdown > .dropdown-toggle, header .settings > .dropdown > .dropdown-toggle {
+        color: white;
+        opacity: 1;
+    }
 
 //Logo Facebook
 	.clr-icon {
@@ -22,12 +26,15 @@
 	}
 
 //Footer
-	#footer {
-		height: 42px;
-		botton: 0px;
-		position: absolute;
-		width: 100%;
+	header.header.footer div.header-actions {
+        padding: 15px;
 	}
+
+	.footer div.header-actions span.p7 {
+        margin: 10px;
+        color: white;
+        cursor: pointer;
+    }
 
 //Vertical nav
 	.verticalNav{
@@ -48,6 +55,10 @@
 	}
 
 	.clr-vertical-nav .nav-link.active .nav-icon, .clr-vertical-nav .nav-link:hover .nav-icon{
+        fill: white;
+    }
+
+   .nav-trigger-icon{
         fill: white;
     }
 

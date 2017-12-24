@@ -1,3 +1,4 @@
+<!-- Informazioni sui filtri -->
 <div class="alert alert-info" *ngIf='descArgomento != null || luogo != null || (titoloFiltrato != null && titoloFiltrato != "") || (autoreFiltrato != null && autoreFiltrato != "")'>
     <div class="alert-items">
         <div class="alert-item static">
@@ -27,11 +28,8 @@
         </div>
     </div>
 </div>
-<!-- <div *ngIf='descArgomento != null'>
-    Filtro su argomento: {{descArgomento}} <button class="btn btn-info" (click)="clearFilter()">Elimina</button>
-</div> -->
 
-
+<!-- Griglia -->
 <clr-datagrid>
     <clr-dg-column [clrDgField]="'autore'">
         Autore
@@ -65,7 +63,7 @@
         <clr-dg-cell [innerHTML] = "element.autore | nomiCognomi"></clr-dg-cell>
         <clr-dg-cell >{{element.titolo}}</clr-dg-cell>
         <clr-dg-cell>{{element.sottotitolo}}</clr-dg-cell>
-        <clr-dg-cell><div style="background-image: url('http://seb27.it/sites/seb27.it/files/copertine/1193047185.jpg?1239567594');height: 100px;background-size: 60px;background-repeat: no-repeat;"></div></clr-dg-cell>
+        <clr-dg-cell><div class="cellaCopertina"></div></clr-dg-cell>
         <clr-dg-cell>{{element.codiceArgomento}}</clr-dg-cell>
         <clr-dg-cell>{{element.luogo}}</clr-dg-cell>
     </clr-dg-row>
@@ -84,7 +82,30 @@
 <clr-modal [(clrModalOpen)]="modale.aperta" [clrModalClosable]="false" [clrModalSize]="'lg'">
     <h3 class="modal-title">{{modale.elemento.titolo}}</h3>
     <div class="modal-body">
-        <p>Clicking on the backdrop doesn't do anything.</p>
+        <form>
+            <section class="form-block">
+                <div class="form-group">
+                    <label for="formFields_9">Autori: </label>
+                    <input type="text" disable value="{{modale.elemento.autore}}">
+                </div>
+                <div class="form-group">
+                    <label for="formFields_9">Autori: </label>
+                    <input type="text" disable value="{{modale.elemento.autore}}">
+                </div>
+                <div class="form-group">
+                    <label for="formFields_9">Autori: </label>
+                    <input type="text" disable value="{{modale.elemento.autore}}">
+                </div>
+                <div class="form-group">
+                    <label for="formFields_9">Autori: </label>
+                    <input type="text" disable value="{{modale.elemento.autore}}">
+                </div>
+                <div class="form-group">
+                    <label for="formFields_9">Autori: </label>
+                    <input type="text" disable value="{{modale.elemento.autore}}">
+                </div>
+            </section>
+        </form>
     </div>
     <div class="modal-footer">
         <div class="btn-group btn-primary">

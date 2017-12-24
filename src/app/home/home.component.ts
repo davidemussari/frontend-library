@@ -1,6 +1,26 @@
 import { Component } from "@angular/core";
-import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { GetJsonService } from '../get-json.service';
+
+
+class Grafico{
+    datiDistribuzione: any;
+    opzioniGrafico = new OpzioniGrafico();
+}
+
+class OpzioniGrafico{
+    view;
+    showXAxis: boolean = true;
+    showYAxis: boolean = true;
+    gradient: boolean = false;
+    showLegend: boolean = false;
+    showXAxisLabel: boolean = false;
+    xAxisLabel: string;
+    showYAxisLabel: boolean = false;
+    yAxisLabel: string;
+    colorScheme: any;
+    animations: boolean = true;
+    barPadding: number = 8;
+}
 
 @Component({
     styleUrls: ['./home.component.scss'],
@@ -15,89 +35,87 @@ export class HomeComponent {
     nVHS: number = 0;
     nRivistePeriodici: number = 0;
     nCalendari: number = 0;
-    single = [{
-        "name": "Germany",
-        "value": 8940000
-        },{
-        "name": "USA",
-        "value": 5000000
-        },{
-        "name": "France",
-        "value": 7200000
-        }];
+    private graficoDistribuzione = new Grafico();
 
-    multi = [{
-    "name": "Germany",
-    "series": [{
-        "name": "2010",
-        "value": 7300000
-        },{
-        "name": "2011",
-        "value": 8940000
-        }]},
-    {
-        "name": "USA",
-        "series": [{
-            "name": "2010",
-            "value": 7870000
-      },{
-        "name": "2011",
-        "value": 8270000
-      }
-    ]
-  },
 
-  {
-    "name": "France",
-    "series": [
-      {
-        "name": "2010",
-        "value": 5000002
-      },
-      {
-        "name": "2011",
-        "value": 5800000
-      }
-    ]
-  }
-];
-
-    view: any[] = [300, 150];
-
-    // options
-    showXAxis = true;
-    showYAxis = true;
-    gradient = false;
-    showLegend = false;
-    showXAxisLabel = false;
-    xAxisLabel = 'Country';
-    showYAxisLabel = false;
-    yAxisLabel = 'Population';
-
-    colorScheme = {
-    domain: ['red', 'blue', 'green', 'yellow']
-    };
 
     constructor(private downloadJson: GetJsonService) {
 		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
   			this.catalogo = data;
-
-            for(let el of this.catalogo){
-                if(el.rilegatura == "Periodico" || el.rilegatura == "Rivista")
-                    this.nRivistePeriodici +=1;
-                else if(el.rilegatura == "Brochure")
-                    this.nBrochure +=1;
-                else if(el.rilegatura == "Calendario")
-                    this.nCalendari +=1;
-                else if(el.rilegatura == "Supporto Digitale")
-                    this.nDigitale +=1;
-                else if(el.rilegatura == "VHS")
-                    this.nVHS +=1;
-                else
-                    this.nLibri +=1;
-            }
-            console.log("nVHS =" + this.nVHS)
+  			this.grafici();
 		});
+    }
+
+    grafici(){
+
+    }
+
+    calcoloDistribuzione(){
+        for(let el of this.catalogo){
+            if(el.rilegatura == "Periodico" || el.rilegatura == "Rivista")
+                this.nRivistePeriodici +=1;
+            else if(el.rilegatura == "Brochure")
+                this.nBrochure +=1;
+            else if(el.rilegatura == "Calendario")
+                this.nCalendari +=1;
+            else if(el.rilegatura == "Supporto Digitale")
+                this.nDigitale +=1;
+            else if(el.rilegatura == "VHS")
+                this.nVHS +=1;
+            else
+                this.nLibri +=1;
+        }
+    }
+
+    TracciaGraficoDistribuzione(){
+    console.log('grafico');
+
+    this.graficoDistribuzione.datiDistribuzione = [{
+        "name": "2017",
+        "series": [
+            {
+                "name": "Libri",
+                "value": this.nLibri
+            },
+            {
+                "name": "Brochure",
+                "value": this.nBrochure
+            },
+            {
+                "name": "Riviste e Periodici",
+                "value": this.nRivistePeriodici
+            },
+            {
+                "name": "Calendari",
+                "value": this.nCalendari
+            },
+            {
+                "name": "Supporti digitali",
+                "value": this.nDigitale
+            },
+            {
+                "name": "VHS",
+                "value": this.nVHS
+            }
+        ]}];
+
+    this.graficoDistribuzione.opzioniGrafico.view = [500, 300];
+    this.graficoDistribuzione.opzioniGrafico.showXAxis = false;
+    this.graficoDistribuzione.opzioniGrafico.showYAxis = false;
+    this.graficoDistribuzione.opzioniGrafico.gradient = false;
+    this.graficoDistribuzione.opzioniGrafico.showLegend = true;
+    this.graficoDistribuzione.opzioniGrafico.showXAxisLabel = false;
+    this.graficoDistribuzione.opzioniGrafico.xAxisLabel = '';
+    this.graficoDistribuzione.opzioniGrafico.showYAxisLabel = false;
+    this.graficoDistribuzione.opzioniGrafico.yAxisLabel = '';
+    this.graficoDistribuzione.opzioniGrafico.animations = true;
+    this.graficoDistribuzione.opzioniGrafico.barPadding = 50;
+    this.graficoDistribuzione.opzioniGrafico.colorScheme = {
+    domain: ['red', 'blue', 'green', 'yellow', 'black', 'gray']
+    };
+
+
+
     }
 
 }

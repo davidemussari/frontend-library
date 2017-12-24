@@ -6,7 +6,6 @@ import { HttpModule }    from '@angular/http';
 import { ClarityModule } from 'clarity-angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
-import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import { HomeComponent } from "./home/home.component";
 import { CatalogoComponent } from "./catalogo/catalogo.component";
@@ -31,7 +30,6 @@ import { NomiCognomiPipe } from './nomi-cognomi.pipe';
         FormsModule,
         HttpModule,
         ClarityModule,
-        NgxChartsModule,
         ROUTING
     ],
     providers: [],

@@ -10,8 +10,7 @@
             "assets": [
                 "images",
                 "favicon.ico",
-				"json",
-				"inizializzazione_puro_css.css"
+				"json"
             ],
             "index": "index.html",
             "main": "main.ts",

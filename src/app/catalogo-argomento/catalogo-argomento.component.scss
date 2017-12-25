@@ -14,9 +14,20 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 300px 165px;
 }
 
 .book div.card-text{
-    margin-top: 20px;
-    margin-left: -70px;
+    margin-top: 5px;
+    float:left;
+    display:block;
+}
+
+#paginaLibroNumero{
+    text-align: left;
+}
+
+#paginaLibroDescrizione{
+    width: 115px;
+    margin-left: 25px;
 }

@@ -81,4 +81,16 @@ body{
     border-radius: 0 0 20px 20px;
 }
 
+/*Stile vertical nav*/
+.nav-trigger-icon{
+    color: white;
+    fill: white;
+}
 
+.clr-vertical-nav .nav-divider{
+    border-color: white;
+}
+
+.clr-vertical-nav .nav-trigger + .nav-content{
+    border-top-color: #99B8C8;
+}

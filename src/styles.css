@@ -94,3 +94,8 @@ body{
 .clr-vertical-nav .nav-trigger + .nav-content{
     border-top-color: #99B8C8;
 }
+
+/*stile catalogo argomento*/
+.ng-star-inserted div.row.ng-star-inserted{
+    margin-bottom: 24px;
+}

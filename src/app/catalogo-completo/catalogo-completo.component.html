@@ -72,10 +72,11 @@
         <button class="btn btn-success btn-sm" disabled><clr-icon shape="download"></clr-icon>Salva</button>
         <clr-dropdown>
             <button type="button" class=" btn-link" clrDropdownTrigger>
-                Elementi per pagina
+                Elementi per pagina: {{numeroElementiVisibiliTabella}}
                 <clr-icon shape="caret down"></clr-icon>
             </button>
             <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>
+                <button type="button" clrDropdownItem (click)="numeroElementiVisibiliTabella = 10">10</button>
                 <button type="button" clrDropdownItem (click)="numeroElementiVisibiliTabella = 25">25</button>
                 <button type="button" clrDropdownItem (click)="numeroElementiVisibiliTabella = 50">50</button>
                 <button type="button" clrDropdownItem (click)="numeroElementiVisibiliTabella = 100">100</button>

@@ -41,7 +41,9 @@
     }
 
 //Vertical nav
-	.verticalNav{
+	.verticalNav,
+    .main-container .clr-vertical-nav.clr-nav-level-1, .main-container .header-nav.clr-nav-level-1, .main-container .sidenav.clr-nav-level-1, .main-container .sub-nav.clr-nav-level-1, .main-container .subnav.clr-nav-level-1,
+    .main-container.open-hamburger-menu .header .branding .title{
 		background: #80a7ba;
 		color: white;
 		text-shadow: 2px 2px #728e9c;

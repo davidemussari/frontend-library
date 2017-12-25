@@ -97,6 +97,7 @@ export class CatalogoCompletoComponent implements OnInit {
     private modale = new Modale();
     router: any;
     caricamentoCompletato: boolean = false;
+    private numeroElementiVisibiliTabella: number = 10;
 
   constructor(private _router: Router, private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute,) {
         this.router = _router;

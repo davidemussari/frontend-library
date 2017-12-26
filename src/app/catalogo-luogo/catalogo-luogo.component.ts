@@ -9,10 +9,10 @@ import { ServiceBindDataRountingService } from '../service-bind-data-rounting.se
 })
 export class CatalogoLuogoComponent implements OnInit {
 
-    private router: any;
-    private catalogo: any;
-    private luoghi: Array<string> = [];
-    private caricamentoCompletato: boolean = false;
+     router: any;
+     catalogo: any;
+     luoghi: Array<string> = [];
+     caricamentoCompletato: boolean = false;
 
     catalogoCaricato = () => {
         for(let elemento of this.catalogo){

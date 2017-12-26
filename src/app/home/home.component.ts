@@ -21,11 +21,6 @@ export class HomeComponent {
 
 
     constructor(private downloadJson: GetJsonService, private serviceBindDataRountingService: ServiceBindDataRountingService) {
-		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
-  			this.catalogo = data;
-  			this.testHome = serviceBindDataRountingService.stringServizio;
-            this.catalogo = serviceBindDataRountingService.catalog;
-		});
   }
 
 

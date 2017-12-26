@@ -83,21 +83,21 @@ class Modale {
     styleUrls: ['./catalogo-completo.component.scss']
 })
 export class CatalogoCompletoComponent implements OnInit {
-    private codArgomento: string;
-    private descArgomento: string;
-    private luogo: string;
-    private titoloFiltrato: string;
-    private autoreFiltrato: string;
-    private codiceArgomentoSort = new CodiceArgomentoSort();
-    private codiceArgomentoFiltro = new CodiceArgomentoFiltro();
-    private luogoFiltro = new FiltroLuogo();
-    private titoloFiltro = new FiltroTitolo();
-    private autoreFiltro = new FiltroAutore();
-    private modale = new Modale();
-    private router: any;
-    private caricamentoCompletato: boolean = false;
-    private numeroElementiVisibiliTabella: number = 10;
-    private catalogo: any;
+     codArgomento: string;
+     descArgomento: string;
+     luogo: string;
+     titoloFiltrato: string;
+     autoreFiltrato: string;
+     codiceArgomentoSort = new CodiceArgomentoSort();
+     codiceArgomentoFiltro = new CodiceArgomentoFiltro();
+     luogoFiltro = new FiltroLuogo();
+     titoloFiltro = new FiltroTitolo();
+     autoreFiltro = new FiltroAutore();
+     modale = new Modale();
+     router: any;
+     caricamentoCompletato: boolean = false;
+     numeroElementiVisibiliTabella: number = 10;
+     catalogo: any;
 
     constructor(private _router: Router,  private paramsRoute: ActivatedRoute, private serviceBindDataRountingService: ServiceBindDataRountingService) {
         this.router = _router;

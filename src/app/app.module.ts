@@ -14,6 +14,8 @@ import { CatalogoArgomentoComponent } from './catalogo-argomento/catalogo-argome
 import { CatalogoLuogoComponent } from './catalogo-luogo/catalogo-luogo.component';
 import { NomiCognomiPipe } from './nomi-cognomi.pipe';
 import { ServiceBindDataRountingService } from './service-bind-data-rounting.service';
+import { GrigliaComponent } from './griglia/griglia.component';
+import { DettagliComponent } from './dettagli/dettagli.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +25,9 @@ import { ServiceBindDataRountingService } from './service-bind-data-rounting.ser
         CatalogoCompletoComponent,
         CatalogoArgomentoComponent,
         CatalogoLuogoComponent,
-        NomiCognomiPipe
+        NomiCognomiPipe,
+        GrigliaComponent,
+        DettagliComponent
     ],
     imports: [
         BrowserAnimationsModule,

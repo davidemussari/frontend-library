@@ -75,11 +75,33 @@ body{
 
 .datagrid-head{
     border-radius: 20px 20px 0 0;
+    background-color: #80a7ba !important;
+    color: white;
 }
 
 .datagrid-foot{
     border-radius: 0 0 20px 20px;
+     background-color: #80a7ba;
+    color: white;
 }
+
+.datagrid-column-title{
+    color: white;
+}
+
+clr-dg-footer > div > clr-dropdown > button{
+    color: white !important;
+}
+
+clr-dg-footer > clr-dg-pagination > ul > li > button,
+clr-dg-footer > clr-dg-pagination > ul > li{
+    color: #46778f !important;
+}
+
+.pagination-current{
+    color: white;
+}
+
 
 /*Stile vertical nav*/
 .nav-trigger-icon{
@@ -98,4 +120,9 @@ body{
 /*stile catalogo argomento*/
 .ng-star-inserted div.row.ng-star-inserted{
     margin-bottom: 24px;
+}
+
+/*stile card*/
+.card{
+    border-radius: 20px;
 }

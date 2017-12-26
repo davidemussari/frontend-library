@@ -24,11 +24,11 @@
 			<router-outlet></router-outlet>
 		</div>
 		<clr-vertical-nav class="verticalNav" [clr-nav-level]="1">
-			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active"  class="verticalNav">
+			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active"  class="verticalNav" *ngIf="false">
                 <clr-icon class="is-solid WhiteTextOnly" shape="folder-open" clrVerticalNavIcon></clr-icon>
                 Panoramica
             </a>
-            <div class="nav-divider"></div>
+            <div class="nav-divider" *ngIf="false"></div>
 			<a clrVerticalNavLink [routerLink]="['/catalogoCompleto']" routerLinkActive="active"  class="verticalNav">
                 <clr-icon class="is-solid WhiteTextOnly" shape="library" clrVerticalNavIcon></clr-icon>
                 Catalogo completo

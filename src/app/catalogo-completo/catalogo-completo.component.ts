@@ -1,81 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ServiceBindDataRountingService } from '../service-bind-data-rounting.service';
-
-import {Comparator} from "clarity-angular";
-import {StringFilter} from "clarity-angular";
-
-class Element{
-    titolo: string;
-    sottotitolo: string;
-    autore: string;
-    editore: string;
-    rilegatura: string;
-    prezzo: string;
-    edizione: string;
-    copyright: number;
-    annoPubblicazione: number;
-    isbn: string;
-    lccn: string;
-    pagine: number;
-    traduttore: string;
-    lingua: string;
-    collana: string;
-    numero: number;
-    condizioni: string;
-    autografato: boolean;
-    donante: string;
-    prestato: boolean;
-    copertina: string;
-    commenti: string;
-    inventario: number;
-    luogo: string;
-    collocazione: string;
-    codiceArgomento: string;
-    perEtichette: string;
-}
-
-class CodiceArgomentoSort implements Comparator<Element> {
-    compare(a: Element, b: Element) {
-        return +a.codiceArgomento - +b.codiceArgomento;
-    }
-}
-
-class CodiceArgomentoFiltro implements StringFilter<Element> {
-    accepts(element: Element, search: string):boolean {
-        return "" + element.codiceArgomento == search
-        || element.codiceArgomento.toString().indexOf(search) == 0
-        || element.codiceArgomento.toString().length < 3 && element.codiceArgomento.toString().indexOf(search) == 1; //per ovviare al problema di quei codici che iniziano per 0
-    }
-}
-
-class FiltroLuogo implements StringFilter<Element> {
-    accepts(element: Element, search: string):boolean {
-        return "" + element.luogo.toLowerCase().trim() == search.toLowerCase().trim()
-        || element.luogo.toLowerCase().trim().indexOf(search) >= 0;
-    }
-}
-
-class FiltroTitolo implements StringFilter<Element> {
-    accepts(element: Element, search: string):boolean {
-        return "" + element.titolo.toLowerCase().trim() == search.toLowerCase().trim()
-        || element.titolo.toLowerCase().trim().indexOf(search) >= 0;
-    }
-}
-
-class FiltroAutore implements StringFilter<Element> {
-    accepts(element: Element, search: string):boolean {
-        return "" + element.autore.toLowerCase().trim() == search.toLowerCase().trim()
-        || element.autore.toLowerCase().trim().indexOf(search) >= 0;
-    }
-}
-
-class Modale {
-    aperta: boolean = false;
-    public elemento = new Element();
-}
-
-
+import { GrigliaComponent } from '../griglia/griglia.component';
+import { DettagliComponent } from '../dettagli/dettagli.component';
 
 @Component({
     selector: 'app-catalogo-completo',
@@ -83,32 +10,22 @@ class Modale {
     styleUrls: ['./catalogo-completo.component.scss']
 })
 export class CatalogoCompletoComponent implements OnInit {
-     codArgomento: string;
-     descArgomento: string;
-     luogo: string;
-     titoloFiltrato: string;
-     autoreFiltrato: string;
-     codiceArgomentoSort = new CodiceArgomentoSort();
-     codiceArgomentoFiltro = new CodiceArgomentoFiltro();
-     luogoFiltro = new FiltroLuogo();
-     titoloFiltro = new FiltroTitolo();
-     autoreFiltro = new FiltroAutore();
-     modale = new Modale();
-     router: any;
-     caricamentoCompletato: boolean = false;
-     numeroElementiVisibiliTabella: number = 10;
-     catalogo: any;
+    codArgomento: string;
+    descArgomento: string;
+    luogo: string;
+    dettagli: boolean = false;
+    catalog: any;
+    elementoCliccato: any;
 
-    constructor(private _router: Router,  private paramsRoute: ActivatedRoute, private serviceBindDataRountingService: ServiceBindDataRountingService) {
-        this.router = _router;
+    constructor(private paramsRoute: ActivatedRoute, private serviceBindDataRountingService: ServiceBindDataRountingService) {
         this.serviceBindDataRountingService.catalogoPronto$.subscribe(cat => {
             //serve nel momento in cui si apre direttamente questo indirizzo web
-            this.catalogo = cat;
+            this.catalog = cat;
         });
     }
 
     ngOnInit() {
-        this.catalogo = this.serviceBindDataRountingService.catalog;
+        this.catalog = this.serviceBindDataRountingService.catalog;
         this.paramsRoute.params.subscribe(params => {
             this.codArgomento = params['codArgomento'];
             this.descArgomento = params['descrizioneArgomento'];
@@ -116,14 +33,8 @@ export class CatalogoCompletoComponent implements OnInit {
         });
     }
 
-    clearFilter= () => {
-        this.codArgomento = "";
-        this.descArgomento = "";
-        this.router.navigate(['/catalogoCompleto/']);
-    }
-
     clickRigaTabella = (elemento) =>{
-        this.modale.aperta = true;
-        this.modale.elemento = elemento
+        this.dettagli = true;
+        this.elementoCliccato = elemento;
     }
 }

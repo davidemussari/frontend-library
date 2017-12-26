@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GetJsonService } from '../get-json.service';
+import { ServiceBindDataRountingService } from '../service-bind-data-rounting.service';
 
 import {Comparator} from "clarity-angular";
 import {StringFilter} from "clarity-angular";
@@ -83,7 +84,6 @@ class Modale {
   styleUrls: ['./catalogo-completo.component.scss']
 })
 export class CatalogoCompletoComponent implements OnInit {
-    catalogo: any;
     codArgomento: string;
     descArgomento: string;
     luogo: string;
@@ -99,14 +99,16 @@ export class CatalogoCompletoComponent implements OnInit {
     caricamentoCompletato: boolean = false;
     private numeroElementiVisibiliTabella: number = 10;
 
-  constructor(private _router: Router, private downloadJson: GetJsonService, private paramsRoute: ActivatedRoute,) {
-        this.router = _router;
+    @Input() testHome: any;
+    @Input() catalogo: any;
 
+    constructor(private _router: Router,  private paramsRoute: ActivatedRoute, private downloadJson: GetJsonService, private serviceBindDataRountingService: ServiceBindDataRountingService) {
+        this.router = _router;
 		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
   			this.catalogo = data;
-  			this.caricamentoCompletato = true;
+            this.catalogo = serviceBindDataRountingService.catalog;
 		});
-    }
+  }
 
  ngOnInit() {
 		this.paramsRoute.params.subscribe(params => {

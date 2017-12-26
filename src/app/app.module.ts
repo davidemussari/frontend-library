@@ -13,6 +13,7 @@ import { CatalogoCompletoComponent } from './catalogo-completo/catalogo-completo
 import { CatalogoArgomentoComponent } from './catalogo-argomento/catalogo-argomento.component';
 import { CatalogoLuogoComponent } from './catalogo-luogo/catalogo-luogo.component';
 import { NomiCognomiPipe } from './nomi-cognomi.pipe';
+import { ServiceBindDataRountingService } from './service-bind-data-rounting.service';
 
 @NgModule({
     declarations: [

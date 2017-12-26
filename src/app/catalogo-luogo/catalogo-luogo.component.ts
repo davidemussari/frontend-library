@@ -1,39 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GetJsonService } from '../get-json.service';
+import { ServiceBindDataRountingService } from '../service-bind-data-rounting.service';
 
 @Component({
-  selector: 'app-catalogo-luogo',
-  templateUrl: './catalogo-luogo.component.html',
-  styleUrls: ['./catalogo-luogo.component.scss']
+    selector: 'app-catalogo-luogo',
+    templateUrl: './catalogo-luogo.component.html',
+    styleUrls: ['./catalogo-luogo.component.scss']
 })
 export class CatalogoLuogoComponent implements OnInit {
 
-	router: any;
-    catalogo: any;
-    luoghi: Array<string> = [];
-    caricamentoCompletato: boolean = false;
+    private router: any;
+    private catalogo: any;
+    private luoghi: Array<string> = [];
+    private caricamentoCompletato: boolean = false;
 
-  constructor(private _router: Router, private downloadJson: GetJsonService) {
-        this.router = _router;
-
-		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
-  			this.catalogo = data;
-  			for(let elemento of this.catalogo){
-            if(elemento.luogo != "" && this.luoghi.indexOf(elemento.luogo) == -1) // if newDog isn't already in the array
+    catalogoCaricato = () => {
+        for(let elemento of this.catalogo){
+            if(elemento.luogo != "" && this.luoghi.indexOf(elemento.luogo) == -1)
                 this.luoghi.push(elemento.luogo);
-            }
-            this.luoghi.sort();
-            this.caricamentoCompletato = true;
-		});
+        }
+        this.luoghi.sort();
+        this.caricamentoCompletato = true;
     }
 
-	ngOnInit() {
+    constructor(private _router: Router, private serviceBindDataRountingService: ServiceBindDataRountingService) {
+        this.serviceBindDataRountingService.catalogoPronto$.subscribe(cat => {
+            //serve nel momento in cui si apre direttamente questo indirizzo web
+            this.catalogo = cat;
+            this.catalogoCaricato();
+        });
+        this.router = _router;
+    }
 
-	}
+    ngOnInit() {
+        //serve nel momento del routing verso questo catalogo
+        this.catalogo = this.serviceBindDataRountingService.catalog;
+        this.catalogoCaricato();
+    }
 
-	routing = (Luogocliccato) => {
+    routing = (Luogocliccato) => {
         this.router.navigate(['/catalogoCompleto/'+Luogocliccato]);
-	}
-
+    }
 }

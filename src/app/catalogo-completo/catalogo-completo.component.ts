@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { GetJsonService } from '../get-json.service';
 import { ServiceBindDataRountingService } from '../service-bind-data-rounting.service';
 
 import {Comparator} from "clarity-angular";
@@ -45,8 +44,8 @@ class CodiceArgomentoSort implements Comparator<Element> {
 class CodiceArgomentoFiltro implements StringFilter<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.codiceArgomento == search
-            || element.codiceArgomento.toString().indexOf(search) == 0
-            || element.codiceArgomento.toString().length < 3 && element.codiceArgomento.toString().indexOf(search) == 1; //per ovviare al problema di quei codici che iniziano per 0
+        || element.codiceArgomento.toString().indexOf(search) == 0
+        || element.codiceArgomento.toString().length < 3 && element.codiceArgomento.toString().indexOf(search) == 1; //per ovviare al problema di quei codici che iniziano per 0
     }
 }
 
@@ -79,50 +78,49 @@ class Modale {
 
 
 @Component({
-  selector: 'app-catalogo-completo',
-  templateUrl: './catalogo-completo.component.html',
-  styleUrls: ['./catalogo-completo.component.scss']
+    selector: 'app-catalogo-completo',
+    templateUrl: './catalogo-completo.component.html',
+    styleUrls: ['./catalogo-completo.component.scss']
 })
 export class CatalogoCompletoComponent implements OnInit {
-    codArgomento: string;
-    descArgomento: string;
-    luogo: string;
-    titoloFiltrato: string;
-    autoreFiltrato: string;
+    private codArgomento: string;
+    private descArgomento: string;
+    private luogo: string;
+    private titoloFiltrato: string;
+    private autoreFiltrato: string;
     private codiceArgomentoSort = new CodiceArgomentoSort();
     private codiceArgomentoFiltro = new CodiceArgomentoFiltro();
     private luogoFiltro = new FiltroLuogo();
     private titoloFiltro = new FiltroTitolo();
     private autoreFiltro = new FiltroAutore();
     private modale = new Modale();
-    router: any;
-    caricamentoCompletato: boolean = false;
+    private router: any;
+    private caricamentoCompletato: boolean = false;
     private numeroElementiVisibiliTabella: number = 10;
+    private catalogo: any;
 
-    @Input() testHome: any;
-    @Input() catalogo: any;
-
-    constructor(private _router: Router,  private paramsRoute: ActivatedRoute, private downloadJson: GetJsonService, private serviceBindDataRountingService: ServiceBindDataRountingService) {
+    constructor(private _router: Router,  private paramsRoute: ActivatedRoute, private serviceBindDataRountingService: ServiceBindDataRountingService) {
         this.router = _router;
-		this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
-  			this.catalogo = data;
-            this.catalogo = serviceBindDataRountingService.catalog;
-		});
-  }
+        this.serviceBindDataRountingService.catalogoPronto$.subscribe(cat => {
+            //serve nel momento in cui si apre direttamente questo indirizzo web
+            this.catalogo = cat;
+        });
+    }
 
- ngOnInit() {
-		this.paramsRoute.params.subscribe(params => {
+    ngOnInit() {
+        this.catalogo = this.serviceBindDataRountingService.catalog;
+        this.paramsRoute.params.subscribe(params => {
             this.codArgomento = params['codArgomento'];
             this.descArgomento = params['descrizioneArgomento'];
             this.luogo = params['luogo'];
-		});
-	}
+        });
+    }
 
-	clearFilter= () => {
+    clearFilter= () => {
         this.codArgomento = "";
         this.descArgomento = "";
         this.router.navigate(['/catalogoCompleto/']);
-	}
+    }
 
     clickRigaTabella = (elemento) =>{
         this.modale.aperta = true;

@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-4"></div>
 </div>
-<div class="row" *ngIf='id == null'>
+<div class="row flex-items-xs-center" *ngIf='id == null'>
     <!-- <div class="card-columns card-columns-3" *ngIf='id == null'> -->
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" *ngFor="let box of dewey['centinaia']">
         <div class="card clickable" (click)="routing(box)">
@@ -21,7 +21,7 @@
         </div>
     </div>
 </div>
-<div class="row" *ngIf='id != null'>
+<div class="row flex-items-xs-center" *ngIf='id != null'>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" *ngFor="let box of dewey[id]">
     <!-- <div class="card-columns card-columns-3" *ngIf='id != null'> -->
         <div class="card clickable" (click)="routing(box)">

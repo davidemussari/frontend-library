@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-dettagli',
-  templateUrl: './dettagli.component.html',
-  styleUrls: ['./dettagli.component.scss']
+    selector: 'app-dettagli',
+    templateUrl: './dettagli.component.html',
+    styleUrls: ['./dettagli.component.scss']
 })
-export class DettagliComponent implements OnInit {
+export class DettagliComponent {
 
-  constructor() { }
+    @Input() elementoCliccato: any;
+    @Output() undo: EventEmitter<boolean> = new EventEmitter();
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    indietro = () =>{
+        this.undo.emit();
+    }
 
 }

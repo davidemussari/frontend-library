@@ -1,3 +1,6 @@
-.card-img>img, .card.card-img>img{
-    width: 120px !important;
+.card-media-block .card-media-image{
+    max-width:10.5em !important;
+    max-height:15.5em !important;
+    width: auto !important;
+    height: auto !important;
 }

@@ -37,4 +37,9 @@ export class CatalogoCompletoComponent implements OnInit {
         this.dettagli = true;
         this.elementoCliccato = elemento;
     }
+
+    undo = () =>{
+        this.dettagli = false;
+        this.elementoCliccato = null;
+    }
 }

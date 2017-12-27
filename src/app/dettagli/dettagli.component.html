@@ -1,43 +1,79 @@
 <div class="btn-group btn-primary">
     <button class="btn btn-success btn-sm" disabled><clr-icon shape="download"></clr-icon> Salva</button>
-    <button class="btn btn-sm"><clr-icon shape="undo"></clr-icon> Indietro</button>
+    <button class="btn btn-sm" (click)="indietro()"><clr-icon shape="undo"></clr-icon> Indietro</button>
 </div>
 
 
 <div class="row">
-	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div class="card">
-            <div class="card-img">
-                <img src="http://seb27.it/sites/seb27.it/files/copertine/1193047185.jpg?1239567594">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		 <div class="card">
+            <div class="card-header">
+               <span [innerHTML]="elementoCliccato.titolo"></span>
             </div>
-		</div>
-	</div>
-	<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-		<div class="card">
-			<div class="card-block">
-				<h3 class="card-title">Card 2</h3>
-				<p class="card-text">
-                    ...
-				</p>
-			</div>
-			<div class="card-footer">
-				<a href="..." class="btn btn-sm btn-link">Action 2</a>
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-		<div class="card">
-			<div class="card-block">
-				<h3 class="card-title">Card 3</h3>
-				<p class="card-text">
-                    ...
-				</p>
-			</div>
-			<div class="card-footer">
-				<a href="..." class="btn btn-sm btn-link">Action 3</a>
-			</div>
-		</div>
-	</div>
+            <div class="card-block">
+                <div class="card-media-block">
+                    <img src="http://seb27.it/sites/seb27.it/files/copertine/1193047185.jpg?1239567594" class="card-media-image">
+                    <div class="card-media-description">
+                        <span class="card-media-text">
+                            <table class="table table-noborder">
+                                <tbody>
+                                    <tr>
+                                        <td class="left p2">Sottotitolo: </td>
+                                        <td class="left" [innerHTML]="elementoCliccato.sottotitolo"></td>
+                                    </tr>
+                                     <tr>
+                                        <td class="left p2">Autore: </td>
+                                        <td class="left" [innerHTML]="elementoCliccato.autore | nomiCognomi"></td>
+                                    </tr>
+                                     <tr>
+                                        <td class="left p2">Traduttore: </td>
+                                        <td class="left" [innerHTML]="elementoCliccato.traduttore | nomiCognomi"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-text">
+                     <table class="table table-noborder table-compact">
+                        <tbody>
+                            <tr>
+                                <td class="left p2">Editore: <span class="p3" [innerHTML]="elementoCliccato.editore"></span></td>
+                                <td class="left p2">Anno di pubblicazione: <span class="p3" [innerHTML]="elementoCliccato.annoPubblicazione"></span></td>
+                                <td class="left p2">Anno di copyright: <span class="p3" [innerHTML]="elementoCliccato.copyright"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="left p2">Edizione: <span class="p3" [innerHTML]="elementoCliccato.edizione"></span></td>
+                                <td class="left p2">Collana: <span class="p3" [innerHTML]="elementoCliccato.collana"></span></td>
+                                <td class="left p2">Numero nella collana: <span class="p3" [innerHTML]="elementoCliccato.numero"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="left p2">Prezzo: <span class="p3" [innerHTML]="elementoCliccato.prezzo"></span></td>
+                                <td class="left p2">Codice isbn: <span class="p3" [innerHTML]="elementoCliccato.isbn"></span></td>
+                                <td class="left p2">Pagine: <span class="p3" [innerHTML]="elementoCliccato.pagine"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="left p2">Lingua: <span class="p3" [innerHTML]="elementoCliccato.lingua"></span></td>
+                                <td class="left p2">Luogo principale: <span class="p3" [innerHTML]="elementoCliccato.luogo"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="left p2">Numero di inventario: <span class="p3" [innerHTML]="elementoCliccato.inventario"></span></td>
+                                <td class="left p2">Collocazione: <span class="p3" [innerHTML]="elementoCliccato.collocazione"></span></td>
+                                <td class="left p2">Condizione di conservazione: <span class="p3" [innerHTML]="elementoCliccato.condizioni"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="left p2">Tipo di rilegatura o supporto: <span class="p3" [innerHTML]="elementoCliccato.rilegatura"></span></td>
+                                <td class="left p2">Donato da: <span class="p3" [innerHTML]="elementoCliccato.donante"></span></td>
+                                <td class="left p2">Autografato: <span class="p3" [innerHTML]="elementoCliccato.autografato == 'true'? 'Sì' : 'No'"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="left p2">Commenti: <span class="p3" [innerHTML]="elementoCliccato.commenti"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 </div>
 
 

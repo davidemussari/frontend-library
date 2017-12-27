@@ -5,5 +5,9 @@
     (toc)="clickRigaTabella($event)"
     *ngIf="!dettagli">
 </app-griglia>
-<app-dettagli *ngIf="dettagli"></app-dettagli>
+<app-dettagli
+    [(elementoCliccato)]="elementoCliccato"
+    (undo)="undo($event)"
+    *ngIf="dettagli">
+</app-dettagli>
 

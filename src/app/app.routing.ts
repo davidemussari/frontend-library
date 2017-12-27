@@ -14,7 +14,7 @@ import { CatalogoLuogoComponent} from './catalogo-luogo/catalogo-luogo.component
 
 
 export const ROUTES: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '', redirectTo: 'catalogoCompleto', pathMatch: 'full'},
 
     {path: 'catalogoCompleto', component: CatalogoCompletoComponent},
     {path: 'catalogoCompleto/:luogo', component: CatalogoCompletoComponent},
@@ -23,6 +23,7 @@ export const ROUTES: Routes = [
     {path: 'catalogoArgomento', component: CatalogoArgomentoComponent},
     {path: 'catalogoLuogo', component: CatalogoLuogoComponent}
 //    {path: 'home', component: HomeComponent}
+//{path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);

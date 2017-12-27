@@ -38,7 +38,7 @@
                      <table class="table table-noborder table-compact">
                         <tbody>
                             <tr>
-                                <td class="left p2">Editore: <span class="p3" [innerHTML]="elementoCliccato.editore"></span></td>
+                                <td class="left p2">Editore: <span class="p3" [innerHTML]="elementoCliccato.editore | nomiCognomi"></span></td>
                                 <td class="left p2">Anno di pubblicazione: <span class="p3" [innerHTML]="elementoCliccato.annoPubblicazione"></span></td>
                                 <td class="left p2">Anno di copyright: <span class="p3" [innerHTML]="elementoCliccato.copyright"></span></td>
                             </tr>
@@ -61,9 +61,12 @@
                                 <td class="left p2">Collocazione: <span class="p3" [innerHTML]="elementoCliccato.collocazione"></span></td>
                                 <td class="left p2">Condizione di conservazione: <span class="p3" [innerHTML]="elementoCliccato.condizioni"></span></td>
                             </tr>
+                             <tr>
+                                <td class="left p2">Argomento: <span class="p3" [innerHTML]="argomento(elementoCliccato.codiceArgomento)"></span></td>
+                            </tr>
                             <tr>
                                 <td class="left p2">Tipo di rilegatura o supporto: <span class="p3" [innerHTML]="elementoCliccato.rilegatura"></span></td>
-                                <td class="left p2">Donato da: <span class="p3" [innerHTML]="elementoCliccato.donante"></span></td>
+                                <td class="left p2">Donato da: <span class="p3" [innerHTML]="elementoCliccato.donante | nomiCognomi"></span></td>
                                 <td class="left p2">Autografato: <span class="p3" [innerHTML]="elementoCliccato.autografato == 'true'? 'Sì' : 'No'"></span></td>
                             </tr>
                             <tr>

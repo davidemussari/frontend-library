@@ -7,15 +7,16 @@ import { ClarityModule } from 'clarity-angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
 
-import { HomeComponent } from "./home/home.component";
 import { CatalogoComponent } from "./catalogo/catalogo.component";
-import { CatalogoCompletoComponent } from './catalogo-completo/catalogo-completo.component';
 import { CatalogoArgomentoComponent } from './catalogo-argomento/catalogo-argomento.component';
+import { CatalogoCompletoComponent } from './catalogo-completo/catalogo-completo.component';
 import { CatalogoLuogoComponent } from './catalogo-luogo/catalogo-luogo.component';
+import { DettagliComponent } from './dettagli/dettagli.component';
+import { DeweyService } from './dewey.service';
+import { GrigliaComponent } from './griglia/griglia.component';
+import { HomeComponent } from "./home/home.component";
 import { NomiCognomiPipe } from './nomi-cognomi.pipe';
 import { ServiceBindDataRountingService } from './service-bind-data-rounting.service';
-import { GrigliaComponent } from './griglia/griglia.component';
-import { DettagliComponent } from './dettagli/dettagli.component';
 
 @NgModule({
     declarations: [

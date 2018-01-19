@@ -94,7 +94,7 @@ export class GrigliaComponent {
     @Input() codArgomento: string;
     @Input() descArgomento: string;
     @Input() luogo: string;
-    @Output() toc: EventEmitter<Element> = new EventEmitter();
+    @Output() clickDettaglio: EventEmitter<Element> = new EventEmitter();
 
     router: any;
 
@@ -109,7 +109,7 @@ export class GrigliaComponent {
     }
 
     clickRigaTabella = (elemento) =>{
-        this.toc.emit(elemento);
+        this.clickDettaglio.emit(elemento);
     }
 
 }

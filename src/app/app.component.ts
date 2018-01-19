@@ -12,8 +12,6 @@ import { ServiceBindDataRountingService } from './service-bind-data-rounting.ser
 })
 export class AppComponent {
 
-    test:any = 'This text is passed to child';
-
     catalogo: any;
     public catalogoPronto$: EventEmitter<any>;
 
@@ -24,7 +22,6 @@ export class AppComponent {
         this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
             this.catalogo = data;
             this.serviceBindDataRountingService.catalog = this.catalogo;
-            this.serviceBindDataRountingService.stringServizio = this.test;
             this.serviceBindDataRountingService.catalogoPronto$.emit(this.catalogo);
         });
     }

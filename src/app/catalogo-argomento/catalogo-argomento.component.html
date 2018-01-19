@@ -1,14 +1,15 @@
 <div class="row">
-	<div class="col-md-4"></div>
-	<div class="col-md-4">
-        <div class="card book">
-            <div class="card-text col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
-            <div id="paginaLibroNumero" class="card-text col-lg-1 col-md-1 col-sm-1 col-xs-1">{{id}}</div>
-            <div id="paginaLibroDescrizione" class="card-text col-lg-4 col-md-4 col-sm-4 col-xs-4">{{desc}}</div>
-            <div id="scegliArgomento">Scegliere argomento:</div>
+    <div class="col-lg-3 col-md-2 col-sm-12"></div>
+	<div class="col-lg-6 col-md-8 col-sm-12">
+        <div class="card">
+            <div class="card-text row" id="bookBackGround">
+                <h5 class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="id">{{id}}</h5>
+                <h5 class="col-lg-5 col-md-5 col-sm-1 col-xs-5" id="desc">{{desc}}</h5>
+            </div>
+            <div class="card-text">Scegliere argomento:</div>
 		</div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-lg-3 col-md-2 col-sm-12"></div>
 </div>
 <div class="row flex-items-xs-center" *ngIf='id == null'>
     <!-- <div class="card-columns card-columns-3" *ngIf='id == null'> -->

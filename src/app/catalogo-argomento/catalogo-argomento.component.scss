@@ -5,16 +5,25 @@
 	box-shadow: 0 3px 0 0 #80a7b9;
     border: 1px solid #80a7b9;
 	height: 150px;
-//	weight: 180px;
 }
 
-.book{
-    background-image: url("http://www.applicazioni.me/tuttodisegni/files/2012/07/libro-aperto.jpg");
-    width: 100%;
-    background-size: contain;
+#bookBackGround{
+    height: 70%;
+    margin-top: 10px;
+    background-image: url(../../images/Libro.png);
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 300px 165px;
+    background-size:  90% 100%;
+    background-position: top center;
+}
+
+#id{
+    text-align: right;
+    margin-top: 10px;
+}
+
+#desc{
+    text-align: left;
+    margin-top: 10px;
 }
 
 .book div.card-text{

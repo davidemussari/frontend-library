@@ -21,16 +21,19 @@ export class CatalogoArgomentoComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
 		this.paramsRoute.params.subscribe(params => {
             this.id = params['id'];
             if ( this.id != '' && this.id != undefined)
                 if (+params['id'] % 100 == 0)
                     this.desc = this.dewey['centinaia'][(+params['id']/100).toString()].descrizione;
-                else
+                else if (+params['id'] % 10 == 0){
+                    for(let d of this.dewey[(Math.floor(+params['id']/100)*100).toString()]){
+                        if d.numero == params['id']
+                            this.desc = d.descrizione;
+                    }
+                }else
                     this.desc = this.dewey[(Math.floor(+params['id']/100)*100).toString()][0].descrizione;
 		});
-
 	}
 
 	routing = (cliccato) => {

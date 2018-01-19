@@ -4,3 +4,30 @@
     width: auto !important;
     height: auto !important;
 }
+
+.card{
+      border-color: #80A7BA;
+      border-radius: 30px;
+      margin-bottom: 24px;
+}
+
+.card-header{
+    border-bottom-color: #80A7BA;
+    border-radius: 20px 20px 0 0;
+    background-color: #80A7BA;
+}
+
+.whiteText{
+    color: white;
+}
+
+.noBordi{
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+.card-header.noBordi{
+    padding-bottom: 0px;
+    padding-left: 0px;
+}

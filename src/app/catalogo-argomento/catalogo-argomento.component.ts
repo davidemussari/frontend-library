@@ -28,7 +28,7 @@ export class CatalogoArgomentoComponent implements OnInit {
                     this.desc = this.dewey['centinaia'][(+params['id']/100).toString()].descrizione;
                 else if (+params['id'] % 10 == 0){
                     for(let d of this.dewey[(Math.floor(+params['id']/100)*100).toString()]){
-                        if d.numero == params['id']
+                        if(d.numero == params['id'])
                             this.desc = d.descrizione;
                     }
                 }else

@@ -158,7 +158,7 @@ export class DettagliComponent {
         }
     };
     dewey: any;
-    arrayKey: Array;
+    arrayKey: Array<any>;
     @Input() elementoCliccato: any;
     @Output() undo: EventEmitter<boolean> = new EventEmitter();
 

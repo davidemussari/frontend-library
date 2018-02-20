@@ -20,6 +20,12 @@
         right: .4rem;
     }
 
+    @media screen and (max-width: 768px){
+    .main-container .header .branding {
+        //per far vedere completamente "Fondo di doc..."
+        max-width: 14rem;
+    }}
+
 //Footer
 	header.header.footer div.header-actions {
         padding: 15px;

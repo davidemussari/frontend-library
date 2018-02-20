@@ -8,9 +8,7 @@ clr-dg-column, clr-dg-cell{
 }
 
 .cellaCopertina{
-    background-image: url('http://seb27.it/sites/seb27.it/files/copertine/1193047185.jpg?1239567594');
-    background-position: center;
-    background-size: 60px;
-    background-repeat: no-repeat;
-    height: 100px;
+    height: 80px;
+    width: auto;
+    max-width: 80px;
 }

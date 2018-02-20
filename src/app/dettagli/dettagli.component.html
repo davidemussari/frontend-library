@@ -13,7 +13,7 @@
             </div>
             <div class="card-block">
                 <div class="card-media-block">
-                    <img src="http://seb27.it/sites/seb27.it/files/copertine/1193047185.jpg?1239567594" class="card-media-image">
+                    <img [src]="'/copertine/'+elementoCliccato.copertina" class="card-media-image" onError="this.src='';">
                     <div class="card-media-description">
                         <div class="row flex-items-xs-center" >
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let info of arrayKey" >

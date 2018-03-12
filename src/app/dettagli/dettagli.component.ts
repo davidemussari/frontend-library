@@ -220,12 +220,27 @@ export class DettagliComponent {
     }
 
     argomento = (codiceArgomento) =>{
+        var arr = this.dewey[codiceArgomento[0]].children;
+        if(arr[codiceArgomento[1]].children.length != 0){
+            arr = arr[codiceArgomento[1]].children;
+            arr = arr[codiceArgomento[2]];
+        }else{
+            arr = arr[codiceArgomento[1]];
+        }
+        if(arr.children.length != 0)
+            for(let figlio of arr.children)
+                if(figlio.valore != undefined && figlio.valore == codiceArgomento.substr(0,figlio.valore.length))
+                    return figlio.descrizione;
+        return arr.descrizione;
+
+        /*
         if (typeof codiceArgomento === "string")
             codiceArgomento = codiceArgomento.replace(/ /g, '');
         for (let arg of this.dewey[(Math.floor(+codiceArgomento/10)*10).toString()])
             if (+codiceArgomento == +(arg.numero.replace(/ /g, '')))
                 return arg.descrizione;
         return "n.d."
+        */
     }
 
     etichetta = (key) =>{

@@ -1,8 +1,8 @@
 .card-media-block .card-media-image{
-    max-width:10.5em !important;
-    max-height:15.5em !important;
-    width: auto !important;
-    height: auto !important;
+    max-width: 15.5em!important;
+    max-height: 15.5em!important;
+    width: 100%!important;
+    height: 100%!important;
 }
 
 .card{
@@ -30,4 +30,10 @@
 .card-header.noBordi{
     padding-bottom: 0px;
     padding-left: 0px;
+}
+
+img{
+    border: 1px #80a7ba solid;
+    border-radius: 20px;
+    padding: 1px;
 }

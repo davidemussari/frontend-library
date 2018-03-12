@@ -3,285 +3,641 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DeweyService {
 
-    dewey: any;
-
-  constructor() {
-      this.dewey = {
-            "centinaia":[
-                {"numero": "000", "descrizione": "Informatica, scienze dell'informazione, opere generali"},
-                {"numero": "100", "descrizione": "Filosofia e discipline connesse"},
-                {"numero": "200", "descrizione": "Religione"},
-                {"numero": "300", "descrizione": "Scienze sociali"},
-                {"numero": "400", "descrizione": "Linguistica"},
-                {"numero": "500", "descrizione": "Scienze naturali e matematica"},
-                {"numero": "600", "descrizione": "Tecnologia (Scienze applicate)"},
-                {"numero": "700", "descrizione": "Arti, belle arti e arti decorative"},
-                {"numero": "800", "descrizione": "Letteratura"},
-                {"numero": "900", "descrizione": "Geografia, storia e discipline ausiliarie"}
-            ],
-            "000":[
-                {"numero": "010", "descrizione": "Bibliografia"},
-                {"numero": "020", "descrizione": "biblioteconomia tecniche della documentazione"},
-                {"numero": "060", "descrizione": "Accademie, istituti culturali, fondazioni, congressi"},
-                {"numero": "070", "descrizione": "Giornalismo, giornali, editoria"},
-                {"numero": "090", "descrizione": "Manoscritti e libri rari"}
-            ],
-            "100":[
-                {"numero": "190", "descrizione": "Filosofia occidentale moderna"}
-            ],
-            "200":[
-                {"numero": "210", "descrizione": "Religione naturale"},
-                {"numero": "240", "descrizione": "Teologia morale e devozionale cristiana"},
-                {"numero": "250", "descrizione": "Chiesa cristiana e comunità. Ordini religiosi cristiani"},
-                {"numero": "260", "descrizione": "Culto cristiano"},
-                {"numero": "280", "descrizione": "Confessioni e sette della Chiesa cattolica romana"},
-                {"numero": "290", "descrizione": "Altre religioni e religioni comparate"}
-            ],
-            "300":[
-                {"numero": "320", "descrizione": "Scienze politiche"},
-                {"numero": "330", "descrizione": "Economia"},
-                {"numero": "340", "descrizione": "Diritto"},
-                {"numero": "350", "descrizione": "Amministrazione pubblica e scienze militari"},
-                {"numero": "360", "descrizione": "Assistenza sociale, sicurezza sociale"},
-                {"numero": "370", "descrizione": "Educazione"},
-                {"numero": "390", "descrizione": "Usi, costumi, folclore"}
-            ],
-            "400":[
-                {"numero": "450", "descrizione": "Lingue italiana, rumena e affini"},
-                {"numero": "490", "descrizione": "Altre lingue"}
-        ],
-            "500":[
-                {"numero": "500", "descrizione": "Scienze naturali e matematica"},
-                {"numero": "520", "descrizione": "Astronomia e scienze connesse"},
-                {"numero": "550", "descrizione": "Scienze della Terra"},
-                {"numero": "580", "descrizione": "Scienze botaniche"},
-                {"numero": "590", "descrizione": "Scienze zoologiche"}
-            ],
-            "600":[
-                {"numero": "600", "descrizione": "Tecnologia (Scienze applicate)"},
-                {"numero": "620", "descrizione": "Ingegneria e attività affini"},
-                {"numero": "650", "descrizione": "Affari, tecnica commerciale e industriale"}
-            ],
-            "700":[
-                {"numero": "700", "descrizione": "Arti, belle arti e arti decorative"},
-                {"numero": "710", "descrizione": "Urbanistica e arte del paesaggio"},
-                {"numero": "720", "descrizione": "Architettura"},
-                {"numero": "730", "descrizione": "Arti plastiche, scultura"},
-                {"numero": "740", "descrizione": "Disegno, arti decorative e arti minori"},
-                {"numero": "750", "descrizione": "Pittura e pitture"},
-                {"numero": "760", "descrizione": "Arti grafiche, tecniche di impressione e stampe"},
-                {"numero": "770", "descrizione": "Fotografia"},
-                {"numero": "780", "descrizione": "Musica"},
-                {"numero": "790", "descrizione": "Arti ricreative e dello spettacolo"}
-            ],
-            "800":[
-                {"numero": "820", "descrizione": "Letteratura in lingua inglese e anglosassone"},
-                {"numero": "850", "descrizione": "Letterature in lingua italiana, rumena e affini"}
-            ],
-            "900":[
-                {"numero": "900", "descrizione": "Geografia, storia e discipline ausiliarie"},
-                {"numero": "910", "descrizione": "Geografia generale, viaggi"},
-                {"numero": "920", "descrizione": "Biografie generali, genealogia, araldica"},
-                {"numero": "930", "descrizione": "Storia generale del mondo antico"},
-                {"numero": "940", "descrizione": "Storia generale dell'Europa"}
-            ],
-            "010":[
-                {"numero": "017", "descrizione": "Cataloghi per materia"}
-            ],
-            "060":[
-                {"numero": "069", "descrizione": "Museologia"}
-            ],
-            "070":[
-                {"numero": "070.900", "descrizione": "Storia e persone relative al giornalismo e ai giornali"},
-                {"numero": "075.120", "descrizione": "Giornalismo e giornali. Torino (provincia)"}
-            ],
-            "090":[
-                {"numero": "094.400", "descrizione": "Libri a stampa. Edizioni speciali"}
-            ],
-            "210":[
-                {"numero": "210.100", "descrizione": "Teoria dela filosofia della religione"},
-                {"numero": "210.900", "descrizione": "Filosofia e teoria della religione. Storia, geografia, persone"},
-                {"numero": "210.920", "descrizione": "Filosofia e teoria della religione. Persone"},
-                {"numero": "213", "descrizione": "Creazione"}
-            ],
-            "240":[
-                {"numero": "242", "descrizione": "Preghiere, meditazioni"},
-                {"numero": "247", "descrizione": "Arredi sacri"},
-                {"numero": "248", "descrizione": "Religione personale"},
-                {"numero": "248.463", "descrizione": "Vita cristiana. Pellegrinaggi"}
-            ],
-            "250":[
-                {"numero": "254", "descrizione": "Amministrazione parrocchiale"}
-            ],
-            "260":[
-                {"numero": "263", "descrizione": "Giorni, tempi, luoghi dell'osservanza religiosa"},
-                {"numero": "264", "descrizione": "Liturgia"}
-            ],
-            "280":[
-                {"numero": "280.092 200", "descrizione": "Confessioni e sette. Gruppi di persone"},
-                {"numero": "282.451 200", "descrizione": "Storia della Chiesa cattolica. Piemonte. Torino (provincia)"}
-            ],
-            "290":[
-                {"numero": "299", "descrizione": "Altre religioni"}
-            ],
-            "320":[
-                {"numero": "320.509 040", "descrizione": "Teorie e ideologie politiche. Trattamento storico e geografico"},
-                {"numero": "325", "descrizione": "Emigrazione, immigrazione, colonizzazione"}
-            ],
-            "330":[
-                {"numero": "330.945 120", "descrizione": "Situazioni e condizioni economiche. Torino (provincia)"},
-                {"numero": "334.683 094 500", "descrizione": "Cooperative di produzione. Agricoltura. Italia"},
-                {"numero": "338.094 512", "descrizione": "Produzione. Torino (provincia)"},
-                {"numero": "338.409 450", "descrizione": "Industrie secondarie e servizi. Italia"}
-            ],
-            "370":[
-                {"numero": "378.100", "descrizione": "Educazione superiore. Organizzazione e attività"}
-            ],
-            "390":[
-                {"numero": "390.094 510", "descrizione": "Usi e costumi del Piemonte"},
-                {"numero": "390.463", "descrizione": "Usi e costumi di persone di vari mestieri e occupazioni"},
-                {"numero": "391", "descrizione": "Abbigliamento e aspetto personale"},
-                {"numero": "394.200", "descrizione": "Usi e costumi generali. Occasioni speciali"},
-                {"numero": "398.050", "descrizione": "Folclore. Pubblicazioni in serie"},
-                {"numero": "398.094 510", "descrizione": "Folclore. Piemonte"},
-                {"numero": "398.410 945", "descrizione": "Fenomeni paranaturali e leggendari come soggetti di folclore. Credenze popolari. Italia"},
-                {"numero": "398.900", "descrizione": "Proverbi"}
-            ],
-            "450":[
-                {"numero": "457.100", "descrizione": "Dialetto piemontese"}
-            ],
-            "490":[
-                {"numero": "492.400", "descrizione": "Lingue afroasiatiche (lingue camitosemitiche) lingue semitiche. Ebraico"},
-                {"numero": "496", "descrizione": "Lingue africane"},
-                {"numero": "499.940", "descrizione": "Lingua etrusca"}
-            ],
-            "520":[
-                {"numero": "529.780", "descrizione": "Cronometria. Strumenti di misurazione del tempo"}
-            ],
-            "550":[
-                {"numero": "551", "descrizione": "Geologia, meteorologia, idrologia"}
-            ],
-            "650":[
-                {"numero": "652.300", "descrizione": "Processi della comunicazione scritta. digitazione"},
-                {"numero": "653", "descrizione": "Stenografia"}
-            ],
-            "710":[
-                {"numero": "719", "descrizione": "Tutela del paesaggio"}
-            ],
-            "720":[
-                {"numero": "720.944", "descrizione": "Francia e Monaco"},
-                {"numero": "720.945 121", "descrizione": "Piemonte. Torino"},
-                {"numero": "720.945 122", "descrizione": "Piemonte. Torino (provincia)"},
-                {"numero": "720.945 130", "descrizione": "Piemonte. Cuneo (provincia)"},
-                {"numero": "720.945 160", "descrizione": "Piemonte. Novara (provincia)"},
-                {"numero": "720.945 200", "descrizione": "Lombardia"},
-                {"numero": "726.409 451", "descrizione": "Architettura di strutture di culto accessorie"},
-                {"numero": "726.509 451 200", "descrizione": "Architettura delle chiese cristiane. Torino (provincia)"},
-                {"numero": "726.509 451 300", "descrizione": "Architettura delle chiese cristiane. Cuneo (provincia)"},
-                {"numero": "726.509 451 500", "descrizione": "Architettura delle chiese cristiane. Asti (provincia)"},
-                {"numero": "728.609 451 600", "descrizione": "Architettura di case di campagna. Italia nord-occidentale. Piemonte"},
-                {"numero": "728.809 451 200", "descrizione": "Architettura di residenze private grandi e lussuose. Torino (provincia)"},
-                {"numero": "728.809 451 210", "descrizione": "Architettura di residenze private grandi e lussuose. Torino"},
-                {"numero": "728.810 945 120", "descrizione": "Architettura di castelli. Torino (provincia)"},
-                {"numero": "728.820 945 121", "descrizione": "Architettura di palazzi. Torino"}
-            ],
-            "730":[
-                {"numero": "735", "descrizione": "Scultura del rinascimento e moderna"}
-            ],
-            "740":[
-                {"numero": "741", "descrizione": "Disegni"},
-                {"numero": "741.670", "descrizione": "Illustrazione pubblicitaria"},
-                {"numero": "741.682", "descrizione": "Progettazione grafica, illustrazione, arte commerciale. Calendari"},
-                {"numero": "746.720 955", "descrizione": "Coperte e tappeti intessuti. Iran"},
-                {"numero": "747.888 094 500", "descrizione": "Decorazione di specifici tipi di edifici di abitazione. Dimore private grandi e signorili"}
-            ],
-            "750":[
-                {"numero": "750.740", "descrizione": "PITTURA. Musei, collezioni, esposizioni"},
-                {"numero": "755.200", "descrizione": "Pittura di soggetti religiosi e simbolismo religioso. Cristianità"},
-                {"numero": "755.209 450", "descrizione": "Pittura di soggetti religiosi e simbolismo religioso. Cristianità. Italia"},
-                {"numero": "755.209 451 201 500", "descrizione": "Pittura di soggetti religiosi e simbolismo religioso. Cristianità. Torino (provincia)"},
-                {"numero": "758.800", "descrizione": "Pittura. Altri soggetti"},
-                {"numero": "758.900", "descrizione": "Collezioni di pittura"},
-                {"numero": "759.500", "descrizione": "Pittura italiana"},
-                {"numero": "759.507 400", "descrizione": "Pittura. Italia. Musei, collezioni, esposizioni"},
-                {"numero": "759.510", "descrizione": "Pittura. Piemonte"},
-                {"numero": "759.512", "descrizione": "Pittura. Torino (provincia)"}
-            ],
-            "770":[
-                {"numero": "770.900", "descrizione": "Fotografia. Trattamento storico e geografico"},
-                {"numero": "770.945", "descrizione": "Fotografia. Italia"},
-                {"numero": "770.945 100", "descrizione": "Fotografia. Piemonte"}
-            ],
-            "780":[
-                {"numero": "784.094 512", "descrizione": "Strumenti, complessi strumentali e loro musica. Torino"},
-                {"numero": "784.494 512", "descrizione": "Canti folcloristici. Torino (provincia)"},
-                {"numero": "785.067", "descrizione": "Complessi strumentali. Bande"},
-                {"numero": "786.500", "descrizione": "Strumenti a tastiera aerofoni. Organi"}
-            ],
-            "790":[
-                {"numero": "791.094 512", "descrizione": "Spettacoli pubblici. Torino (provincia)"},
-                {"numero": "791.430 233 090", "descrizione": "Cinema. Direzione. Trattamento storico e geografico"},
-                {"numero": "792.022 209 450", "descrizione": "Teatro di dilettanti. Italia"},
-                {"numero": "793.730", "descrizione": "Giochi sedentari. Rompicapo e giochi di pazienza"},
-                {"numero": "796.030", "descrizione": "Sport e giochi atletici e all'aperto"},
-                {"numero": "796.042", "descrizione": "Sport dilettantistici"},
-                {"numero": "796.060 450", "descrizione": "Sport e giochi atletici e all'aperto. Organizzazioni. Italia"},
-                {"numero": "796.522", "descrizione": "Passeggiate ed esplorazioni in montagne, colline, rocce"},
-                {"numero": "796.522 090", "descrizione": "Passeggiate ed esplorazioni in montagne, colline, rocce. Trattamento storico e geografico"},
-                {"numero": "796.522 092", "descrizione": "Passeggiate ed esplorazioni in montagne, colline, rocce. Persone"},
-                {"numero": "796.609 200", "descrizione": "Ciclismo. Persone"}
-            ],
-            "850":[
-                {"numero": "851.910 809 451", "descrizione": "Poesia italiana. XX secolo. Raccolte. Scrittori piemontesi"},
-                {"numero": "851.914 080 945 100", "descrizione": "Poesia italiana. Dal 1945. Raccolte. Scrittori piemontesi"},
-                {"numero": "852", "descrizione": "Letteratura drammatica italiana"},
-                {"numero": "853.910", "descrizione": "Narrativa italiana. XX secolo"},
-                {"numero": "853.920", "descrizione": "Narrativa italiana. XXI secolo"}
-            ],
-            "910":[
-                {"numero": "910.200", "descrizione": "Guide turistiche"},
-                {"numero": "910.800", "descrizione": "Geografia e viaggi. Il soggetto riferito a gruppi di persone"},
-                {"numero": "912", "descrizione": "Rappresentazioni grafiche della superficie terrestre e dei mondi extraterrestri"},
-                {"numero": "912.094 500", "descrizione": "Carte geografiche e cartografia. Italia"},
-                {"numero": "913", "descrizione": "Archeologia, preistoria"},
-                {"numero": "914", "descrizione": "Geografia. Europa."},
-                {"numero": "914.500 140", "descrizione": "Geografia. Italia. Linguaggio e comunicazione"},
-                {"numero": "914.510 050", "descrizione": "Geografia. Piemonte. Pubblicazioni in serie"},
-                {"numero": "914.511", "descrizione": "Geografia. Val D'Aosta"},
-                {"numero": "914.512", "descrizione": "Geografia. Torino (provincia)"},
-                {"numero": "914.513", "descrizione": "Geografia. Cuneo (provincia)"},
-                {"numero": "915", "descrizione": "geografia e viaggi. Asia, Oriente, estremo Oriente"},
-                {"numero": "916", "descrizione": "Geografia. Africa"},
-                {"numero": "919", "descrizione": "Geografia. Altre parti del mondo"}
-            ],
-            "920":[
-                {"numero": "929.400", "descrizione": "Nomi di persona"},
-                {"numero": "929.900", "descrizione": "Bandiere"}
-            ],
-            "930":[
-                {"numero": "930.100", "descrizione": "Archeologia"}
-            ],
-            "940":[
-                {"numero": "940.200", "descrizione": "Storia. Europa. Dal 1453"},
-                {"numero": "940.530 920", "descrizione": "Storia generale dell'europa. Seconda guerra mondiale. Dal 1939 al 1945. Persone"},
-                {"numero": "945.050", "descrizione": "Storia d'Italia. Rinascimento. Dal 1330 al 1494"},
-                {"numero": "945.060", "descrizione": "Storia d'Italia. Dal 1494 al 1796"},
-                {"numero": "945.073", "descrizione": "Storia d'Italia. Dal 1600 al 1700"},
-                {"numero": "945.080", "descrizione": "Storia d'Italia. Dal 1796 al 1870"},
-                {"numero": "945.083 400", "descrizione": "Storia d'Italia. Periodo Cavouriano. Dal 1849 al 1861"},
-                {"numero": "945.090 920", "descrizione": "Storia d'Italia. Dal 1900. Persone"},
-                {"numero": "945.091", "descrizione": "Storia d'Italia. Periodo della prima guerra mondiale. Dal 1914 al 1918"},
-                {"numero": "945.091 509 200", "descrizione": "Storia d'Italia. Periodo fascista. Dal 1922 al 1943. Persone"},
-                {"numero": "945.093", "descrizione": "Storia d'Italia. Dal 2000"},
-                {"numero": "945.100", "descrizione": "Storia dell'Italia nord-occidentale. Piemonte"},
-                {"numero": "945.100 500", "descrizione": "Storia dell'Italia nord-occidentale. Piemonte. Pubblicazioni in serie"},
-                {"numero": "945.100 992", "descrizione": "Storia dell'Italia nord-occidentale. Piemonte. Gruppi di persone"},
-                {"numero": "945.107 400", "descrizione": "Storia del Piemonte. Dal 1730 al 1796"},
-                {"numero": "945.108 309 200", "descrizione": "Storia del Piemonte. Periodo risorgimentale. Dal 1815 al 1861. Persone"},
-                {"numero": "945.120 150", "descrizione": "Storia. Torino (provincia)"}
+    dewey = [];
+    constructor() {
+        this.dewey = [
+        { //0
+            "parent": "",
+            "descrizione": "Opere generali",
+            "valore": "000",
+            "children":[
+            {//00
+            },{//01
+                "parent": "0",
+                "descrizione": "Bibliografia",
+                "valore": "010",
+                "children":[
+                {//010
+                },{//011
+                },{//012
+                },{//013
+                },{//014
+                },{//015
+                },{//016
+                },{//017
+                    "parent": "01",
+                    "descrizione": "Cataloghi generali",
+                    "valore": "017",
+                    "children":[]
+                },{//018
+                },{//019
+                }]
+            },{//02
+                "parent": "0",
+                "descrizione": "Biblioteconomia e tecniche della documentazione",
+                "valore": "020",
+                "children":[]
+            },{//03
+            },{//04
+            },{//05
+            },{//06
+                "parent": "0",
+                "descrizione": "Accademie, istituti culturali, fondazioni, congressi e Museologia",
+                "valore": "060",
+                "children":[
+                {//060
+                },{//061
+                },{//062
+                },{//063
+                },{//064
+                },{//065
+                },{//066
+                },{//067
+                },{//068
+                },{//069
+                    "parent": "06",
+                    "descrizione": "Museologia",
+                    "valore": "069",
+                    "children":[]
+                }
+                ]
+            },{//07
+                "parent": "0",
+                "descrizione": "Giornalismo, media documentari, editoria",
+                "valore": "070",
+                "children":[
+                {//070
+                    "parent": "07",
+                    "descrizione": "Giornalismo e giornali",
+                    "valore": "070",
+                    "children":[{//070.9
+                        "parent": "070",
+                        "descrizione": "Storia e persone del giornalismo e dei giornali",
+                        "valore": "070.900",
+                        "children":[]
+                    }]
+                },{//071
+                },{//072
+                },{//073
+                },{//074
+                },{//075
+                    "parent": "07",
+                    "descrizione": "Giornalismo e giornali in Italia e limitrofi",
+                    "valore": "075",
+                    "children":[]
+                },{//076
+                },{//077
+                },{//078
+                },{//079
+                }
+                ]
+            },{//08
+            },{//09
+                "parent": "0",
+                "descrizione": "Manoscritti e libri rari",
+                "valore": "090",
+                "children":[
+                {//090
+                },{//091
+                },{//092
+                },{//093
+                },{//094
+                    "parent": "09",
+                    "descrizione": "Libri a stampa rari",
+                    "valore": "094",
+                    "children":[]
+                },{//095
+                },{//096
+                },{//097
+                },{//098
+                },{//099
+                }
+                ]
+            }
             ]
-        };
-}
-
-
+        },{//1
+            "parent": "",
+            "descrizione": "Filosofia, fenomeni paranormali, psicologia",
+            "valore": "100",
+            "children":[
+            {//10
+            },{//11
+            },{//12
+            },{//13
+            },{//14
+            },{//15
+            },{//16
+            },{//17
+            },{//18
+            },{//19
+                "parent": "1",
+                "descrizione": "Filosofia occidentale moderna",
+                "valore": "190",
+                "children":[]
+            }]
+        },{//2
+            "parent": "",
+            "descrizione": "Religione",
+            "valore": "200",
+            "children":[
+            {//20
+            },{//21
+                "parent": "2",
+                "descrizione": "Filosofia e teoria della religione",
+                "valore": "210",
+                "children":[
+                {//210
+                    "parent": "21",
+                    "descrizione": "Filosofia e teoria della religione",
+                    "valore": "210",
+                    "children":[
+                    {//210.1
+                        "parent": "210",
+                        "descrizione": "Filosofia e teoria della religione",
+                        "valore": "210.1",
+                        "children":[]
+                    },{//210.9
+                        "parent": "210",
+                        "descrizione": "Storia, geografia e persone della religione",
+                        "valore": "210.9",
+                        "children":[]
+                    }
+                    ]
+                },{//211
+                },{//212
+                },{//213
+                    "parent": "21",
+                    "descrizione": "Creazione",
+                    "valore": "213",
+                    "children":[]
+                },{//214
+                },{//215
+                },{//216
+                },{//217
+                },{//218
+                },{//219
+                }]
+            },{//22
+            },{//23
+            },{//24
+                "parent": "2",
+                "descrizione": "Teologia morale e devozione cristiana",
+                "valore": "240",
+                "children":[
+                {//240
+                },{//241
+                },{//242
+                    "parent": "24",
+                    "descrizione": "Letteratura devota cristiana",
+                    "valore": "242",
+                    "children":[]
+                },{//243
+                },{//244
+                },{//245
+                },{//246
+                },{//247
+                    "parent": "24",
+                    "descrizione": "Arredamento sacro cristiano",
+                    "valore": "247",
+                    "children":[]
+                },{//248
+                    "parent": "24",
+                    "descrizione": "Esperienza, pratica e vita cristiana",
+                    "valore": "248",
+                    "children":[]
+                },{//249
+                }
+                ]
+            },{//25
+                "parent": "2",
+                "descrizione": "Chiesa cristiana locale e ordini religiosi cristiani",
+                "valore": "250",
+                "children":[
+                {//250
+                },{//251
+                },{//252
+                },{//253
+                },{//254
+                    "parent": "25",
+                    "descrizione": "Amministrazione della parrocchia",
+                    "valore": "254",
+                    "children":[]
+                },{//255
+                },{//256
+                },{//257
+                },{//258
+                },{//259
+                }]
+            },{//26
+                "parent": "2",
+                "descrizione": "Teologia sociale ed ecclesiastica cristiana",
+                "valore": "260",
+                "children":[
+                {//260
+                },{//261
+                },{//262
+                },{//263
+                    "parent": "26",
+                    "descrizione": "Giorni, tempi, luoghi di osservanza religiosa",
+                    "valore": "263",
+                    "children":[]
+                },{//264
+                    "parent": "26",
+                    "descrizione": "Culto pubblico",
+                    "valore": "264",
+                    "children":[]
+                },{//265
+                },{//266
+                },{//267
+                },{//268
+                },{//269
+                }]
+            },{//27
+            },{//28
+                "parent": "2",
+                "descrizione": "Denominazioni e sette della chiesa cristiana",
+                "valore": "280",
+                "children":[
+                {//280
+                    "parent": "28",
+                    "descrizione": "Denominazioni e sette della chiesa cristiana",
+                    "valore": "280",
+                    "children":[]
+                },{//281
+                },{//282
+                    "parent": "28",
+                    "descrizione": "Chiesa cattolica in specifici paesi e località",
+                    "valore": "282",
+                    "children":[]
+                 },{//283
+                 },{//284
+                 },{//285
+                 },{//286
+                 },{//287
+                 },{//288
+                 },{//289
+                 }]
+            },{//29
+                "parent": "2",
+                "descrizione": "Religione comparata e religioni non cristiane",
+                "valore": "290",
+                "children":[
+                {//290
+                    "parent": "29",
+                    "descrizione": "Religione comparata e religioni non cristiane",
+                    "valore": "290",
+                    "children":[]
+                },{//291
+                },{//292
+                },{//293
+                },{//294
+                },{//295
+                },{//296
+                },{//297
+                },{//298
+                },{//299
+                    "parent": "29",
+                    "descrizione": "Altre religioni",
+                    "valore": "299",
+                    "children":[]
+                }
+                ]
+            }]
+        },{//3
+            "parent": "",
+            "descrizione": "Scienze sociali",
+            "valore": "300",
+            "children":[
+            {//30
+            },{//31
+            },{//32
+                "parent": "3",
+                "descrizione": "Scienza politica",
+                "valore": "320",
+                "children":[
+                {//320
+                    "parent": "32",
+                    "descrizione": "Scienza politica (Politica e governo)",
+                    "valore": "320",
+                    "children":[]
+                },{//321
+                },{//322
+                },{//323
+                },{//324
+                },{//325
+                    "parent": "32",
+                    "descrizione": "Migrazioni internazionali e colonizzazione",
+                    "valore": "325",
+                    "children":[]
+                }
+                ]
+            },{//33
+                "parent": "3",
+                "descrizione": "Economia",
+                "valore": "330",
+                "children":[
+                {//330
+                    "parent": "33",
+                    "descrizione": "Economia",
+                    "valore": "330",
+                    "children":[]
+                },{//331
+                },{//332
+                },{//333
+                },{//334
+                    "parent": "33",
+                    "descrizione": "Cooperative",
+                    "valore": "334",
+                    "children":[]
+                },{//335
+                },{//336
+                },{//337
+                },{//338
+                    "parent": "33",
+                    "descrizione": "Produzione",
+                    "valore": "338",
+                    "children":[
+                    {//338.09
+                        "parent": "338",
+                        "descrizione": "Storia, geografia, persone della produzione",
+                        "valore": "338.09",
+                        "children":[]
+                    },{//338.4
+                        "parent": "338",
+                        "descrizione": "Industrie secondarie e servizi",
+                        "valore": "338.4",
+                        "children":[]
+                    }
+                    ]
+                },{//339
+                }]
+            },{//34
+                "parent": "3",
+                "descrizione": "Diritto",
+                "valore": "340",
+                "children":[]
+            },{//35
+                "parent": "3",
+                "descrizione": "Amministrazione pubblica e scienza militare",
+                "valore": "350",
+                "children":[
+                {//350
+                    "parent": "35",
+                    "descrizione": "Amministrazione pubblica e scienza militare",
+                    "valore": "350",
+                    "children":[]
+                },{//351
+                },{//352
+                },{//353
+                    "parent": "35",
+                    "descrizione": "Specifiche materie di amministrazione pubblica",
+                    "valore": "353",
+                    "children":[]
+                },{//354
+                },{//355
+                },{//356
+                    "parent": "35",
+                    "descrizione": "Forze e operazioni a piedi",
+                    "valore": "356",
+                    "children":[]
+                },{//357
+                },{//358
+                },{//359
+                }]
+            },{//36
+                "parent": "3",
+                "descrizione": "Problemi e servizi sociali, associazioni",
+                "valore": "360",
+                "children":[
+                {//360
+                    "parent": "36",
+                    "descrizione": "Problemi e servizi sociali, associazioni",
+                    "valore": "360",
+                    "children":[]
+                },{//361
+                },{//362
+                },{//363
+                    "parent": "36",
+                    "descrizione": "Altri problemi e servizi sociali",
+                    "valore": "363",
+                    "children":[]
+                }
+                ]
+            },{//37
+                "parent": "3",
+                "descrizione": "Educazione",
+                "valore": "370",
+                "children":[
+                {//370
+                },{//371
+                },{//372
+                },{//373
+                },{//374
+                },{//375
+                },{//376
+                },{//377
+                },{//378
+                    "parent": "37",
+                    "descrizione": "Educazione superiore",
+                    "valore": "378",
+                    "children":[]
+                },{//379
+                }]
+            },{//38
+            },{//39
+                "parent": "3",
+                "descrizione": "Usi e costumi, galateo, folclore",
+                "valore": "390",
+                "children":[
+                {//390
+                    "parent": "39",
+                    "descrizione": "Usi e costumi, galateo, folclore",
+                    "valore": "390",
+                    "children":[
+                    {//390.09
+                        "parent": "390",
+                        "descrizione": "Storia, geografia, persone degli usi e dei costumi",
+                        "valore": "390.09",
+                        "children":[]
+                    },{//390.4
+                        "parent": "390",
+                        "descrizione": "Usi e costumi secondo la professione",
+                        "valore": "390.4",
+                        "children":[]
+                    }]
+                },{//391
+                    "parent": "39",
+                    "descrizione": "Costume e tenuta personale",
+                    "valore": "391",
+                    "children":[]
+                },{//392
+                },{//393
+                },{//394
+                    "parent": "39",
+                    "descrizione": "Usi e costumi generali",
+                    "valore": "394",
+                    "children":[]
+                },{//395
+                },{//396
+                },{//397
+                },{//398
+                    "parent": "39",
+                    "descrizione": "Folclore",
+                    "valore": "398",
+                    "children":[
+                    {//398.0
+                        "parent": "398",
+                        "descrizione": "DA RICLASSIFICARE",
+                        "valore": "398.0",
+                        "children":[]
+                    },{//398.1
+                    },{//398.2
+                    },{//398.3
+                    },{//398.4
+                        "parent": "398",
+                        "descrizione": "Fenomeni paranaturali e leggendari come soggetti di folclore",
+                        "valore": "398.4",
+                        "children":[]
+                    },{//398.5
+                    },{//398.6
+                    },{//398.7
+                    },{//398.8
+                    },{//398.9
+                        "parent": "398",
+                        "descrizione": "Proverbi",
+                        "valore": "398.9",
+                        "children":[]
+                    }]
+                },{//399
+                }]
+            }]
+        },{//4
+            "parent": "",
+            "descrizione": "Linguaggio",
+            "valore": "400",
+            "children":[
+            {//40
+            },{//41
+            },{//42
+            },{//43
+            },{//44
+            },{//45
+                "parent": "4",
+                "descrizione": "Italiano, sardo, dalmatico, romeno, lingue ladine",
+                "valore": "450",
+                "children":[
+                {//450
+                },{//451
+                },{//452
+                },{//453
+                },{//454
+                },{//455
+                },{//456
+                },{//457
+                    "parent": "45",
+                    "descrizione": "Italiano. Varianti storiche e geografiche",
+                    "valore": "457",
+                    "children":[]
+                },{//458
+                },{//459
+                }]
+            },{//46
+            },{//47
+            },{//48
+            },{//49
+                "parent": "4",
+                "descrizione": "Altre lingue",
+                "valore": "490",
+                "children":[
+                {//490
+                },{//491
+                },{//492
+                    "parent": "49",
+                    "descrizione": "Lingue afroasiatiche (lingue camitosemitiche), lingue semitiche",
+                    "valore": "492",
+                    "children":[
+                    {"parent": "492",
+                        "descrizione": "Ebraico",
+                        "valore": "492.4",
+                        "children":[]
+                    }]
+                },{//493
+                },{//494
+                },{//495
+                },{//496
+                    "parent": "49",
+                    "descrizione": "Lingue africane",
+                    "valore": "496",
+                    "children":[]
+                },{//497
+                },{//498
+                },{//499
+                    "parent": "49",
+                    "descrizione": "Lingue varie",
+                    "valore": "499",
+                    "children":[]
+                }]
+            }]
+        },{//5
+            "parent": "",
+            "descrizione": "Scienze naturali e matematica",
+            "valore": "500",
+            "children":[
+            {//50
+                "parent": "5",
+                "descrizione": "Scienze naturali e matematica",
+                "valore": "500",
+                "children":[]
+            },{//51
+            },{//52
+                "parent": "5",
+                "descrizione": "Astronomia e scienze connesse",
+                "valore": "520",
+                "children":[{//520
+                    },{//521
+                    },{//522
+                    },{//523
+                    },{//524
+                    },{//525
+                    },{//526
+                    },{//527
+                    },{//528
+                    },{//529
+                    "parent": "52",
+                    "descrizione": "Cronologia",
+                    "valore": "529",
+                    "children":[]
+                }]
+            },{//53
+            },{//54
+            },{//55
+                "parent": "5",
+                "descrizione": "Scienze della Terra",
+                "valore": "550",
+                "children":[{//550
+                    },{//551
+                    "parent": "55",
+                    "descrizione": "Geologia, idrologia, meteorologia",
+                    "valore": "551",
+                    "children":[]
+                }]
+            },{//56
+            },{//57
+            },{//58
+                "parent": "5",
+                "descrizione": "Piante",
+                "valore": "580",
+                "children":[]
+            },{//59
+                "parent": "5",
+                "descrizione": "Animali",
+                "valore": "590",
+                "children":[]
+            }]
+        },{//6
+        },{//7
+        },{//8
+        },{//9
+        }];
+    }
 }

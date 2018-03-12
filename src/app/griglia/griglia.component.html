@@ -64,7 +64,7 @@
         <clr-dg-cell [innerHTML] = "element.titolo"></clr-dg-cell>
         <clr-dg-cell [innerHTML] = "element.sottotitolo"></clr-dg-cell>
         <clr-dg-cell>
-            <img [src]="'/copertine/'+element.copertina" class="cellaCopertina" onError="this.src='../images/Libro.png';"></clr-dg-cell>
+            <img [src]="'/copertine/'+element.copertina" class="cellaCopertina" onError="this.src='/images/Libro.png';"></clr-dg-cell>
         <clr-dg-cell>{{element.codiceArgomento}}</clr-dg-cell>
         <clr-dg-cell>{{element.luogo}}</clr-dg-cell>
     </clr-dg-row>

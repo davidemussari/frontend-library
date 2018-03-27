@@ -9,16 +9,18 @@ import { ServiceBindDataRountingService } from '../service-bind-data-rounting.se
 })
 export class CatalogoLuogoComponent implements OnInit {
 
-     router: any;
-     catalogo: any;
-     luoghi: Array<string> = [];
-     argomenti: Array<string> = [];
-     caricamentoCompletato: boolean = false;
+    router: any;
+    catalogo: any;
+    luoghi: Array<string> = [];
+    argomenti: Array<string> = [];
+    caricamentoCompletato: boolean = false;
 
     catalogoCaricato = () => {
         for(let elemento of this.catalogo){
             if(elemento.luogo != "" && this.luoghi.indexOf(elemento.luogo) == -1)
                 this.luoghi.push(elemento.luogo);
+
+            //serve per scaricare tutti gli argomenti attualmente in catalogo
             if(elemento.codiceArgomento != null && this.argomenti.indexOf(elemento.codiceArgomento) == -1)
                 this.argomenti.push(elemento.codiceArgomento);
         }
@@ -27,8 +29,8 @@ export class CatalogoLuogoComponent implements OnInit {
         console.log(this.argomenti.toString());
         this.caricamentoCompletato = true;
         /*
-         * this.argomenti.split(".")
-         * */
+        * this.argomenti.split(".")
+        * */
 
     }
 

@@ -30,11 +30,24 @@ function costruttoreBox (arr) {
 function cercaFigli (id, dew){
     var arr = dew[+id[0]].children;
     var descParent = dew[+id[0]].descrizione;
+    var valoreParent = dew[+id[0]].valore;
+    if(id.indexOf('.') > -1)
+        id = id.split('.')[0]+id.split('.')[1];
+    if(id.indexOf(' ') > -1)
+        id = id.split(' ')[0]+id.split(' ')[1];
     for(let str of id.substr(1,)){
         descParent = arr[+str].descrizione;
+        valoreParent = arr[+str].valore;
+        if(arr.length ==0){
+            arr = [];
+            break;
+        }
         arr = arr[+str].children;
     }
-    return {"arr": arr, "descParent": descParent};
+    return {
+        "arr": arr,
+        "descParent": descParent,
+        "valoreParent": valoreParent};
 }
 
 
@@ -52,6 +65,7 @@ export class CatalogoArgomentoComponent implements OnInit {
     dewey = [];
 	router: any;
     boxVisibili = [];
+    valoreParent: string = '';
 
 	constructor(private paramsRoute: ActivatedRoute, _router: Router, private deweyService: DeweyService) {
         this.router = _router;
@@ -68,6 +82,7 @@ export class CatalogoArgomentoComponent implements OnInit {
                 var res = cercaFigli(this.id,this.dewey);
                 this.boxVisibili = costruttoreBox(res.arr);
                 this.desc = res.descParent;
+                this.valoreParent = res.valoreParent;
             }
 
 

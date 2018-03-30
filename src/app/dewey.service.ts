@@ -18,6 +18,10 @@ export class DeweyService {
                 "valore": "010",
                 "children":[
                 {//010
+                    "parent": "01",
+                    "descrizione": "Repertori bibliografici",
+                    "valore": "010",
+                    "children":[]
                 },{//011
                 },{//012
                 },{//013
@@ -154,7 +158,7 @@ export class DeweyService {
                     {//210.1
                         "parent": "210",
                         "descrizione": "Filosofia e teoria della religione",
-                        "valore": "210.1",
+                        "valore": "210.100",
                         "children":[]
                     },{//210.9
                         "parent": "210",
@@ -454,6 +458,12 @@ export class DeweyService {
                     "descrizione": "Usi e costumi, galateo, folclore",
                     "valore": "390",
                     "children":[
+                    {
+                        "parent": "390",
+                        "descrizione": "Usi e costumi, credenze popolari",
+                        "valore": "390",
+                        "children":[]
+                    },
                     {//390.09
                         "parent": "390",
                         "descrizione": "Storia, geografia, persone degli usi e dei costumi",
@@ -1057,7 +1067,7 @@ export class DeweyService {
                     "children":[{//791.0
                         "parent": "791.4",
                         "descrizione": "Spettacoli pubblici",
-                        "valore": "791.000",
+                        "valore": "791",
                         "children":[]
                     },{//791.1
                     },{//791.2
@@ -1126,19 +1136,6 @@ export class DeweyService {
                             "parent": "796.0",
                             "descrizione": "Sport e giochi atletici e all'aperto",
                             "valore": "796.040",
-                            "children":[{//796.040
-                            },{//796.041
-                            },{//796.042
-                                "parent": "796.04",
-                                "descrizione": "Sport dilettantistici",
-                                "valore": "796.042",
-                                "children":[]
-                            }]
-                        },{//796.05
-                        },{//796.06
-                            "parent": "796.0",
-                            "descrizione": "Sport. Organizzazioni, impianti, gestione",
-                            "valore": "796.060",
                             "children":[]
                         }]
                     },{//796.1
@@ -1164,11 +1161,6 @@ export class DeweyService {
                                 "children":[]
                             }]
                         }]
-                    },{//796.06
-                        "parent": "796",
-                        "descrizione": "Ciclismo e attività affini",
-                        "valore": "796.600",
-                        "children":[]
                     }]
                 },{//797
                 },{//798
@@ -1224,6 +1216,11 @@ export class DeweyService {
                     }]
                 },{//852
                     "parent": "85",
+                    "descrizione": "Letteratura drammatica italiana",
+                    "valore": "852",
+                    "children":[]
+                },{//853
+                    "parent": "85",
                     "descrizione": "Narrativa italiana",
                     "valore": "853",
                     "children":[]
@@ -1265,14 +1262,7 @@ export class DeweyService {
                     "parent": "91",
                     "descrizione": "Geografia e viaggi",
                     "valore": "910",
-                    "children":[{//910.0
-                    },{//910.1
-                    },{//910.2
-                        "parent": "91",
-                        "descrizione": "Geografia e viaggi. Miscellanea",
-                        "valore": "910.200",
-                        "children":[]
-                    }]
+                    "children":[]
                 },{//911
                 },{//912
                     "parent": "91",
@@ -1428,21 +1418,6 @@ export class DeweyService {
                         "descrizione": "Storia generale dell'Europa occidentale dal 1453",
                         "valore": "940.200",
                         "children":[]
-                    },{//940.3
-                    },{//940.4
-                    },{//940.5
-                        "parent": "940",
-                        "descrizione": "Storia generale dell'Europa occidentale dal 1918",
-                        "valore": "940.500",
-                        "children":[{
-                        },{//940.1
-                        },{//940.2
-                        },{//940.3
-                            "parent": "940.5",
-                            "descrizione": "Storia generale dell'Europa occidentale. Seconda guerra mondiale in riferimento a categorie di persone",
-                            "valore": "940.530 800",
-                            "children":[]
-                        }]
                     }]
                 },{//941
                 },{//942
@@ -1452,56 +1427,83 @@ export class DeweyService {
                     "parent": "94",
                     "descrizione": "Storia di Italia",
                     "valore": "945",
-                    "children":[{
-                        "parent": "945",
+                    "children":[
+                    {
+                        "parent": "945",//parent sballati per necessita di funzionamento
                         "descrizione": "Storia della Provincia di Torino. Periodo non specifico",
                         "valore": "945.120 150",
                         "children":[]
-                         },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Dal 1348 al 1494",
-                        "valore": "945.050",
+                    },{
+                        "parent": "945",//parent sballati per necessita di funzionamento
+                        "descrizione": "Storia di Italia. Pubblicazioni in serie",
+                        "valore": "945.005",
                         "children":[]
                     },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Dal 1494 al 1527",
-                        "valore": "945.060",
-                        "children":[]
+                        "parent": "945",//parent sballati per necessita di funzionamento
+                        "descrizione": "Storia di Italia. Fino al 1800",
+                        "valore": "945.0",
+                        "children":[{
+                            "parent": "945.2",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 962 al 1122",
+                            "valore": "945.030",
+                            "children":[]
+                        },{
+                            "parent": "945.2",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 1348 al 1494",
+                            "valore": "945.050",
+                            "children":[]
+                        },{
+                            "parent": "945.2",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 1494 al 1527",
+                            "valore": "945.060",
+                            "children":[]
+                        },{
+                            "parent": "945.2",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 1600 al 1700",
+                            "valore": "945.073",
+                            "children":[]
+                        },{
+                            "parent": "945.2",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 1700 al 1796",
+                            "valore": "945.074",
+                            "children":[]
+                        }]
                     },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Dal 1600 al 1700",
-                        "valore": "945.073",
-                        "children":[]
-                    },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Dal 1796 al 1900",
-                        "valore": "945.080",
-                        "children":[]
-                    },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Dal 1900 al 2000",
-                        "valore": "945.090 920",
-                        "children":[]
-                    },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Dal 1914 al 1918",
-                        "valore": "945.091 300",
-                        "children":[]
-                    },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Dal 1922 al 1943",
-                        "valore": "945.091 500",
-                        "children":[]
-                     },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Periodo della resistenza armata e della fine del Regno. Dal 1943 al 1946",
-                        "valore": "945.091 600",
-                        "children":[]
-                    },{
-                        "parent": "945",
-                        "descrizione": "Storia di Italia. Dal 2000",
-                        "valore": "945.093",
-                        "children":[]
+                        "parent": "945",//parent sballati per necessita di funzionamento
+                        "descrizione": "Storia di Italia. Dal 1800",
+                        "valore": "945.0",
+                        "children":[
+                        {
+                            "parent": "945.3",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 1796 al 1900",
+                            "valore": "945.080",
+                            "children":[]
+                        },{
+                            "parent": "945.3",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 1900 al 2000",
+                            "valore": "945.090 920",
+                            "children":[]
+                        },{
+                            "parent": "945.3",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 1914 al 1918",
+                            "valore": "945.091 300",
+                            "children":[]
+                        },{
+                            "parent": "945.3",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 1922 al 1943",
+                            "valore": "945.091 500",
+                            "children":[]
+                        },{
+                            "parent": "945.3",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Periodo della resistenza armata e della fine del Regno. Dal 1943 al 1946",
+                            "valore": "945.091 600",
+                            "children":[]
+                        },{
+                            "parent": "945.3",//parent sballati per necessita di funzionamento
+                            "descrizione": "Storia di Italia. Dal 2000",
+                            "valore": "945.093",
+                            "children":[]
+                        }]
                     }]
                 }]
             }]

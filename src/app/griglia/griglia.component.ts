@@ -116,8 +116,8 @@ class Modale {
 })
 export class GrigliaComponent {
 
-    mdOpen: boolean = false;
-    sort;
+    mdOpen: boolean = false; //apre/chiude la modale dell'export pdf
+    sort; // stringa che indica secondo quale cosa si vuole export pdf
 
     titoloFiltrato: string;
     autoreFiltrato: string;
@@ -134,9 +134,7 @@ export class GrigliaComponent {
     @Input() luogo: string;
     @Output() clickDettaglio: EventEmitter<Element> = new EventEmitter();
 
-    selezionati=[];
-    ordCrescenteAutore: number = 0;
-    descSort: any;
+    selezionati=[]; //elementi selezionati nella griglia
 
     router: any;
     nomiCognomi: any;
@@ -156,13 +154,13 @@ export class GrigliaComponent {
         this.clickDettaglio.emit(elemento);
     }
 
-    download = ()=>{
+    download = ()=>{//realizza il pdf
         var columns = [];
         var lastCharacter = '';
         var doc = new jsPDF('l', 'mm', 'a4');
         for(let el of this.selezionati)
             if(el.autore != undefined)
-            el.autore = this.nomiCognomi.transform(el.autore, []).replace(/(<br><br>|<\/br>|<br \/>)/mgi, "\n").slice(0, -2);
+            el.autore = this.nomiCognomi.transform(el.autore, []).replace(/(<br><br>|<\/br>|<br \/>)/mgi, "\n").slice(0, -2);//serve per andare a capo e per togliere i <br> che servono nell'html
         if(this.sort == 'autore'){
             columns = [
             {title: "Autore/i", dataKey: "autore"},
@@ -170,9 +168,8 @@ export class GrigliaComponent {
             {title: "Collocazione", dataKey: "perEtichette"},
             {title: "Inventario", dataKey: "inventario"}
             ];
-
-            this.selezionati = this.selezionati.sort(sortAutori);
-            lastCharacter = this.selezionati[0].autore.substring(0,1);
+            this.selezionati = this.selezionati.sort(sortAutori);//ordina gli elementi selezionati alfabeticamente rispetto al primo autore
+            lastCharacter = this.selezionati[0].autore.substring(0,1);//serve per fare una pagina nuova quando cambia la lettera iniziale del nome (per non stampare sempre tutto il catalogo cartaceo)
             doc.autoTable(columns, this.selezionati,{
                 theme: 'striped',
                 pageBreak: 'always',
@@ -221,8 +218,8 @@ export class GrigliaComponent {
             {title: "Collocazione", dataKey: "perEtichette"},
             {title: "Inventario", dataKey: "inventario"}
             ];
-            this.selezionati = this.selezionati.sort(sortLuogo);
-            lastCharacter = this.selezionati[0].luogo.substring(0,1);
+            this.selezionati = this.selezionati.sort(sortLuogo);//ordina gli elementi selezionati alfabeticamente per luogo
+            lastCharacter = this.selezionati[0].luogo.substring(0,1);//serve per cambiare pagina per ogni iniziale di luogo (vedi sopra)
             doc.autoTable(columns, this.selezionati,{
                 theme: 'striped',
                 pageBreak: 'always',
@@ -250,7 +247,6 @@ export class GrigliaComponent {
                 tableLineColor : [128, 167, 186],
                 tableLineWidth: 0.3,
                 drawRow: function (row, data) {
-
                     if(row.cells.luogo.text[0] != undefined && row.cells.luogo.text[0].substring(0,1) != lastCharacter){
                         lastCharacter = row.cells.luogo.text[0].substring(0,1);
                         data.addPage();
@@ -271,9 +267,8 @@ export class GrigliaComponent {
             {title: "Titolo", dataKey: "titolo"},
             {title: "Inventario", dataKey: "inventario"}
             ];
-            this.selezionati = this.selezionati.sort(sortArgomento);
-
-            lastCharacter = this.selezionati[0].perEtichette.substring(0,3);
+            this.selezionati = this.selezionati.sort(sortArgomento); //ordina in modo crescente i valori delle collocazioni
+            lastCharacter = this.selezionati[0].perEtichette.substring(0,3); //serve per cambiare pagina quando cambiano le prime pagine cifre della collocazione (vedi sopra)
             doc.autoTable(columns, this.selezionati,{
                 theme: 'striped',
                 pageBreak: 'always',

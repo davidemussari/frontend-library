@@ -13,7 +13,7 @@ export class CatalogoCompletoComponent implements OnInit {
     codArgomento: string;
     descArgomento: string;
     luogo: string;
-    dettagli: boolean = false;
+    dettagli: boolean = false;//mostra i dettagli dell'elemento cliccando sulla i di informazioni su una riga della tabella
     catalog: any;
     elementoCliccato: any;
 
@@ -38,7 +38,7 @@ export class CatalogoCompletoComponent implements OnInit {
         this.elementoCliccato = elemento;
     }
 
-    undo = () =>{
+    undo = () =>{//passa dalla visualizzazione del dettaglio dell'elemento alla griglia
         this.dettagli = false;
         this.elementoCliccato = null;
     }

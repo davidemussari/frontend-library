@@ -232,15 +232,6 @@ export class DettagliComponent {
                 if(figlio.valore != undefined && figlio.valore == codiceArgomento.substr(0,figlio.valore.length))
                     return figlio.descrizione;
         return arr.descrizione;
-
-        /*
-        if (typeof codiceArgomento === "string")
-            codiceArgomento = codiceArgomento.replace(/ /g, '');
-        for (let arg of this.dewey[(Math.floor(+codiceArgomento/10)*10).toString()])
-            if (+codiceArgomento == +(arg.numero.replace(/ /g, '')))
-                return arg.descrizione;
-        return "n.d."
-        */
     }
 
     etichetta = (key) =>{

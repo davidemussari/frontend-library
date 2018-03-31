@@ -10,7 +10,7 @@ class Element{
     parent: string;
 }
 
-function costruttoreBox (arr) {
+function costruttoreBox (arr) {//costruisce come richiesto da html il box con le informazioni bindate
     var posizione = 0;
     var res = new Array();
     for(let el of arr){
@@ -27,7 +27,7 @@ function costruttoreBox (arr) {
     return res;
 }
 
-function cercaFigli (id, dew){
+function cercaFigli (id, dew){//restituisce i figli di un settore
     var arr = dew[+id[0]].children;
     var descParent = dew[+id[0]].descrizione;
     var valoreParent = dew[+id[0]].valore;
@@ -51,79 +51,45 @@ function cercaFigli (id, dew){
 }
 
 
-
 @Component({
-	selector: 'app-catalogo-argomento',
-	templateUrl: './catalogo-argomento.component.html',
-	styleUrls: ['./catalogo-argomento.component.scss'],
-	providers: [DeweyService]
+    selector: 'app-catalogo-argomento',
+    templateUrl: './catalogo-argomento.component.html',
+    styleUrls: ['./catalogo-argomento.component.scss'],
+    providers: [DeweyService]
 })
 export class CatalogoArgomentoComponent implements OnInit {
 
-	id: string = '';
-	desc: string = "";
+    id: string = '';//nel path per routing
+    desc: string = ""; //nel path per routing e per libro breadcroumble
     dewey = [];
-	router: any;
-    boxVisibili = [];
-    valoreParent: string = '';
+    router: any;
+    boxVisibili = [];//box di settori visibili nella pagina (per rendering html)
+    valoreParent: string = '';//settore scelto precedentemente (stringa vuota se si deve scegliere le centinaia)
 
-	constructor(private paramsRoute: ActivatedRoute, _router: Router, private deweyService: DeweyService) {
+    constructor(private paramsRoute: ActivatedRoute, _router: Router, private deweyService: DeweyService) {
         this.router = _router;
         this.dewey = deweyService.dewey;
-	}
+    }
 
-	ngOnInit() {
-		this.paramsRoute.params.subscribe(params => {
+    ngOnInit() {
+        this.paramsRoute.params.subscribe(params => {
             this.boxVisibili=[];
             this.id = params['id'];
-            if (this.id == '' || this.id == undefined){
-               this.boxVisibili = costruttoreBox(this.dewey);
-            }else{
+            if (this.id == '' || this.id == undefined){//caso in cui si deve scegliere la prima cifra delle centinaia
+                this.boxVisibili = costruttoreBox(this.dewey);
+            }else{//caso in cui si sia gia' scelta la cifra delle centinaia
                 var res = cercaFigli(this.id,this.dewey);
                 this.boxVisibili = costruttoreBox(res.arr);
                 this.desc = res.descParent;
                 this.valoreParent = res.valoreParent;
             }
+        });
+    }
 
-
-
-            /*if ( this.id != '' && this.id != undefined)
-                if (+params['id'] % 100 == 0)
-                    this.desc = this.dewey['centinaia'][(+params['id']/100).toString()].descrizione;
-                else if (+params['id'] % 10 == 0){
-                    for(let d of this.dewey[(Math.floor(+params['id']/100)*100).toString()]){
-                        if(d.numero == params['id'])
-                            this.desc = d.descrizione;
-                    }
-                }else
-                    this.desc = this.dewey[(Math.floor(+params['id']/100)*100).toString()][0].descrizione; */
-		});
-	}
-
-	routing = (cliccato) => {
-        //cliccato.numero = (+cliccato.numero.replace(/\s/g, "")).toString().split(".");
-        /*if(cliccato.parent == '' || cliccato.parent == undefined)
-             this.boxVisibili = costruttoreBox(this.dewey[cliccato.posizione].children);
-        else
-            this.boxVisibili = costruttoreBox(this.dewey[cliccato.parent].children[cliccato.posizione].children);*/
-
-        if (cercaFigli(cliccato.parent+cliccato.posizione, this.dewey).arr.length != 0)
+    routing = (cliccato) => {//funzione chiamata al click del box
+       if (cercaFigli(cliccato.parent+cliccato.posizione, this.dewey).arr.length != 0) //caso in cui ci siano dei sottosettori piu' specifici
             this.router.navigate(['/catalogoArgomento/'+cliccato.parent+cliccato.posizione]);
-        else
+        else //caso in cui non ci sono sottosettori specifici e quindi viene mostrato tutto sulla tabella
             this.router.navigate(['/catalogoCompleto/'+cliccato.numero+'/'+cliccato.descrizione]);
-
-        //if(this.dewey.children.length)
-        /*
-        if (cliccato.numero.length > 1)
-            cliccato.numero = cliccato.numero[0] + "." + cliccato.numero[1].replace(/(.{3})/g,"$1 ");//crea la separazione ogni tre cifre dopo il punto
-        if(cliccato.numero != this.id && this.dewey[cliccato.numero] != null)
-            this.router.navigate(['/catalogoArgomento/'+cliccato.numero]);
-        else {
-            if(cliccato.numero[0].slice(-1) == "0")
-                cliccato.numero = (+cliccato.numero/10).toString();
-            this.router.navigate(['/catalogoCompleto/'+cliccato.numero+'/'+cliccato.descrizione]);
-        }
-        */
-	}
-
+    }
 }

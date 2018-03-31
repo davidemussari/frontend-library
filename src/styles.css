@@ -81,6 +81,10 @@ body{
     color: white;
 }
 
+body > my-app > clr-main-container > div > div > app-catalogo-completo > app-griglia > clr-datagrid > div > div > div > clr-dg-table-wrapper > div.datagrid-head.ng-star-inserted > div > div.datagrid-column.datagrid-select.datagrid-fixed-column.ng-star-inserted > span > clr-checkbox > label:before{
+    border-color: #dddddd;
+}
+
 .datagrid-filter-toggle{
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23FFFFFF%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cpolygon%20class%3D%22cls-1%22%20points%3D%227%209.32%203%205.38%203%205%2013%205%2013%205.38%209%209.32%209%2012.21%207%2013.29%207%209.32%22%2F%3E%3C%2Fsvg%3E")!important;
 }

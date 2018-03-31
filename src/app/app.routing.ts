@@ -6,7 +6,6 @@
 import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CatalogoComponent } from './catalogo/catalogo.component';
 import { HomeComponent } from './home/home.component';
 import { CatalogoCompletoComponent} from './catalogo-completo/catalogo-completo.component';
 import { CatalogoArgomentoComponent} from './catalogo-argomento/catalogo-argomento.component';

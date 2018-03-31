@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
 
 
-import { CatalogoComponent } from "./catalogo/catalogo.component";
 import { CatalogoArgomentoComponent } from './catalogo-argomento/catalogo-argomento.component';
 import { CatalogoCompletoComponent } from './catalogo-completo/catalogo-completo.component';
 import { CatalogoLuogoComponent } from './catalogo-luogo/catalogo-luogo.component';
@@ -22,7 +21,6 @@ import { ServiceBindDataRountingService } from './service-bind-data-rounting.ser
 @NgModule({
     declarations: [
         AppComponent,
-        CatalogoComponent,
         HomeComponent,
         CatalogoCompletoComponent,
         CatalogoArgomentoComponent,

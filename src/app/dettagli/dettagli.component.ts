@@ -169,7 +169,7 @@ export class DettagliComponent {
     ngOnInit() {
         this.arrayKey = [];
         for (let k of Object.keys(this.elementoCliccato))
-            if (this.elementoCliccato[k].length != 0 && this.dettagli[k].visibile)
+            if (this.elementoCliccato[k] != null && this.elementoCliccato[k].length != 0 && this.dettagli[k].visibile)
                 this.arrayKey.push(k);
     }
 

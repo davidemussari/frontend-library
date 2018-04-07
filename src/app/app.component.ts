@@ -19,7 +19,8 @@ export class AppComponent {
 
     constructor(private router: Router, private downloadJson: GetJsonService, private serviceBindDataRountingService:ServiceBindDataRountingService) {
 
-        this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
+//        this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
+        this.downloadJson.getData("./json/biblioteca_lNostPais.json").subscribe((data) => {
             this.catalogo = data;
             this.serviceBindDataRountingService.catalog = this.catalogo;
             this.serviceBindDataRountingService.catalogoPronto$.emit(this.catalogo);

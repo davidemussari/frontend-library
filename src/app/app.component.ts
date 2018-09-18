@@ -15,6 +15,7 @@ export class AppComponent {
     catalogo: any;
     public catalogoPronto$: EventEmitter<any>;
 
+
     creditModaleOpen: Boolean = false;
 
     constructor(private router: Router, private downloadJson: GetJsonService, private serviceBindDataRountingService:ServiceBindDataRountingService) {

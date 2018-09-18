@@ -15,12 +15,14 @@ export class CatalogoCompletoComponent implements OnInit {
     luogo: string;
     dettagli: boolean = false;//mostra i dettagli dell'elemento cliccando sulla i di informazioni su una riga della tabella
     catalog: any;
-    elementoCliccato: any;
+    elementoCliccato: any = null;
+    caricamentoCompletato: boolean = false;
 
     constructor(private paramsRoute: ActivatedRoute, private serviceBindDataRountingService: ServiceBindDataRountingService) {
         this.serviceBindDataRountingService.catalogoPronto$.subscribe(cat => {
             //serve nel momento in cui si apre direttamente questo indirizzo web
             this.catalog = cat;
+            this.caricamentoCompletato = true;
         });
     }
 
@@ -30,6 +32,8 @@ export class CatalogoCompletoComponent implements OnInit {
             this.codArgomento = params['codArgomento'];
             this.descArgomento = params['descrizioneArgomento'];
             this.luogo = params['luogo'];
+            if (this.catalog.length != undefined || this.catalog.length > 0)
+                this.caricamentoCompletato = true;
         });
     }
 

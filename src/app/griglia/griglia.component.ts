@@ -121,7 +121,6 @@ export class GrigliaComponent {
 
     titoloFiltrato: string;
     autoreFiltrato: string;
-    caricamentoCompletato: boolean = false;
     codiceArgomentoSort = new CodiceArgomentoSort();
     codiceArgomentoFiltro = new CodiceArgomentoFiltro();
     luogoFiltro = new FiltroLuogo();
@@ -132,6 +131,7 @@ export class GrigliaComponent {
     @Input() codArgomento: string;
     @Input() descArgomento: string;
     @Input() luogo: string;
+    @Input() caricamentoCompletato: boolean;
     @Output() clickDettaglio: EventEmitter<Element> = new EventEmitter();
 
     selezionati=[]; //elementi selezionati nella griglia

@@ -1,9 +1,12 @@
 <app-griglia [catalogo]="catalog"
+    [caricamentoCompletato]="caricamentoCompletato"
     [(codArgomento)]="codArgomento"
     [(descArgomento)]="descArgomento"
     [(luogo)]="luogo"
     (clickDettaglio)="clickRigaTabella($event)"
-    *ngIf="!dettagli">
+    *ngIf="!dettagli"
+    [hidden]="dettagli"
+    >
 </app-griglia>
 <app-dettagli
     [(elementoCliccato)]="elementoCliccato"

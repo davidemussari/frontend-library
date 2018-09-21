@@ -434,6 +434,10 @@ export class DeweyService {
                 "children":[
                 {//370
                 },{//371
+                    "parent": "37",
+                    "descrizione": "Scuola",
+                    "valore": "371",
+                    "children":[]
                 },{//372
                 },{//373
                 },{//374
@@ -817,6 +821,11 @@ export class DeweyService {
                         "valore": "726.5",
                         "children":[{//726.50
                             "parent": "726.5",
+                            "descrizione": "Edifici connessi al cristianesimo. Piemonte. Province varie",
+                            "valore": "726.509 451",
+                            "children":[]
+                        },{//726.50
+                            "parent": "726.5",
                             "descrizione": "Edifici connessi al cristianesimo. Torino e provincia",
                             "valore": "726.509 451 200",
                             "children":[]
@@ -916,6 +925,11 @@ export class DeweyService {
                                 "parent": "741.68",
                                 "descrizione": "Calendari",
                                 "valore": "741.682",
+                                "children":[]
+                            },{
+                                "parent": "741.68",
+                                "descrizione": "cartoline",
+                                "valore": "741.683",
                                 "children":[]
                             }]
                         }]
@@ -1060,6 +1074,15 @@ export class DeweyService {
                 "descrizione": "Divertimenti, spettacoli, giochi, sport",
                 "valore": "790",
                 "children":[{//790
+                    "parent": "79",
+                    "descrizione": "Attività ricreative",
+                    "valore": "790",
+                    "children":[{
+                        "parent": "790",
+                        "descrizione": "Attività ricreative",
+                        "valore": "790.100",
+                        "children":[]
+                    }]
                 },{//791
                     "parent": "79",
                     "descrizione": "Spettacoli pubblici",

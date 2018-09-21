@@ -1135,7 +1135,7 @@ export class DeweyService {
                         },{//796.04
                             "parent": "796.0",
                             "descrizione": "Sport e giochi atletici e all'aperto",
-                            "valore": "796.040",
+                            "valore": "796.04",
                             "children":[]
                         }]
                     },{//796.1

@@ -686,7 +686,7 @@ export class DeweyService {
             }]
         },{//7
             "parent": "",
-            "descrizione": "Le arti. Belle arti e arti decorative",
+            "descrizione": "Le arti e divertimenti, giochi e sport",
             "valore": "700",
             "children":[{//70
                 "parent": "7",
@@ -1293,10 +1293,6 @@ export class DeweyService {
                     "valore": "912",
                     "children":[]
                 },{//913
-                    "parent": "91",
-                    "descrizione": "Archeologia e preistoria",
-                    "valore": "913",
-                    "children":[]
                 },{//914
                     "parent": "91",
                     "descrizione": "Geografia dell'Europa",

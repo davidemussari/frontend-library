@@ -15,7 +15,7 @@ export class CatalogoCompletoComponent implements OnInit {
     luogo: string;
     dettagli: boolean = false;//mostra i dettagli dell'elemento cliccando sulla i di informazioni su una riga della tabella
     catalog: any;
-    elementoCliccato: any = null;
+    elementoCliccato: any;
     caricamentoCompletato: boolean = false;
 
     constructor(private paramsRoute: ActivatedRoute, private serviceBindDataRountingService: ServiceBindDataRountingService) {
@@ -25,6 +25,10 @@ export class CatalogoCompletoComponent implements OnInit {
             this.caricamentoCompletato = true;
             this.dettagli = false;
         });
+
+        //Queste due righe sono necessarie perche' un conflitto impedisce di aprire la modale Riconoscimenti mentre si e' sulla griglia
+        this.elementoCliccato = new Object();
+         this.elementoCliccato.titolo = '';
     }
 
     ngOnInit() {

@@ -1184,6 +1184,11 @@ export class DeweyService {
                                 "children":[]
                             }]
                         }]
+                    },{//796.6
+                        "parent": "796",
+                        "descrizione": "Ciclismo",
+                        "valore": "796.600",
+                        "children":[]
                     }]
                 },{//797
                 },{//798

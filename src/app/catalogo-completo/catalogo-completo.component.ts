@@ -23,6 +23,7 @@ export class CatalogoCompletoComponent implements OnInit {
             //serve nel momento in cui si apre direttamente questo indirizzo web
             this.catalog = cat;
             this.caricamentoCompletato = true;
+            this.dettagli = false;
         });
     }
 

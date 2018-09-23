@@ -145,7 +145,7 @@ export class DettagliComponent {
             "funct": "data",
             "etichetta": "Data di catalogazione:",
             "visibile": true,
-       },
+    },
         "Ultima modifica":{
             "funct": "data",
             "etichetta": "Data di ultima modifica:",
@@ -166,11 +166,15 @@ export class DettagliComponent {
         this.dewey = deweyService.dewey;
     }
 
-    ngOnInit() {
+    ngOnInit() {}
+
+    ngOnChanges() {
         this.arrayKey = [];
-        for (let k of Object.keys(this.elementoCliccato))
-            if (this.elementoCliccato[k] != null && this.elementoCliccato[k].length != 0 && this.dettagli[k].visibile)
-                this.arrayKey.push(k);
+        if(this.elementoCliccato!=undefined){
+            for (let k of Object.keys(this.elementoCliccato))
+                if (this.elementoCliccato[k] != null && this.elementoCliccato[k].length != 0 && this.dettagli[k].visibile)
+                    this.arrayKey.push(k);
+                }
     }
 
     beautify = (key) => {
@@ -200,13 +204,13 @@ export class DettagliComponent {
             return "No";
     }
 
-     nomi = (str) => {
-         let stringa = "";
-         let autoriArray = str.split(';');
-         for (let persona of autoriArray){
-             persona = persona.split(',');
-             for (let p of persona){
-                 stringa += p.trim() + " ";
+    nomi = (str) => {
+        let stringa = "";
+        let autoriArray = str.split(';');
+        for (let persona of autoriArray){
+            persona = persona.split(',');
+            for (let p of persona){
+                stringa += p.trim() + " ";
             }
         stringa += ' <br/>';
         }

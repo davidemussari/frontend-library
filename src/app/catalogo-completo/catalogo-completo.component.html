@@ -4,13 +4,13 @@
     [(descArgomento)]="descArgomento"
     [(luogo)]="luogo"
     (clickDettaglio)="clickRigaTabella($event)"
-    *ngIf="!dettagli"
     [hidden]="dettagli"
     >
 </app-griglia>
 <app-dettagli
     [(elementoCliccato)]="elementoCliccato"
     (undo)="undo($event)"
-    *ngIf="dettagli">
+    [hidden]="!dettagli"
+    >
 </app-dettagli>
 

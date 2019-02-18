@@ -273,6 +273,20 @@ export class GrigliaComponent {
         });
 
 
+        doc.setFontType("bold");
+        doc.setFontSize(24);
+        doc.text('Fondo \n di \n Documentazione \n Storico Locale', 150, 65, {align: 'center'});
+        doc.setFontType("italic");
+        doc.setFontSize(20);
+        doc.text(' \'L Nòst Pais', 150, 115, {align: 'center'});
+        doc.setFontSize(15);
+        doc.setFontType("normal");
+        doc.text("Aggiornamento al " + (new Date()).toLocaleDateString(), 150, 140, {align: 'center'});
+        doc.addPage();
+        doc.setFontType("bold");
+        doc.setFontSize(24);
+
+
         if(this.sort == 'autore'){
 
             columns = [
@@ -289,6 +303,7 @@ export class GrigliaComponent {
             this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort);
 
             //crea la tabella
+            doc.text('Elenco alfabetico per primo autore', 150, 22, {align: 'center'});
             this.selezionati.forEach(function(e){
                 doc.autoTable({columns: columns, body: e});
             });
@@ -312,6 +327,7 @@ export class GrigliaComponent {
             this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort);
 
             //crea la tabella
+            doc.text('Elenco alfabetico per luogo', 150, 22, {align: 'center'});
             this.selezionati.forEach(function(e){
                 doc.autoTable({columns: columns, body: e});
             });

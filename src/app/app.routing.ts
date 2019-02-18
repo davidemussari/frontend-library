@@ -13,14 +13,14 @@ import { CatalogoLuogoComponent} from './catalogo-luogo/catalogo-luogo.component
 
 
 export const ROUTES: Routes = [
-    {path: '', redirectTo: 'catalogoCompleto', pathMatch: 'full'},
 //  {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'catalogoCompleto', component: CatalogoCompletoComponent},
     {path: 'catalogoCompleto/:luogo', component: CatalogoCompletoComponent},
     {path: 'catalogoCompleto/:codArgomento/:descrizioneArgomento', component: CatalogoCompletoComponent},
     {path: 'catalogoArgomento/:id', component: CatalogoArgomentoComponent},
     {path: 'catalogoArgomento', component: CatalogoArgomentoComponent},
-    {path: 'catalogoLuogo', component: CatalogoLuogoComponent}
+    {path: 'catalogoLuogo', component: CatalogoLuogoComponent},
+    {path: '**', redirectTo: 'catalogoCompleto', pathMatch: 'full'},
 //  {path: 'home', component: HomeComponent}
 ];
 

@@ -31,7 +31,7 @@
 
 <!-- Griglia -->
 <clr-datagrid [(clrDgSelected)]="selezionati" [clrDgLoading]="!caricamentoCompletato">>
-    <clr-dg-column [clrDgField]="'autore'" [(clrDgSortOrder)]="ordCrescenteAutore">
+    <clr-dg-column [clrDgField]="'autore'" [(clrDgSortOrder)]="ordinamento_defaul">
         Autore
         <clr-dg-string-filter [clrDgStringFilter]="autoreFiltro" [(clrFilterValue)]="autoreFiltrato"></clr-dg-string-filter>
     </clr-dg-column>
@@ -64,8 +64,8 @@
         <clr-dg-cell [innerHTML] = "element.titolo"></clr-dg-cell>
         <clr-dg-cell [innerHTML] = "element.sottotitolo"></clr-dg-cell>
         <clr-dg-cell>
-<!--            <img [src]="'/fondodocumentazione/copertine/'+element.copertina" class="cellaCopertina" onError="this.src='/fondodocumentazione/images/Libro.png';"></clr-dg-cell> -->
-      <img [src]="'/nostpais/copertine/'+element.copertina" class="cellaCopertina" onError="this.src='/images/Libro.png'"></clr-dg-cell>
+  <!--           <img [src]="'/fondodocumentazione/copertine/'+element.copertina" class="cellaCopertina" onError="this.src='/fondodocumentazione/images/Libro.png';"></clr-dg-cell>-->
+     <img [src]="'/nostpais/copertine/'+element.copertina" class="cellaCopertina" onError="this.src='/images/Libro.png'"></clr-dg-cell>
         <clr-dg-cell>{{element.codiceArgomento}}</clr-dg-cell>
         <clr-dg-cell>{{element.luogo}}</clr-dg-cell>
     </clr-dg-row>

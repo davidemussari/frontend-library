@@ -7,6 +7,8 @@ import {StringFilter} from "clarity-angular";
 import { NomiCognomiPipe } from '../nomi-cognomi.pipe';
 import {SortOrder} from 'clarity-angular';
 
+import { DeweyService } from '../dewey.service';
+
 
 declare var jsPDF: any; // Important
 
@@ -103,6 +105,80 @@ function sortLuogo(a,b) {
         return 0;
 }
 
+//produce da un array, un array di array, dove ogni array contenuto ha la stessa iniziale (o codice argomento)
+function separatorePerPrimoCarattere(data, campo){
+    var a = new Array();
+    var temp = new Array();
+    var lastCharacter = "";
+    if (campo == 'autore'){
+        lastCharacter = data[0].autore.substring(0,1);
+        data.forEach(function(e){
+           if(lastCharacter != e.autore.substring(0,1)){
+               lastCharacter = e.autore.substring(0,1);
+               a.push(temp);
+               temp = [];
+           }
+           temp.push(e);
+        });
+    }else if (campo == 'luogo'){
+        if(data[0].luogo != undefined)
+            lastCharacter = data[0].luogo.substring(0,1);
+        data.forEach(function(e){
+           if(e.luogo != undefined && lastCharacter != e.luogo.substring(0,1)){
+               lastCharacter = e.luogo.substring(0,1);
+               a.push(temp);
+               temp = [];
+           }
+           temp.push(e);
+        });
+    }else if(campo == 'argomento'){
+        lastCharacter = data[0].perEtichette.split(' ')[0];
+        data.forEach(function(e){
+           if(lastCharacter != e.perEtichette.split(' ')[0]){
+               lastCharacter = e.perEtichette.split(' ')[0];
+               a.push(temp);
+               temp = [];
+           }
+           temp.push(e);
+        });
+    }
+    a.push(temp);
+    return a;
+}
+
+function caratterePdf(doc,index){
+    if(index == 1)
+        doc.setFontType("bold");
+    else
+        doc.setFontType("normal");
+
+    var size = 20-2.5*index;
+    if(size < 10)
+        size = 10;
+    doc.setFontSize(size);
+}
+
+var riga = 2;
+function scansioneRicorsivaJson(data, doc, index){
+    data.forEach(function(e){
+        if(e.children != undefined){
+            riga++;
+            if (10*riga >= 200){
+                doc.addPage();
+                riga = 2;
+            }
+            caratterePdf(doc, index);
+            if(index == 1)
+                riga++;
+            doc.text("[ " + e.valore + " ] " + e.descrizione, 14*index, 10*riga);
+            scansioneRicorsivaJson(e.children, doc, index+1);
+            console.log(index);
+        }
+    });
+};
+
+
+
 class Modale {
     aperta: boolean = false;
     public elemento = new Element();
@@ -112,13 +188,14 @@ class Modale {
     selector: 'app-griglia',
     templateUrl: './griglia.component.html',
     styleUrls: ['./griglia.component.scss'],
-    providers:[NomiCognomiPipe]
+    providers:[NomiCognomiPipe, DeweyService]
 })
 export class GrigliaComponent {
 
     mdOpen: boolean = false; //apre/chiude la modale dell'export pdf
     sort; // stringa che indica secondo quale cosa si vuole export pdf
 
+    ordinamento_defaul: string = "ordCrescenteAutore";
     titoloFiltrato: string;
     autoreFiltrato: string;
     codiceArgomentoSort = new CodiceArgomentoSort();
@@ -138,10 +215,12 @@ export class GrigliaComponent {
 
     router: any;
     nomiCognomi: any;
+    dewey = [];
 
-    constructor(private _router: Router, private _nomiCognomi:NomiCognomiPipe) {
+    constructor(private _router: Router, private _nomiCognomi:NomiCognomiPipe, private _deweyService: DeweyService) {
         this.router = _router;
         this.nomiCognomi = _nomiCognomi;
+        this.dewey = _deweyService.dewey;
     }
 
     clearFilter= () => {
@@ -157,32 +236,27 @@ export class GrigliaComponent {
     download = ()=>{//realizza il pdf
         var columns = [];
         var lastCharacter = '';
-        var doc = new jsPDF('l', 'mm', 'a4');
+
+        //serve per andare a capo e per togliere i <br> che servono nell'html
         for(let el of this.selezionati)
             if(el.autore != undefined)
-            el.autore = this.nomiCognomi.transform(el.autore, []).replace(/(<br><br>|<\/br>|<br \/>)/mgi, "\n").slice(0, -2);//serve per andare a capo e per togliere i <br> che servono nell'html
-        if(this.sort == 'autore'){
-            columns = [
-            {title: "Autore/i", dataKey: "autore"},
-            {title: "Titolo", dataKey: "titolo"},
-            {title: "Collocazione", dataKey: "perEtichette"},
-            {title: "Inventario", dataKey: "inventario"}
-            ];
-            this.selezionati = this.selezionati.sort(sortAutori);//ordina gli elementi selezionati alfabeticamente rispetto al primo autore
-            lastCharacter = this.selezionati[0].autore.substring(0,1);//serve per fare una pagina nuova quando cambia la lettera iniziale del nome (per non stampare sempre tutto il catalogo cartaceo)
-            doc.autoTable(columns, this.selezionati,{
-                theme: 'striped',
-                pageBreak: 'always',
-                styles: {
-                    font: 'times',
-                    fontSize: 11,
-                    overflow: 'linebreak',
-                    valign: 'middle',
-                    columnWidth: 'auto',
-                    lineColor: [128, 167, 186],
-                    lineWidth: 0.3
-                },
-                headerStyles: {
+            el.autore = this.nomiCognomi.transform(el.autore, []).replace(/(<br><br>|<\/br>|<br \/>)/mgi, "\n").slice(0, -2);
+
+        var doc = new jsPDF('l', 'mm', 'a4');
+        doc.autoTableSetDefaults({
+            theme: 'grid',
+            pageBreak: 'always',
+            styles: {
+                font: 'times',
+                fontSize: 11,
+                overflow: 'linebreak',
+                valign: 'middle',
+                lineColor: [128, 167, 186],
+                lineWidth: 0.3,
+                cellWidth: 'auto'
+            },
+            columnStyles: {inventario: {cellWidth: '22'}},
+            headStyles: {
                     fontSize: 12,
                     fontStyle: 'bold',
                     overflow: 'linebreak',
@@ -190,124 +264,84 @@ export class GrigliaComponent {
                     fillColor: [128, 167, 186],
                     halign: 'left', // left, center, right
                     valign: 'middle', // top, middle, bottom
-                    columnWidth: 'auto' // 'auto', 'wrap' or a number},
-                },alternateRowStyles: {
+            },
+            alternateRowStyles: {
                     fillColor: [255, 255, 255]
-                },
-                tableLineColor : [128, 167, 186],
-                tableLineWidth: 0.3,
-                drawRow: function (row, data) {
-                    if(row.cells.autore.text[0] != undefined && row.cells.autore.text[0].substring(0,1) != lastCharacter){
-                        lastCharacter = row.cells.autore.text[0].substring(0,1);
-                        data.addPage();
-                    }
-                },
-                columnStyles: {
-                    perEtichette: {columnWidth: 40},
-                    autore: {columnWidth: 'auto'},
-                    titolo: {columnWidth: 'auto'},
-                    inventario: {columnWidth: 22}
-                }
+            },
+            tableLineColor : [128, 167, 186],
+            tableLineWidth: 0.3,
+        });
+
+
+        if(this.sort == 'autore'){
+
+            columns = [
+                {header: "Autore/i", dataKey: "autore"},
+                {header: "Titolo", dataKey: "titolo"},
+                {header: "Collocazione", dataKey: "perEtichette"},
+                {header: "Inventario", dataKey: "inventario"}
+            ];
+
+            //ordina gli elementi selezionati alfabeticamente rispetto al primo autore
+            this.selezionati = this.selezionati.sort(sortAutori);
+
+            //produce un array di array
+            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort);
+
+            //crea la tabella
+            this.selezionati.forEach(function(e){
+                doc.autoTable({columns: columns, body: e});
             });
+
+            //scatena in download
             doc.save("Fondo di documentazione storico locale - 'L Nòst Pais - alfabetico autori.pdf");
+
         }else if (this.sort == 'luogo'){
             columns = [
-            {title: "Luogo", dataKey: "luogo"},
-            {title: "Autore/i", dataKey: "autore"},
-            {title: "Titolo", dataKey: "titolo"},
-            {title: "Collocazione", dataKey: "perEtichette"},
-            {title: "Inventario", dataKey: "inventario"}
+            {header: "Luogo", dataKey: "luogo"},
+            {header: "Autore/i", dataKey: "autore"},
+            {header: "Titolo", dataKey: "titolo"},
+            {header: "Collocazione", dataKey: "perEtichette"},
+            {header: "Inventario", dataKey: "inventario"}
             ];
-            this.selezionati = this.selezionati.sort(sortLuogo);//ordina gli elementi selezionati alfabeticamente per luogo
-            lastCharacter = this.selezionati[0].luogo.substring(0,1);//serve per cambiare pagina per ogni iniziale di luogo (vedi sopra)
-            doc.autoTable(columns, this.selezionati,{
-                theme: 'striped',
-                pageBreak: 'always',
-                styles: {
-                    font: 'times',
-                    fontSize: 11,
-                    overflow: 'linebreak',
-                    valign: 'middle',
-                    columnWidth: 'auto',
-                    lineColor: [128, 167, 186],
-                    lineWidth: 0.3
-                },
-                headerStyles: {
-                    fontSize: 12,
-                    fontStyle: 'bold',
-                    overflow: 'linebreak',
-                    textColor: 255,
-                    fillColor: [128, 167, 186],
-                    halign: 'left', // left, center, right
-                    valign: 'middle', // top, middle, bottom
-                    columnWidth: 'auto' // 'auto', 'wrap' or a number},
-                },alternateRowStyles: {
-                    fillColor: [255, 255, 255]
-                },
-                tableLineColor : [128, 167, 186],
-                tableLineWidth: 0.3,
-                drawRow: function (row, data) {
-                    if(row.cells.luogo.text[0] != undefined && row.cells.luogo.text[0].substring(0,1) != lastCharacter){
-                        lastCharacter = row.cells.luogo.text[0].substring(0,1);
-                        data.addPage();
-                    }
-                },
-                columnStyles: {
-                    perEtichette: {columnWidth: 40},
-                    autore: {columnWidth: 'auto'},
-                    titolo: {columnWidth: 'auto'},
-                    inventario: {columnWidth: 22}
-                }
+
+            //ordina gli elementi selezionati alfabeticamente per luogo
+            this.selezionati = this.selezionati.sort(sortLuogo);
+
+            //produce un array di array
+            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort);
+
+            //crea la tabella
+            this.selezionati.forEach(function(e){
+                doc.autoTable({columns: columns, body: e});
             });
+
             doc.save("Fondo di documentazione storico locale - 'L Nòst Pais - alfabetico luoghi.pdf");
+
         }else if(this.sort == 'argomento'){
             columns = [
-            {title: "Collocazione", dataKey: "perEtichette"},
-            {title: "Autore/i", dataKey: "autore"},
-            {title: "Titolo", dataKey: "titolo"},
-            {title: "Inventario", dataKey: "inventario"}
+            {header: "Collocazione", dataKey: "perEtichette"},
+            {header: "Autore/i", dataKey: "autore"},
+            {header: "Titolo", dataKey: "titolo"},
+            {header: "Inventario", dataKey: "inventario"}
             ];
-            this.selezionati = this.selezionati.sort(sortArgomento); //ordina in modo crescente i valori delle collocazioni
-            lastCharacter = this.selezionati[0].perEtichette.substring(0,3); //serve per cambiare pagina quando cambiano le prime pagine cifre della collocazione (vedi sopra)
-            doc.autoTable(columns, this.selezionati,{
-                theme: 'striped',
-                pageBreak: 'always',
-                styles: {
-                    font: 'times',
-                    fontSize: 11,
-                    overflow: 'linebreak',
-                    valign: 'middle',
-                    columnWidth: 'auto',
-                    lineColor: [128, 167, 186],
-                    lineWidth: 0.3
-                },
-                headerStyles: {
-                    fontSize: 12,
-                    fontStyle: 'bold',
-                    overflow: 'linebreak',
-                    textColor: 255,
-                    fillColor: [128, 167, 186],
-                    halign: 'left', // left, center, right
-                    valign: 'middle', // top, middle, bottom
-                    columnWidth: 'auto' // 'auto', 'wrap' or a number},
-                },alternateRowStyles: {
-                    fillColor: [255, 255, 255]
-                },
-                tableLineColor : [128, 167, 186],
-                tableLineWidth: 0.3,
-                drawRow: function (row, data) {
-                    if(row.cells.perEtichette.text[0] != undefined && row.cells.perEtichette.text[0].substring(0,3) != lastCharacter){
-                        lastCharacter = row.cells.perEtichette.text[0].substring(0,3);
-                        data.addPage();
-                    }
-                },
-                columnStyles: {
-                    perEtichette: {columnWidth: 40},
-                    autore: {columnWidth: 'auto'},
-                    titolo: {columnWidth: 'auto'},
-                    inventario: {columnWidth: 22}
-                }
+
+            //pagine introduttive sulla classificazione per argomenti
+            doc.text('Elenco degli argomenti', 150, 22, {align: 'center'});
+            scansioneRicorsivaJson(this.dewey, doc, 1);
+
+
+            //ordina in modo crescente i valori delle collocazioni
+            this.selezionati = this.selezionati.sort(sortArgomento);
+
+             //produce un array di array
+            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort);
+
+             //crea la tabella
+            this.selezionati.forEach(function(e){
+                doc.autoTable({columns: columns, body: e});
             });
+
             doc.save("Fondo di documentazione storico locale - 'L Nòst Pais - argomenti.pdf");
         }
     }

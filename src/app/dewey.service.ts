@@ -425,8 +425,17 @@ export class DeweyService {
                     "descrizione": "Altri problemi e servizi sociali",
                     "valore": "363",
                     "children":[]
-                }
-                ]
+                },{//364
+                },{//365
+                },{//366
+                },{//367
+                },{//368
+                },{//369
+                    "parent": "36",
+                    "descrizione": "Associazioni",
+                    "valore": "369",
+                    "children":[]
+                }]
             },{//37
                 "parent": "3",
                 "descrizione": "Educazione",

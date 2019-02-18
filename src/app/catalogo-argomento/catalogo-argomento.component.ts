@@ -66,9 +66,9 @@ export class CatalogoArgomentoComponent implements OnInit {
     boxVisibili = [];//box di settori visibili nella pagina (per rendering html)
     valoreParent: string = '';//settore scelto precedentemente (stringa vuota se si deve scegliere le centinaia)
 
-    constructor(private paramsRoute: ActivatedRoute, _router: Router, private deweyService: DeweyService) {
+    constructor(private paramsRoute: ActivatedRoute, _router: Router, private _deweyService: DeweyService) {
         this.router = _router;
-        this.dewey = deweyService.dewey;
+        this.dewey = _deweyService.dewey;
     }
 
     ngOnInit() {

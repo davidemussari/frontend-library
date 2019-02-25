@@ -1325,6 +1325,11 @@ export class DeweyService {
                             "descrizione": "Geografia. Italia. Linguaggio e comunicazione",
                             "valore": "914.500 140",
                             "children":[]
+                        },{//914.50
+                                "parent": "914.5",
+                                "descrizione": "Geografia. Italia. Pubblicazioni in serie",
+                                "valore": "914.500 500",
+                                "children":[]
                         },{//914.51
                             "parent": "914.5",
                             "descrizione": "Geografia. Italia nord-occidentale",

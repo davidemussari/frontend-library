@@ -662,7 +662,7 @@ export class DeweyService {
             "valore": "600",
             "children":[{//60
             },{//61
-                parent": "6",
+                "parent": "6",
                 "descrizione": "Medicina",
                 "valore": "610",
                 "children":[]

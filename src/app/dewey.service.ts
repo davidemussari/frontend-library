@@ -628,6 +628,10 @@ export class DeweyService {
                 }]
             },{//53
             },{//54
+                "parent": "5",
+                "descrizione": "Chimica",
+                "valore": "540",
+                "children":[]
             },{//55
                 "parent": "5",
                 "descrizione": "Scienze della Terra",
@@ -658,6 +662,10 @@ export class DeweyService {
             "valore": "600",
             "children":[{//60
             },{//61
+                parent": "6",
+                "descrizione": "Medicina",
+                "valore": "610",
+                "children":[]
             },{//62
                 "parent": "6",
                 "descrizione": "Ingegneria e attività affini",
@@ -1249,6 +1257,11 @@ export class DeweyService {
                         "parent": "851",
                         "descrizione": "Letteratura italiana dal 1900 al 1999",
                         "valore": "851.900",
+                        "children":[]
+                    },{
+                        "parent": "851",
+                        "descrizione": "Letteratura italiana dal 2000",
+                        "valore": "851.920",
                         "children":[]
                     }]
                 },{//852

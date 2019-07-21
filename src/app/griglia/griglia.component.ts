@@ -1,11 +1,11 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
 
-import {Comparator} from "@clr/angular";
-import {StringFilter} from "@clr/angular";
+import {ClrDatagridComparatorInterface} from "@clr/angular";
+import {ClrDatagridStringFilterInterface} from "@clr/angular";
 
 import { NomiCognomiPipe } from '../nomi-cognomi.pipe';
-import {SortOrder} from "@clr/angular";
+import {ClrDatagridSortOrder} from "@clr/angular";
 
 import { DeweyService } from '../dewey.service';
 
@@ -43,13 +43,13 @@ class Element{
     perEtichette: string;
 }
 
-class CodiceArgomentoSort implements Comparator<Element> {
+class CodiceArgomentoSort implements ClrDatagridComparatorInterface<Element> {
     compare(a: Element, b: Element) {
         return +a.codiceArgomento - +b.codiceArgomento;
     }
 }
 
-class CodiceArgomentoFiltro implements StringFilter<Element> {
+class CodiceArgomentoFiltro implements ClrDatagridStringFilterInterface<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.codiceArgomento == search
         || element.codiceArgomento.toString().indexOf(search) == 0
@@ -57,21 +57,21 @@ class CodiceArgomentoFiltro implements StringFilter<Element> {
     }
 }
 
-class FiltroLuogo implements StringFilter<Element> {
+class FiltroLuogo implements ClrDatagridStringFilterInterface<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.luogo.toLowerCase().trim() == search.toLowerCase().trim()
         || element.luogo.toLowerCase().trim().indexOf(search) >= 0;
     }
 }
 
-class FiltroTitolo implements StringFilter<Element> {
+class FiltroTitolo implements ClrDatagridStringFilterInterface<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.titolo.toLowerCase().trim() == search.toLowerCase().trim()
         || element.titolo.toLowerCase().trim().indexOf(search) >= 0;
     }
 }
 
-class FiltroAutore implements StringFilter<Element> {
+class FiltroAutore implements ClrDatagridStringFilterInterface<Element> {
     accepts(element: Element, search: string):boolean {
         return "" + element.autore.toLowerCase().trim() == search.toLowerCase().trim()
         || element.autore.toLowerCase().trim().indexOf(search) >= 0;

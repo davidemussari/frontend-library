@@ -1,11 +1,11 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
 
-import {Comparator} from "clarity-angular";
-import {StringFilter} from "clarity-angular";
+import {Comparator} from "@clr/angular";
+import {StringFilter} from "@clr/angular";
 
 import { NomiCognomiPipe } from '../nomi-cognomi.pipe';
-import {SortOrder} from 'clarity-angular';
+import {SortOrder} from "@clr/angular";
 
 import { DeweyService } from '../dewey.service';
 

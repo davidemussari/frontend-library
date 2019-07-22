@@ -92,21 +92,36 @@
 <clr-modal [(clrModalOpen)]="mdOpen">
     <h3 class="modal-title">Scegli come salvare i dati</h3>
     <div class="modal-body">
-        <form clrForm>
-            <label>Ordinamento:</label>
-            <clr-radio-wrapper>
-                <input type="radio" clrRadio value="autore" name="options" id="autore" (click)="sort = 'autore'" [checked]="sort == 'autore'"/>
-                <label>alfabetico per primo autore</label>
-            </clr-radio-wrapper>
-            <clr-radio-wrapper>
-                <input type="radio" clrRadio value="argomento" name="options" id="argomento" (click)="sort = 'argomento'" [checked]="sort == 'argomento'"/>
-                <label>per argomento</label>
-            </clr-radio-wrapper>
-            <clr-radio-wrapper>
-                <input type="radio" clrRadio value="luogo" name="options" id="luogo" (click)="sort = 'luogo'" [checked]="sort == 'luogo'"/>
-                <label>per luogo</label>
-            </clr-radio-wrapper>
-       </form>
+        <div class="clr-row">
+            <div class="clr-col">
+                <form clrForm>
+                    <label class="clr-control-label">Ordinamento:</label>
+                    <clr-radio-wrapper>
+                        <input type="radio" clrRadio value="autore" name="options" id="autore" (click)="sort = 'autore'" [checked]="sort == 'autore'"/>
+                        <label>alfabetico per primo autore</label>
+                    </clr-radio-wrapper>
+                    <clr-radio-wrapper>
+                        <input type="radio" clrRadio value="argomento" name="options" id="argomento" (click)="sort = 'argomento'" [checked]="sort == 'argomento'"/>
+                        <label>per argomento</label>
+                    </clr-radio-wrapper>
+                    <clr-radio-wrapper>
+                        <input type="radio" clrRadio value="luogo" name="options" id="luogo" (click)="sort = 'luogo'" [checked]="sort == 'luogo'"/>
+                        <label>per luogo</label>
+                    </clr-radio-wrapper>
+                </form>
+            </div>
+            <div class="clr-col">
+                <form clrForm class="clr-form clr-form-horizontal">
+                    <div class="clr-toggle-wrapper">
+                        <input type="checkbox" id="ultimeAcquisizioni" name="toggle-basic" value="soloUltimeAcquisizioni"
+                        class="clr-toggle" [(ngModel)]="soloUltimeAcquisizioni" checked="soloUltimeAcquisizioni">
+                        <label class="clr-col" for="ultimeAcquisizioni">Solo ultime acquisizioni</label>
+                    </div>
+                     <input *ngIf="soloUltimeAcquisizioni" clrInput placeholder="Da inventario n." class="clr-input" type="number"
+                     value="daInventario" [(ngModel)]="daInventario" [ngModelOptions]="{standalone: true}">
+                </form>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="mdOpen = false" >Cancel</button>

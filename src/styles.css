@@ -157,6 +157,14 @@ clr-dg-footer > clr-dg-pagination > ul > li{
     color: white;
 }
 
+clr-datagrid > clr-dg-footer > div.clr-form-control-disabled.ng-star-inserted{
+    opacity: 1;
+}
+
+clr-datagrid > clr-dg-footer > div.clr-form-control-disabled.ng-star-inserted > clr-checkbox-wrapper > label{
+    color: white;
+}
+
 
 /*Stile vertical nav*/
 .nav-trigger-icon{

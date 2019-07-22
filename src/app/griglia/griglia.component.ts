@@ -106,19 +106,24 @@ function sortLuogo(a,b) {
 }
 
 //produce da un array, un array di array, dove ogni array contenuto ha la stessa iniziale (o codice argomento)
-function separatorePerPrimoCarattere(data, campo){
+function separatorePerPrimoCarattere(data, campo, soloUltimeAcquisizioni, daInventario){
     var a = new Array();
     var temp = new Array();
     var lastCharacter = "";
+    var nuovaAcquisizione = false;
     if (campo == 'autore'){
         lastCharacter = data[0].autore.substring(0,1);
         data.forEach(function(e){
            if(lastCharacter != e.autore.substring(0,1)){
                lastCharacter = e.autore.substring(0,1);
-               a.push(temp);
+               if(temp.length >0)
+                   a.push(temp);
                temp = [];
+               nuovaAcquisizione = false;
            }
-           temp.push(e);
+           nuovaAcquisizione = soloUltimeAcquisizioni && e.inventario >= daInventario;
+           if(nuovaAcquisizione || !soloUltimeAcquisizioni)
+                temp.push(e);
         });
     }else if (campo == 'luogo'){
         if(data[0].luogo != undefined)
@@ -126,9 +131,13 @@ function separatorePerPrimoCarattere(data, campo){
         data.forEach(function(e){
            if(e.luogo != undefined && lastCharacter != e.luogo.substring(0,1)){
                lastCharacter = e.luogo.substring(0,1);
+               if(temp.length >0)
                a.push(temp);
                temp = [];
+               nuovaAcquisizione = false;
            }
+           nuovaAcquisizione = soloUltimeAcquisizioni && e.inventario >= daInventario;
+           if(nuovaAcquisizione || !soloUltimeAcquisizioni)
            temp.push(e);
         });
     }else if(campo == 'argomento'){
@@ -136,10 +145,14 @@ function separatorePerPrimoCarattere(data, campo){
         data.forEach(function(e){
            if(lastCharacter != e.perEtichette.split(' ')[0]){
                lastCharacter = e.perEtichette.split(' ')[0];
+               if(temp.length >0)
                a.push(temp);
                temp = [];
+               nuovaAcquisizione = false;
            }
-           temp.push(e);
+           nuovaAcquisizione = soloUltimeAcquisizioni && e.inventario >= daInventario;
+           if(nuovaAcquisizione || !soloUltimeAcquisizioni)
+               temp.push(e);
         });
     }
     a.push(temp);
@@ -163,7 +176,7 @@ function scansioneRicorsivaJson(data, doc, index){
     data.forEach(function(e){
         if(e.children != undefined){
             riga++;
-            if (10*riga >= 200){
+            if (10*riga > 190){
                 doc.addPage();
                 riga = 2;
             }
@@ -172,7 +185,6 @@ function scansioneRicorsivaJson(data, doc, index){
                 riga++;
             doc.text("[ " + e.valore + " ] " + e.descrizione, 14*index, 10*riga);
             scansioneRicorsivaJson(e.children, doc, index+1);
-            console.log(index);
         }
     });
 };
@@ -193,7 +205,10 @@ class Modale {
 export class GrigliaComponent {
 
     mdOpen: boolean = false; //apre/chiude la modale dell'export pdf
-    sort; // stringa che indica secondo quale cosa si vuole export pdf
+    sort: string; // stringa che indica secondo quale cosa si vuole export pdf
+    soloUltimeAcquisizioni: boolean = false; //scelta temporale per export
+    daInventario: number = 0; //scelta temporale per export
+
 
     ordinamento_defaul: string = "ordCrescenteAutore";
     titoloFiltrato: string = '';
@@ -288,7 +303,6 @@ export class GrigliaComponent {
 
 
         if(this.sort == 'autore'){
-
             columns = [
                 {header: "Autore/i", dataKey: "autore"},
                 {header: "Titolo", dataKey: "titolo"},
@@ -300,12 +314,13 @@ export class GrigliaComponent {
             this.selezionati = this.selezionati.sort(sortAutori);
 
             //produce un array di array
-            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort);
+            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort, this.soloUltimeAcquisizioni, this.daInventario);
 
             //crea la tabella
             doc.text('Elenco alfabetico per primo autore', 150, 22, {align: 'center'});
             this.selezionati.forEach(function(e){
-                doc.autoTable({columns: columns, body: e});
+                if(e.length > 0)
+                    doc.autoTable({columns: columns, body: e});
             });
 
             //scatena in download
@@ -324,12 +339,13 @@ export class GrigliaComponent {
             this.selezionati = this.selezionati.sort(sortLuogo);
 
             //produce un array di array
-            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort);
+            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort, this.soloUltimeAcquisizioni, this.daInventario);
 
             //crea la tabella
             doc.text('Elenco alfabetico per luogo', 150, 22, {align: 'center'});
             this.selezionati.forEach(function(e){
-                doc.autoTable({columns: columns, body: e});
+                if(e.length > 0)
+                    doc.autoTable({columns: columns, body: e});
             });
 
             doc.save("Fondo di documentazione storico locale - 'L Nòst Pais - alfabetico luoghi.pdf");
@@ -351,14 +367,16 @@ export class GrigliaComponent {
             this.selezionati = this.selezionati.sort(sortArgomento);
 
              //produce un array di array
-            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort);
+            this.selezionati = separatorePerPrimoCarattere(this.selezionati,this.sort, this.soloUltimeAcquisizioni, this.daInventario);
 
              //crea la tabella
             this.selezionati.forEach(function(e){
-                doc.autoTable({columns: columns, body: e});
+                if(e.length > 0)
+                    doc.autoTable({columns: columns, body: e});
             });
 
             doc.save("Fondo di documentazione storico locale - 'L Nòst Pais - argomenti.pdf");
+            riga = 2;
         }
     }
 }

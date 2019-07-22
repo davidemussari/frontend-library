@@ -31,11 +31,11 @@
 
 <!-- Griglia -->
 <clr-datagrid [(clrDgSelected)]="selezionati" [clrDgLoading]="!caricamentoCompletato">>
-    <clr-dg-column [clrDgField]="'autore'" [(clrDgSortOrder)]="ordinamento_defaul">
+    <clr-dg-column [(clrDgSortOrder)]="ordinamento_defaul">
         Autore
         <clr-dg-string-filter [clrDgStringFilter]="autoreFiltro" [(clrFilterValue)]="autoreFiltrato"></clr-dg-string-filter>
     </clr-dg-column>
-    <clr-dg-column [clrDgField]="'titolo'">
+    <clr-dg-column>
         Titolo
         <clr-dg-string-filter [clrDgStringFilter]="titoloFiltro" [(clrFilterValue)]="titoloFiltrato"></clr-dg-string-filter>
     </clr-dg-column>

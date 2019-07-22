@@ -84,7 +84,7 @@ body{
      background-color: #80a7ba !important;
 }
 
-.datagrid-table .datagrid-column .datagrid-filter-toggle{
+.datagrid-table .datagrid-column .datagrid-filter-toggle, clr-dg-filter > button > clr-icon{
     color: white;
 }
 

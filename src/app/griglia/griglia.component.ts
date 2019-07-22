@@ -196,8 +196,8 @@ export class GrigliaComponent {
     sort; // stringa che indica secondo quale cosa si vuole export pdf
 
     ordinamento_defaul: string = "ordCrescenteAutore";
-    titoloFiltrato: string;
-    autoreFiltrato: string;
+    titoloFiltrato: string = '';
+    autoreFiltrato: string = '';
     codiceArgomentoSort = new CodiceArgomentoSort();
     codiceArgomentoFiltro = new CodiceArgomentoFiltro();
     luogoFiltro = new FiltroLuogo();

@@ -70,14 +70,21 @@ body{
 
 /*stile griglia*/
 .datagrid{
-    border-radius: 23px !important;
+    border-radius: 23px 23px 0px 0px  !important;
     border-color:  #80A7BA;
 }
 
 .datagrid-head{
     border-radius: 20px 20px 0 0;
-    background-color: #80a7ba !important;
     border-color:  #80A7BA !important;
+    color: white;
+}
+
+.datagrid .datagrid-column{
+     background-color: #80a7ba !important;
+}
+
+.datagrid-table .datagrid-column .datagrid-filter-toggle{
     color: white;
 }
 
@@ -113,11 +120,19 @@ clr-dg-action-overflow button.datagrid-action-toggle clr-icon{
     border-color:  #80A7BA !important;
 }
 
-.datagrid-foot{
+.datagrid-footer{
     border-radius: 0 0 20px 20px;
     background-color: #80a7ba;
     color: white;
     border-color:  #80A7BA;
+}
+
+body > my-app > clr-main-container > div > div > app-catalogo-completo > app-griglia > clr-datagrid > div.datagrid > div > div > div > div > div > div.datagrid-row-scrollable > div.datagrid-column.datagrid-select.datagrid-fixed-column.ng-star-inserted > span > clr-checkbox-wrapper > label::before{
+    border-color: white;
+}
+
+.datagrid-table .datagrid-column .datagrid-column-separator::after{
+    background-color: white;
 }
 
 .column-toggle--action{
@@ -137,12 +152,9 @@ clr-dg-footer > clr-dg-pagination > ul > li{
     border-color: white !important;
 }
 
-.pagination .pagination-next{
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23FFFFFF%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%3E%3Cpolygon%20class%3D%22cls-1%22%20points%3D%225.85%2014.72%2012.56%208%205.85%201.28%205%202.13%2010.86%208%205%2013.87%205.85%2014.72%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
 
-.pagination .pagination-previous{
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-3%7Bfill%3A%23FFFFFF%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%3E%3Cpolygon%20class%3D%22cls-3%22%20points%3D%2210.15%2014.72%203.44%208%2010.15%201.28%2011%202.13%205.14%208%2011%2013.87%2010.15%2014.72%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+.pagination-first > clr-icon, .pagination-previous > clr-icon, .pagination-next > clr-icon, .pagination-last > clr-icon{
+    color: white;
 }
 
 

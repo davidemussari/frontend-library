@@ -92,21 +92,21 @@
 <clr-modal [(clrModalOpen)]="mdOpen">
     <h3 class="modal-title">Scegli come salvare i dati</h3>
     <div class="modal-body">
-        <section class="form-block">
+        <form clrForm>
             <label>Ordinamento:</label>
-            <div class="radio">
-                <input type="radio" id="autore" (click)="sort = 'autore'" [checked]="sort == 'autore'">
-                <label for="autore">alfabetico per primo autore</label>
-            </div>
-            <div class="radio">
-                <input type="radio"  id="argomento" (click)="sort = 'argomento'" [checked]="sort == 'argomento'">
-                <label for="argomento">per argomento</label>
-            </div>
-             <div class="radio">
-                <input type="radio"  id="luogo" (click)="sort = 'luogo'" [checked]="sort == 'luogo'">
-                <label for="luogo">per luogo</label>
-            </div>
-        </section>
+            <clr-radio-wrapper>
+                <input type="radio" clrRadio value="autore" name="options" id="autore" (click)="sort = 'autore'" [checked]="sort == 'autore'"/>
+                <label>alfabetico per primo autore</label>
+            </clr-radio-wrapper>
+            <clr-radio-wrapper>
+                <input type="radio" clrRadio value="argomento" name="options" id="argomento" (click)="sort = 'argomento'" [checked]="sort == 'argomento'"/>
+                <label>per argomento</label>
+            </clr-radio-wrapper>
+            <clr-radio-wrapper>
+                <input type="radio" clrRadio value="luogo" name="options" id="luogo" (click)="sort = 'luogo'" [checked]="sort == 'luogo'"/>
+                <label>per luogo</label>
+            </clr-radio-wrapper>
+       </form>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="mdOpen = false" >Cancel</button>

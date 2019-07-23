@@ -7,6 +7,8 @@ import { ClarityModule } from "@clr/angular";
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
 
+ import { ChartsModule } from 'ng2-charts';
+
 
 import { CatalogoArgomentoComponent } from './catalogo-argomento/catalogo-argomento.component';
 import { CatalogoCompletoComponent } from './catalogo-completo/catalogo-completo.component';
@@ -35,6 +37,7 @@ import { ServiceBindDataRountingService } from './service-bind-data-rounting.ser
         FormsModule,
         HttpModule,
         ClarityModule,
+        ChartsModule,
         ROUTING
     ],
     providers: [],

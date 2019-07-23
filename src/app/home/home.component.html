@@ -1,55 +1,86 @@
 <div class="clr-row">
-	<div class="clr-col">
-		<div class="card">
-
-
-
+    <div class="clr-col">
+        <div class="card">
             <div class="card-header">
-                Header
+                Distribuzione per tipologia (tot. finora inventariato:  {{nTotaleAcquisizioni}})
             </div>
             <div class="card-block">
-                <div class="card-title">
-                    {{testHome}}
-                </div>
-                <div class="card-text">
-
+                <div class="chart">
+                    <canvas baseChart
+                        [data]="pieChartData_tipologia"
+                        [labels]="pieChartLabels_tipologia"
+                        [chartType]="pieChartType_tipologia"
+                        [options]="pieChartOptions_tipologia"
+                        [colors]="pieChartColors_tipologia"
+                        [legend]="pieChartLegend_tipologia">
+                    </canvas>
                 </div>
             </div>
-            <div class="card-footer">
-                <button class="btn btn-sm btn-link" (click)="this.testHome = 'aaaa'">testHome</button>
+<!--             <div class="card-footer"> Totale elementi fin ad ora inventariati: {{nTotaleAcquisizioni}}</div> -->
+        </div>
+    </div>
+
+    <div class="clr-col">
+        <div class="card">
+            <div class="card-header">
+                Distribuzione per lingua principale
             </div>
-
-
-
-
-		</div>
-	</div>
-	<div class="clr-col">
-		<div class="card">
-			<div class="card-block">
-				<h3 class="card-title">Card 2</h3>
-				<p class="card-text">
-                    ...
-				</p>
-			</div>
-			<div class="card-footer">
-				<a href="..." class="btn btn-sm btn-link">Action 2</a>
-			</div>
-		</div>
-	</div>
-	<div class="clr-col">
-		<div class="card">
-			<div class="card-block">
-				<h3 class="card-title">Card 3</h3>
-				<p class="card-text">
-                    ...
-				</p>
-			</div>
-			<div class="card-footer">
-				<a href="..." class="btn btn-sm btn-link">Action 3</a>
-			</div>
-		</div>
-	</div>
+            <div class="card-block">
+                <div class="chart">
+                    <canvas baseChart
+                        [data]="pieChartData_lingua"
+                        [labels]="pieChartLabels_lingua"
+                        [chartType]="pieChartType_lingua"
+                        [options]="pieChartOptions_lingua"
+                        [colors]="pieChartColors_lingua"
+                        [legend]="pieChartLegend_lingua">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="clr-row">
+    <div class="clr-col">
+        <div class="card">
+            <div class="card-header">
+               Ultimo materiale inventariato
+            </div>
+            <div class="card-block">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Titolo</th>
+                            <th>Autore</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of ultimeAcquisizioni">
+                            <td>{{e.titolo}}</td>
+                            <td>{{e.autore}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr-col-3">
+        <div class="card">
+            <div class="card-header">
+                Totale visite
+            </div>
+            <div class="card-block">
+               161561
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
 

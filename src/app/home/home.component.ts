@@ -74,7 +74,11 @@ export class HomeComponent {
 
 
     catalogoCaricato = () => {
-        var dataUltimaAcquisizione: string = this.catalogo[this.catalogo.length-1]["Data di creazione"];
+        var today = new Date();
+        var today3Mesiprima = today.setMonth(today.getMonth() - 6);
+        var dataUltimoInventario = new Date(this.catalogo[this.catalogo.length-1]["Data di creazione"]);
+        if (dataUltimoInventario.getTime() < today3Mesiprima)
+            today3Mesiprima = dataUltimoInventario.setMonth(dataUltimoInventario.getMonth()-1);
         this.catalogo.forEach((e) => {
             //conta il totale degli elementi
             this.nTotaleAcquisizioni++;
@@ -104,10 +108,12 @@ export class HomeComponent {
                 this.nPiemontese++;
 
             //Ultime acquisizioni
-            if(e["Data di creazione"] == dataUltimaAcquisizione)
+            var dataCreazioneElemento = new Date(e["Data di creazione"]).getTime();
+            if(today3Mesiprima < dataCreazioneElemento)
                 this.ultimeAcquisizioni.push({
                     'titolo': e.titolo,
                     'autore': e.autore,
+                    'sottotitolo': e.sottotitolo
                 });
         });
 

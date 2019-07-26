@@ -215,7 +215,6 @@ export class DettagliComponent {
         stringa += ' <br/>';
         }
         return stringa;
-
     }
 
     data = (str) => {

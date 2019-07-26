@@ -39,7 +39,7 @@ export class HomeComponent {
                 return label;
     },},}};
     pieChartLabels_tipologia: Label[] = ['Libri', 'Brochure', 'Supporti digitali', 'VHS', 'Riviste e periodici', 'Calendari'];
-    pieChartData_tipologia: number[];
+    pieChartData_tipologia = [];
     pieChartType_tipologia: ChartType = 'pie';
     pieChartLegend_tipologia: boolean = true;
     pieChartColors_tipologia = [{backgroundColor: ['#006690', '#314351', '#9B56BB', '#A3EDF6', '#00B7D6', '#61717D']}];
@@ -53,7 +53,7 @@ export class HomeComponent {
                 return label;
     },},}};
     pieChartLabels_lingua: Label[] = ['Italiana', 'Inglese', 'Francese', 'Piemontese'];
-    pieChartData_lingua: number[];
+    pieChartData_lingua = [];
     pieChartType_lingua: ChartType = 'pie';
     pieChartLegend_lingua: boolean = true;
     pieChartColors_lingua = [{backgroundColor: ['#0F1E82', '#6870C4', '#00BFA9', '#A3EDF6', '#80746D']}];
@@ -112,13 +112,25 @@ export class HomeComponent {
             if(today3Mesiprima < dataCreazioneElemento)
                 this.ultimeAcquisizioni.push({
                     'titolo': e.titolo,
-                    'autore': e.autore,
+                    'autore': this.nomi(e.autore),
                     'sottotitolo': e.sottotitolo
                 });
         });
-
         this.pieChartData_tipologia = [this.nLibri, this.nBrochure, this.nDigitale, this.nVHS, this.nRivistePeriodici, this.nCalendari];
         this.pieChartData_lingua = [this.nItaliana, this.nInglese, this.nFrancese, this.nPiemontese];
+    }
+
+    nomi = (str) => {
+        let stringa = "";
+        let autoriArray = str.split(';');
+        for (let persona of autoriArray){
+            persona = persona.split(',');
+            for (let p of persona){
+                stringa += p.trim() + " ";
+            }
+            stringa += ' <br/>';
+        }
+        return stringa;
     }
 
 

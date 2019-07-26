@@ -60,7 +60,7 @@
                         <tr *ngFor="let e of ultimeAcquisizioni">
                             <td>{{e.titolo}}</td>
                             <td>{{e.sottotitolo}}</td>
-                            <td>{{e.autore}}</td>
+                            <td [innerHTML]="e.autore"></td>
                         </tr>
                     </tbody>
                 </table>

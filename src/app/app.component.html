@@ -42,7 +42,7 @@
                 <clr-icon shape="objects" class="is-solid WhiteTextOnly"></clr-icon>
                 Panoramica
             </a>
-            <div class="nav-divider" *ngIf="false"></div>
+            <div class="nav-divider"></div>
 			<a clrVerticalNavLink [routerLink]="['/catalogoCompleto']" routerLinkActive="active"  class="verticalNav">
                 <clr-icon class="is-solid WhiteTextOnly" shape="library" clrVerticalNavIcon></clr-icon>
                 Catalogo completo
@@ -59,13 +59,11 @@
             <a clrVerticalNavLink href="http://www.lnostpais.it/" routerLinkActive="active"  class="verticalNav">
                 <clr-icon class="is-solid" shape="world" clrVerticalNavIcon></clr-icon>L'Associazione
             </a>
+            <a clrVerticalNavLink class="verticalNav p7" (click)="creditModaleOpen = true" style="margin-top: auto;	cursor: pointer;">
+                Riconoscimenti
+            </a>
 		</clr-vertical-nav>
 	</div>
-    <header class="header footer">
-        <div class="header-actions">
-          <span class="p7" (click)="creditModaleOpen = true">Riconoscimenti</span>
-        </div>
-    </header>
 </clr-main-container>
 
 

@@ -22,4 +22,4 @@ export const ROUTES: Routes = [
 
 ];
 
-export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);
+export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES, { scrollPositionRestoration: 'disabled'});

@@ -35,7 +35,7 @@
 	</clr-header>
 	<div class="content-container">
 		<div class="content-area">
-			<router-outlet></router-outlet>
+			<router-outlet (activate)="onActivate($event)"></router-outlet>
 		</div>
 		<clr-vertical-nav class="verticalNav" [clr-nav-level]="1">
 			<a clrVerticalNavLink [routerLink]="['/home']" routerLinkActive="active"  class="verticalNav">

@@ -1255,14 +1255,18 @@ export class DeweyService {
                     },{//851.8
                     },{//851.9
                         "parent": "851",
-                        "descrizione": "Letteratura italiana dal 1900 al 1999",
+                        "descrizione": "Letteratura italiana dal 1900 ad oggi",
                         "valore": "851.900",
-                        "children":[]
-                    },{
-                        "parent": "851",
+                        "children":[{
+                            "parent": "851.9",
+                            "descrizione": "Letteratura italiana dal 1900 al 1999",
+                            "valore": "851.900",
+                            "children":[]
+                        },{"parent": "851.9",
                         "descrizione": "Letteratura italiana dal 2000",
                         "valore": "851.920",
                         "children":[]
+                        }]
                     }]
                 },{//852
                     "parent": "85",

@@ -59,7 +59,6 @@
     </clr-dg-placeholder>
 
     <clr-dg-row *clrDgItems="let element of catalogo" [clrDgItem]="element">
-        <clr-dg-action-overflow (click)="clickRigaTabella(element)"></clr-dg-action-overflow>
         <clr-dg-cell [innerHTML] = "element.autore | nomiCognomi"></clr-dg-cell>
         <clr-dg-cell [innerHTML] = "element.titolo"></clr-dg-cell>
         <clr-dg-cell [innerHTML] = "element.sottotitolo"></clr-dg-cell>
@@ -68,7 +67,12 @@
      <img [src]="'/nostpais/copertine/'+element.copertina" class="cellaCopertina" onError="this.src='/images/Libro.png'"></clr-dg-cell>
         <clr-dg-cell>{{element.codiceArgomento}}</clr-dg-cell>
         <clr-dg-cell>{{element.luogo}}</clr-dg-cell>
+
+        <clr-dg-row-detail [clrDgReplace]="true" *clrIfExpanded ngProjectAs="clr-dg-row-detail">
+            <app-dettagli [(elementoCliccato)]="element" (undo)="undo()"></app-dettagli>
+        </clr-dg-row-detail>
     </clr-dg-row>
+
 
     <clr-dg-footer>
         <button type="button" class="dropdown-toggle btn btn-success btn-sm" [disabled]="!(selezionati.length>0)" (click)="mdOpen = true; sort=''">Salva selezionati</button>
@@ -123,6 +127,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="mdOpen = false" >Cancel</button>
         <button type="button" class="btn btn-primary" (click)="mdOpen = false; download()" [disabled]="sort == ''">Ok</button>

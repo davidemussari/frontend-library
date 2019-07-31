@@ -1,10 +1,5 @@
-<div class="btn-group btn-primary">
-    <button class="btn btn-sm" (click)="indietro()"><clr-icon shape="undo"></clr-icon> Indietro</button>
-</div>
-
-
 <div class="clr-row">
-	<div class="clr-col">
+	<div class="clr-col-12">
 		 <div class="card">
             <div class="card-header">
                <h3 class="whiteText" [innerHTML]="elementoCliccato.titolo"></h3>
@@ -21,7 +16,7 @@
                 </div>
                 <div class="card-text clr-row">
                     <ng-container *ngFor="let info of arrayKey; let i=index">
-                        <div class="clr-col-lg-3 clr-col" *ngIf="i>0">
+                        <div class="clr-col-lg-4 clr-col" *ngIf="i>0">
                             <div class="card noBordi">
                                 <div class="card-header noBordi"><span class="p2" [innerHTML]="etichetta(info)"></span></div>
                                 <div class="card-text"><span [innerHTML]="beautify(info)"></span></div>

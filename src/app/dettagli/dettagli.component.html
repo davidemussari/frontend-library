@@ -2,13 +2,12 @@
 	<div class="clr-col-12">
 		 <div class="card">
             <div class="card-header">
-               <h3 class="whiteText" [innerHTML]="elementoCliccato.titolo"></h3>
-               <span class="p2 whiteText" [innerHTML]="elementoCliccato.sottotitolo"></span>
+               <h3 class="whiteText" [innerHTML]="elemento.titolo"></h3>
+               <span class="p2 whiteText" [innerHTML]="elemento.sottotitolo"></span>
             </div>
             <div class="card-block">
                 <div class="card-media-block">
-                     <img [src]="'./copertine/'+elementoCliccato.copertina" class="card-media-image" onError="this.src='/images/Libro.png'">
-<!--                     <img [src]="'/fondodocumentazione/copertine/'+elementoCliccato.copertina" class="card-media-image" onError="this.src='/fondodocumentazione/images/Libro.png'"> -->
+                    <img [src]="copertinePath+elemento.copertina" class="card-media-image" (error)="onErrorrImg()">
                     <div class="card-media-description">
                         <span class="card-media-title p2" [innerHTML]="etichetta(arrayKey[0])"></span>
                         <span class="card-media-text" [innerHTML]="beautify(arrayKey[0])"></span>

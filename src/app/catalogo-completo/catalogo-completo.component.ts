@@ -13,9 +13,7 @@ export class CatalogoCompletoComponent implements OnInit {
     codArgomento: string;
     descArgomento: string;
     luogo: string;
-    dettagli: boolean = false;//mostra i dettagli dell'elemento cliccando sulla i di informazioni su una riga della tabella
     catalog: any;
-    elementoCliccato: any;
     caricamentoCompletato: boolean = false;
 
     constructor(private paramsRoute: ActivatedRoute, private serviceBindDataRountingService: ServiceBindDataRountingService) {
@@ -23,12 +21,7 @@ export class CatalogoCompletoComponent implements OnInit {
             //serve nel momento in cui si apre direttamente questo indirizzo web
             this.catalog = cat;
             this.caricamentoCompletato = true;
-            this.dettagli = false;
         });
-
-        //Queste due righe sono necessarie perche' un conflitto impedisce di aprire la modale Riconoscimenti mentre si e' sulla griglia
-        this.elementoCliccato = new Object();
-         this.elementoCliccato.titolo = '';
     }
 
     ngOnInit() {
@@ -40,15 +33,5 @@ export class CatalogoCompletoComponent implements OnInit {
             if (this.catalog.length != undefined || this.catalog.length > 0)
                 this.caricamentoCompletato = true;
         });
-    }
-
-    clickRigaTabella = (elemento) =>{
-        this.dettagli = true;
-        this.elementoCliccato = elemento;
-    }
-
-    undo = () =>{//passa dalla visualizzazione del dettaglio dell'elemento alla griglia
-        this.dettagli = false;
-        this.elementoCliccato = null;
     }
 }

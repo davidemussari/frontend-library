@@ -69,7 +69,7 @@
         <clr-dg-cell>{{element.luogo}}</clr-dg-cell>
 
         <clr-dg-row-detail [clrDgReplace]="true" *clrIfExpanded ngProjectAs="clr-dg-row-detail">
-            <app-dettagli [(elementoCliccato)]="element" (undo)="undo()"></app-dettagli>
+            <app-dettagli [(elemento)]="element"></app-dettagli>
         </clr-dg-row-detail>
     </clr-dg-row>
 

@@ -2,6 +2,8 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { DeweyService } from '../dewey.service';
 
+import { environment } from '../../environments/environment';
+
 @Component({
     selector: 'app-dettagli',
     templateUrl: './dettagli.component.html',
@@ -159,20 +161,28 @@ export class DettagliComponent {
     };
     dewey: any;
     arrayKey: Array<any>;
-    @Input() elementoCliccato: any;
-    @Output() undo: EventEmitter<boolean> = new EventEmitter();
+    @Input() elemento: any;
+    copertinePath: string = '';
+    copertinePathOnError: string = '';
 
     constructor(private deweyService: DeweyService, private datePipe: DatePipe) {
         this.dewey = deweyService.dewey;
+        this.copertinePath = environment.copertinePath;
+        this.copertinePathOnError = environment.copertinePathOnError;
     }
 
     ngOnInit() {}
 
+    onErrorrImg() {
+        var e = event.currentTarget as HTMLImageElement;
+        e.src = this.copertinePathOnError;
+    }
+
     ngOnChanges() {
         this.arrayKey = [];
-        if(this.elementoCliccato!=undefined){
-            for (let k of Object.keys(this.elementoCliccato))
-                if (this.elementoCliccato[k] != null && this.elementoCliccato[k].length != 0 && this.dettagli[k].visibile)
+        if(this.elemento!=undefined){
+            for (let k of Object.keys(this.elemento))
+                if (this.elemento[k] != null && this.elemento[k].length != 0 && this.dettagli[k].visibile)
                     this.arrayKey.push(k);
                 }
     }
@@ -181,19 +191,19 @@ export class DettagliComponent {
         if(this.dettagli[key] !== undefined){
             switch(this.dettagli[key].funct) {
                 case "trueFalse": {
-                    return this.trueFalse(this.elementoCliccato[key]);
+                    return this.trueFalse(this.elemento[key]);
                 }
                 case "nomi": {
-                    return this.nomi(this.elementoCliccato[key]);
+                    return this.nomi(this.elemento[key]);
                 }
                 case "codiceArgomento": {
-                    return this.argomento(this.elementoCliccato[key]);
+                    return this.argomento(this.elemento[key]);
                 }
                 case "data": {
-                    return this.data(this.elementoCliccato[key]);
+                    return this.data(this.elemento[key]);
                 }
             }
-            return this.elementoCliccato[key];
+            return this.elemento[key];
         }
     }
 
@@ -241,10 +251,6 @@ export class DettagliComponent {
         if(this.dettagli[key] !== undefined){
         return this.dettagli[key].etichetta;
         }
-    }
-
-    indietro = () =>{
-        this.undo.emit();
     }
 
 }

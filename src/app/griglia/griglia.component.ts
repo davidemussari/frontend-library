@@ -9,6 +9,9 @@ import {ClrDatagridSortOrder} from "@clr/angular";
 
 import { DeweyService } from '../dewey.service';
 
+import { environment } from '../../environments/environment';
+
+
 
 declare var jsPDF: any; // Important
 
@@ -209,6 +212,9 @@ export class GrigliaComponent {
     soloUltimeAcquisizioni: boolean = false; //scelta temporale per export
     daInventario: number = 0; //scelta temporale per export
 
+    appRoot: string = '';
+    copertinePath: string = '';
+    copertinePathOnError: string = '';
 
     ordinamento_defaul: string = "ordCrescenteAutore";
     titoloFiltrato: string = '';
@@ -236,6 +242,9 @@ export class GrigliaComponent {
         this.router = _router;
         this.nomiCognomi = _nomiCognomi;
         this.dewey = _deweyService.dewey;
+        this.appRoot = environment.appRoot;
+        this.copertinePath = environment.copertinePath;
+        this.copertinePathOnError = environment.copertinePathOnError;
     }
 
     clearFilter= () => {
@@ -244,8 +253,9 @@ export class GrigliaComponent {
         this.router.navigate(['/catalogoCompleto/']);
     }
 
-    clickRigaTabella = (elemento) =>{
-        this.clickDettaglio.emit(elemento);
+    onErrorrImg() {
+        var e = event.currentTarget as HTMLImageElement;
+        e.src = this.copertinePathOnError;
     }
 
     download = ()=>{//realizza il pdf

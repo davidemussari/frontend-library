@@ -4,6 +4,8 @@ import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { GetJsonService } from './get-json.service';
 import { ServiceBindDataRountingService } from './service-bind-data-rounting.service';
 
+import { environment } from '../environments/environment';
+
 @Component({
     selector: 'my-app',
     templateUrl: './app.component.html',
@@ -15,13 +17,13 @@ export class AppComponent {
     catalogo: any;
     public catalogoPronto$: EventEmitter<any>;
 
-
     creditModaleOpen: Boolean = false;
 
-    constructor(private router: Router, private downloadJson: GetJsonService, private serviceBindDataRountingService:ServiceBindDataRountingService) {
+    jsonPath: string = '';
 
-        this.downloadJson.getData("../json/biblioteca_lNostPais.json").subscribe((data) => {
-//        this.downloadJson.getData("./json/biblioteca_lNostPais.json").subscribe((data) => {
+    constructor(private router: Router, private downloadJson: GetJsonService, private serviceBindDataRountingService:ServiceBindDataRountingService) {
+        this.jsonPath = environment.jsonPath;
+        this.downloadJson.getData(this.jsonPath).subscribe((data) => {
             this.catalogo = data;
             this.serviceBindDataRountingService.catalog = this.catalogo;
             this.serviceBindDataRountingService.catalogoPronto$.emit(this.catalogo);

@@ -1336,21 +1336,26 @@ export class DeweyService {
                     },{//914.5
                         "parent": "914",
                         "descrizione": "Geografia. Italia",
-                        "valore": "914.500",
+                        "valore": "914.5",
                         "children":[{//914.50
                             "parent": "914.5",
-                            "descrizione": "Geografia. Italia. Linguaggio e comunicazione",
+                            "descrizione": "Geografia. Italia. Linguaggio, comunicazione, pubblicazioni in serie.",
                             "valore": "914.500 140",
-                            "children":[]
-                        },{//914.50
-                                "parent": "914.5",
-                                "descrizione": "Geografia. Italia. Pubblicazioni in serie",
-                                "valore": "914.500 500",
+                            "children":[{//914.50
+                                "parent": "914.50",
+                                "descrizione": "Geografia. Italia. Linguaggio e comunicazione",
+                                "valore": "914.500 140",
                                 "children":[]
+                            },{//914.50
+                                    "parent": "914.50",
+                                    "descrizione": "Geografia. Italia. Pubblicazioni in serie",
+                                    "valore": "914.500 500",
+                                    "children":[]
+                            }]
                         },{//914.51
                             "parent": "914.5",
                             "descrizione": "Geografia. Italia nord-occidentale",
-                            "valore": "914.510",
+                            "valore": "914.51",
                             "children":[{//914.510
                                 "parent": "914.51",
                                 "descrizione": "Geografia. Italia. Piemonte (Generale)",
@@ -1358,7 +1363,7 @@ export class DeweyService {
                                 "children":[{//914.510 0
                                     "parent": "914.510",
                                     "descrizione": "Geografia. Italia. Piemonte",
-                                    "valore": "914.51",
+                                    "valore": "914.510 0",
                                     "children":[]
                                 },{
                                     "parent": "914.51",

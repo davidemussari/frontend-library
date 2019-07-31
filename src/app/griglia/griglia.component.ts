@@ -238,6 +238,9 @@ export class GrigliaComponent {
     nomiCognomi: any;
     dewey = [];
 
+    ricercaLibera: string = '';
+    catalogoSempreCompleto = [];
+
     constructor(private _router: Router, private _nomiCognomi:NomiCognomiPipe, private _deweyService: DeweyService) {
         this.router = _router;
         this.nomiCognomi = _nomiCognomi;

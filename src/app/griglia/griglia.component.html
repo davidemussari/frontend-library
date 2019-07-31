@@ -62,9 +62,7 @@
         <clr-dg-cell [innerHTML] = "element.autore | nomiCognomi"></clr-dg-cell>
         <clr-dg-cell [innerHTML] = "element.titolo"></clr-dg-cell>
         <clr-dg-cell [innerHTML] = "element.sottotitolo"></clr-dg-cell>
-        <clr-dg-cell>
-<!--             <img [src]="'/fondodocumentazione/copertine/'+element.copertina" class="cellaCopertina" onError="this.src='/fondodocumentazione/images/Libro.png';"></clr-dg-cell> -->
-     <img [src]="copertinePath+element.copertina" class="cellaCopertina" (error)="onErrorrImg()"></clr-dg-cell>
+        <clr-dg-cell><img [src]="copertinePath+element.copertina" class="cellaCopertina" (error)="onErrorrImg()"></clr-dg-cell>
         <clr-dg-cell>{{element.codiceArgomento}}</clr-dg-cell>
         <clr-dg-cell>{{element.luogo}}</clr-dg-cell>
 

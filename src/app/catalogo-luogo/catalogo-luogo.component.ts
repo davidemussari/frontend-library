@@ -26,7 +26,6 @@ export class CatalogoLuogoComponent implements OnInit {
         }
         this.luoghi.sort();
         this.argomenti.sort();
-        console.log(this.argomenti.toString());
         this.caricamentoCompletato = true;
         /*
         * this.argomenti.split(".")

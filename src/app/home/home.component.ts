@@ -1,10 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { GetJsonService } from '../get-json.service';
 import { ServiceBindDataRountingService } from '../service-bind-data-rounting.service';
-
-import { ChartType, ChartOptions } from 'chart.js';
-import { Label } from 'ng2-charts';
-// import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { TortaComponent } from '../torta/torta.component';
 
 @Component({
     styleUrls: ['./home.component.scss'],
@@ -12,6 +9,24 @@ import { Label } from 'ng2-charts';
     providers: [GetJsonService]
 })
 export class HomeComponent {
+    dataTipologia = {
+        labels: [],
+        datasets: [{
+            data: [],
+            backgroundColor: [],
+            id: ""
+        }]
+    };
+    dataLingua = {
+        labels: [],
+        datasets: [{
+            data: [],
+            backgroundColor: [],
+            id: ""
+        }]
+    };
+
+    options: any;
 
     catalogo: any;
 
@@ -30,33 +45,15 @@ export class HomeComponent {
 
     ultimeAcquisizioni = [];
 
-    //Torta per tipologia
-    pieChartOptions_tipologia: ChartOptions = {responsive: true,
-        legend: {position: 'right',},
-        plugins: {datalabels: {
-            formatter: (value, ctx) => {
-                const label = ctx.chart.data.labels[ctx.dataIndex];
-                return label;
-    },},}};
-    pieChartLabels_tipologia: Label[] = ['Libri', 'Brochure', 'Supporti digitali', 'VHS', 'Riviste e periodici', 'Calendari'];
+   //Torta per tipologia
+    pieChartLabels_tipologia = ['Libri', 'Brochure', 'Supporti digitali', 'VHS', 'Riviste e periodici', 'Calendari'];
     pieChartData_tipologia = [];
-    pieChartType_tipologia: ChartType = 'pie';
-    pieChartLegend_tipologia: boolean = true;
-    pieChartColors_tipologia = [{backgroundColor: ['#006690', '#314351', '#9B56BB', '#A3EDF6', '#00B7D6', '#61717D']}];
+    pieChartColors_tipologia = ['#006690', '#314351', '#9B56BB', '#A3EDF6', '#00B7D6', '#61717D'];
 
     //Torta per lingua
-    pieChartOptions_lingua: ChartOptions = {responsive: true,
-        legend: {position: 'right',},
-        plugins: {datalabels: {
-            formatter: (value, ctx) => {
-                const label = ctx.chart.data.labels[ctx.dataIndex];
-                return label;
-    },},}};
-    pieChartLabels_lingua: Label[] = ['Italiana', 'Inglese', 'Francese', 'Piemontese'];
+    pieChartLabels_lingua = ['Italiana', 'Inglese', 'Francese', 'Piemontese'];
     pieChartData_lingua = [];
-    pieChartType_lingua: ChartType = 'pie';
-    pieChartLegend_lingua: boolean = true;
-    pieChartColors_lingua = [{backgroundColor: ['#0F1E82', '#6870C4', '#00BFA9', '#A3EDF6', '#80746D']}];
+    pieChartColors_lingua = ['#0F1E82', '#6870C4', '#00BFA9', '#A3EDF6', '#80746D'];
 
     constructor(private serviceBindDataRountingService: ServiceBindDataRountingService) {
         this.serviceBindDataRountingService.catalogoPronto$.subscribe(cat => {
@@ -70,15 +67,23 @@ export class HomeComponent {
         //serve nel momento del routing verso questo catalogo
         this.catalogo = this.serviceBindDataRountingService.catalog;
         this.catalogoCaricato();
-    }
 
+        this.options = {
+            title: {display: true},
+            responsive: true,
+            legend: {position: 'right'}
+        }
+
+    }
 
     catalogoCaricato = () => {
         var today = new Date();
         var today3Mesiprima = today.setMonth(today.getMonth() - 6);
-        var dataUltimoInventario = new Date(this.catalogo[this.catalogo.length-1]["Data di creazione"]);
-        if (dataUltimoInventario.getTime() < today3Mesiprima)
-            today3Mesiprima = dataUltimoInventario.setMonth(dataUltimoInventario.getMonth()-1);
+        if (this.catalogo[this.catalogo.length-1] != undefined){
+            var dataUltimoInventario = new Date(this.catalogo[this.catalogo.length-1]["Data di creazione"]);
+            if (dataUltimoInventario.getTime() < today3Mesiprima)
+                today3Mesiprima = dataUltimoInventario.setMonth(dataUltimoInventario.getMonth()-1);
+        }
         this.catalogo.forEach((e) => {
             //conta il totale degli elementi
             this.nTotaleAcquisizioni++;
@@ -117,7 +122,16 @@ export class HomeComponent {
                 });
         });
         this.pieChartData_tipologia = [this.nLibri, this.nBrochure, this.nDigitale, this.nVHS, this.nRivistePeriodici, this.nCalendari];
-        this.pieChartData_lingua = [this.nItaliana, this.nInglese, this.nFrancese, this.nPiemontese];
+        this.dataTipologia.labels = this.pieChartLabels_tipologia;
+        this.dataTipologia.datasets[0].data = this.pieChartData_tipologia;
+        this.dataTipologia.datasets[0].backgroundColor = this.pieChartColors_tipologia;
+        this.dataTipologia.datasets[0].id = "tortaTipologia";
+
+       this.pieChartData_lingua = [this.nItaliana, this.nInglese, this.nFrancese, this.nPiemontese];
+       this.dataLingua.labels = this.pieChartLabels_lingua;
+       this.dataLingua.datasets[0].data = this.pieChartData_lingua;
+       this.dataLingua.datasets[0].backgroundColor = this.pieChartColors_lingua;
+       this.dataLingua.datasets[0].id = "tortaLingua";
     }
 
     nomi = (str) => {

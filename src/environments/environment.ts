@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   appRoot: '/',
-  copertinePath: '',
-  copertinePathOnError: '/images/Libro.png',
-  jsonPath: '../json/biblioteca_lNostPais.json'
+  copertinePath: './copertine/',
+  copertinePathOnError: './images/Libro.png',
+  jsonPath: './json/biblioteca_lNostPais.json'
 };
